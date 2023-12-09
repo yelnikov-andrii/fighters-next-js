@@ -2,8 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Image, { StaticImageData } from 'next/image';
-import { ElementInt } from '@/app/types/main';
-import clsx from 'clsx';
+import { ElementInt } from '@/types/main';
 import styles from './main.module.scss';
 import Link from 'next/link';
 import { RootState } from '@/redux/store';

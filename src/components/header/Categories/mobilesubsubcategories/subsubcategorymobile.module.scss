@@ -1,0 +1,22 @@
+.subsubcategorymobile {
+
+  &__link {
+    font-weight: 500;
+    font-size: 14px;
+    color: teal;
+    text-transform: uppercase;
+    
+    &:hover {
+      color: #ff5733;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+}

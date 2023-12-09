@@ -1,12 +1,15 @@
-'use client'
+import { Header } from '@/components/header/Header';
 import  Main from '@/components/main/Main';
 
 
 function Home() {
   return (
-    <main>
-      <Main />
-    </main>
+    <>
+      <Header />
+      <main>
+        <Main />
+      </main>
+    </>
   )
 };
 

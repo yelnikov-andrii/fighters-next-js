@@ -1,0 +1,49 @@
+.categoriesmobile {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  height: auto;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: visible;
+  z-index: 3;
+
+  &--hidden {
+    visibility: hidden;
+  }
+
+  &__content {
+    background: white;
+    display: block;
+    height: 99vh;
+    overflow-y: scroll;
+    top: 0;
+    left: auto;
+    bottom: 0;
+    right: 0;
+    transition: all 0.3s ease-in-out;
+    padding: 20px 10px;
+
+    &--hidden {
+      right: -100%;
+    }
+  }
+
+  &__buttonblock {
+    margin: 0 0 20px 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 20px;
+  }
+
+  &__button {
+    font-size: 24px;
+    font-weight: 800;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}

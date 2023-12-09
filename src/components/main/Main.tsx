@@ -1,11 +1,11 @@
 import React from 'react'
 import { BannerMain } from './BannerMain'
-import LatestArrivals from './LatestArrivals';
+import LatestArrivals from './latest/LatestArrivals';
 import styles from './main.module.scss';
 import { BannerSecond } from './BannerSecond';
 import { ReduxWrapper } from '../reduxWrapper/Wrapper';
 import { firstBlockElements, secondBlockElements } from '@/data/main';
-import { AboutBlock } from './AboutBlock';
+import { AboutBlock } from './about/AboutBlock';
 
 const Main = () => {
   return (
