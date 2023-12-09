@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getphotos, getphotosError, getphotosSuccess } from '../../slices/productPhotosSlice';
-import { baseUrl } from '../../../helpers/baseUrl';
+import { baseUrl } from '@/data/url';
 
 export const fetchPhotos = (productId: number): any => {
   return async (dispatch: any) => {

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ProductPhotoInt } from '../../types';
+import { ProductPhotoInt } from '@/types/products';
 
 export interface Photostate {
   photos: ProductPhotoInt[],
