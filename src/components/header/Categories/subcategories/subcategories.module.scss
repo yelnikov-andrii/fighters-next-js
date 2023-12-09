@@ -1,0 +1,29 @@
+.subcategories {
+  position: absolute;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  background: #fff;
+  width: 100%;
+  top: 40px;
+  left: 0;
+  right: 0;
+  visibility: visible;
+  max-height: 400px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+
+  &--hidden {
+    max-height: 0px;
+    visibility: hidden;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__img {
+    object-fit: contain;
+  }
+}

@@ -1,0 +1,66 @@
+.latest {
+  margin: 10px 0 0 0;
+
+  &__block {
+    display: flex;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__header {
+    margin: 0 0 40px 0;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__item {
+    width: calc((100% / 6));
+    transition: all 0.4s ease;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #333;
+    width: 100%;
+    display: block;
+  }
+
+  &__name {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &__price {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  &__title {
+    margin: 0 0 40px 0;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+  }
+}
