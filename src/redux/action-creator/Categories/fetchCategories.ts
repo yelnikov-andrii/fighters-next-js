@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getCategories, getCategoriesError, getCategoriesSuccess, getSubCategories, getSubCategoriesError, getSubCategoriesSuccess } from '../../slices/categorySlice';
-import { baseUrl } from '../../../helpers/baseUrl';
+import { baseUrl } from '@/data/url';
 
 export const fetchCategories = (): any => {
   return async (dispatch: any) => {

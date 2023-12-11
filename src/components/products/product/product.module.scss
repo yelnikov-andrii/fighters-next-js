@@ -1,0 +1,40 @@
+.product {
+  &__link {
+    width: calc((100% - 40px) / 3);
+    text-decoration: none;
+    border: 1px solid teal;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    min-width: 250px;
+    max-width: 340px;
+    
+    &:hover {
+      border: 2px solid teal;
+    }
+    
+    @media screen and (max-width: 1024px) {
+      width: 100%;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    margin: 0 0 20px 0;
+    cursor: pointer;
+  }
+
+  &__h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    color: #333;
+  }
+
+  &__h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+  }
+}

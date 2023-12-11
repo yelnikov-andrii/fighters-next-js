@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getOneProduct, getOneProductError, getOneProductsSuccess } from '../../slices/productSlice';
-import { baseUrl } from '../../../helpers/baseUrl';
+import { baseUrl } from '@/data/url';
 
 export const fetchOneProduct = (productId: string): any => {
   return async (dispatch: any) => {

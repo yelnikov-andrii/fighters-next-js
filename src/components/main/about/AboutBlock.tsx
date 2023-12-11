@@ -1,12 +1,8 @@
 'use client';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState, store } from '../../redux/store';
+import { RootState, store } from '../../../redux/store';
 import styles from './about.module.scss';
-
-interface Props {
-  children: React.ReactNode;
-}
 
 
 export const AboutBlock = () => {

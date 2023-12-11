@@ -1,0 +1,46 @@
+.myselect {
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+
+  &__button {
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+      padding: 5px;
+    }
+  }
+
+  &__options {
+    display: 'block';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid teal;
+    border-radius: 8px;
+    padding: 5px 0;
+    max-height: 250px;
+    overflow-y: auto;
+    margin: 4px 0 0 0;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__option {
+    cursor: pointer;
+    padding: 5px;
+
+    &:hover {
+      background-color: teal;
+      color: white;
+    }
+  }
+}

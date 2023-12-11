@@ -1,0 +1,27 @@
+.productincart {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid #333;
+
+  &__name {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  &__size {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  &__price {
+    margin: 10px 0 0 0;
+    color: #333;
+    font-weight: 600;
+    font-size: 16px;
+  }
+}
