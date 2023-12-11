@@ -1,0 +1,9 @@
+.imageblock {
+  width: calc((100% - 20px) / 2);
+  cursor: pointer;
+
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+}
