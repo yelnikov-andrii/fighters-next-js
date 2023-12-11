@@ -61,7 +61,7 @@ export const BannerSecond: React.FC <Props> = ({ reverse, elements, }) => {
                 style={{height: '100%'}}
               />
               <div
-                className={styles.main__txtWrapper}
+                className={styles.main__txtWrapper + ' ' + styles['main__txtWrapper--small']}
               >
                 <h2
                   className={styles.main__h2}

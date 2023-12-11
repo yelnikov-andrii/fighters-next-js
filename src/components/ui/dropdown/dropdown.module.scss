@@ -1,0 +1,25 @@
+.mydropdown {
+  border-radius: 8px;
+  padding: 5px 10px;
+
+  &__button {
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
+
+  &__content {
+    display: none;
+    background-color: white;
+    border: 1px solid teal;
+    border-radius: 8px;
+    margin-top: 5px;
+    padding: 5px 10px;
+
+    &--open {
+      display: block;
+    }
+  }
+}
