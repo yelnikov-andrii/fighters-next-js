@@ -31,6 +31,10 @@
 
     &--active {
       border: 3px solid teal;
+
+      &.variants__item--empty {
+        background-color: #ccc;
+      }
     }
   }
 

@@ -10,7 +10,6 @@ import { FIlter } from './filter/Filter';
 import { ProductInt } from '@/types/products';
 import styles from './products.module.scss';
 import { useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/router';
 
 export const Products = () => {
   const searchParams = useSearchParams();
@@ -42,7 +41,7 @@ export const Products = () => {
 
   return (
     <div className={styles.products}>
-      <div>
+      <div className={styles.products__container}>
         <h1 className={styles.products__h1}>
           {countOfProducts > 0 && (
             language === 'EN' 
@@ -52,7 +51,7 @@ export const Products = () => {
         </h1>
         <div className={styles.products__block}>
           <FIlter />
-          <div className={styles.products__listWrapper}>
+          <div className={styles.products__listwrapper}>
             <div className={styles.products__list}>
               {products.length > 0 ? products.map((product: ProductInt) => (
                 <Product 

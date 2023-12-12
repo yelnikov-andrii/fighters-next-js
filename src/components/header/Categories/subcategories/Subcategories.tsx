@@ -77,9 +77,8 @@ export const Subcategories: React.FC <Props> = ({ category, setIsOpen, isOpen })
             src={`${baseUrl}/${category?.photo}` || ''}
             alt=""
             className={styles.subcategories__img}
-            width={100}
-            height={100}
-            layout='responsive'
+            width={280}
+            height={300}
           />
         </div>
       </div>

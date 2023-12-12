@@ -41,6 +41,10 @@
     color: #333;
     width: 100%;
     display: block;
+
+    &--txt {
+      padding: 0 0 0 8px;
+    }
   }
 
   &__name {
@@ -55,6 +59,7 @@
     font-size: 20px;
     font-weight: 600;
     color: #333;
+    padding: 0 0 0 8px;
   }
 
   &__title {

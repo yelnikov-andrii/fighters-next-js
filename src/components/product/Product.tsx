@@ -28,7 +28,7 @@ export const ProductCard: React.FC <Props> = ({ product }) => {
   
   async function fetchVariants(productId: string) {
     try {
-      const response = await axios.get(`${baseUrl}/${productId}`);
+      const response = await axios.get(`${baseUrl}/variants/${productId}`);
       setVariants(response.data);
     }
 

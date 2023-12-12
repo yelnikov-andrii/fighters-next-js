@@ -1,8 +1,15 @@
 .products {
   padding: 20px 0;
 
+  &__container {
+    max-width: 1420px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+
   &__block {
     display: flex;
+    justify-content: space-between;
     gap: 10px;
     width: 100%;
     

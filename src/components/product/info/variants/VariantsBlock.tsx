@@ -32,7 +32,7 @@ const VariantsBlock: React.FC <Props> = ({ variants, selectedVariant, setSelecte
       </h5>
       <div className={styles.variants__block}>
         {variants && variants.map((variant: VariantInt) => (
-          <div className={selectedVariant && selectedVariant.id === variant.id ? styles.variants__item + ' ' + styles['vatiants__item--active'] : variant.quantity === 0 ? styles.variants__item + ' ' + styles['variants__item--empty'] : styles.variants__item}
+          <div className={(selectedVariant && selectedVariant.id === variant.id) ? styles.variants__item + ' ' + styles['variants__item--active'] : variant.quantity === 0 ? styles.variants__item + ' ' + styles['variants__item--empty'] : styles.variants__item}
             onClick={() => {
               setSelectedVariant(variant);
             }}
