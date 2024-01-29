@@ -9,6 +9,11 @@
     height: 100vh;
     width: 100%;
     margin: 0 0 10px 0;
+
+    @media screen and (max-width: 992px) {
+      object-fit: cover;
+      margin: 0 auto 10px;
+    }
     
     @media screen and (max-width: 768px) {
       min-height: 340px;
@@ -19,6 +24,17 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    @media screen and (max-width: 992px) {
+      object-fit: cover;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__banners {
@@ -64,7 +80,6 @@
 
   &__imgWrapper {
     height: calc((100% - 10px) / 2);
-    min-height: 340px;
     position: relative;
   }
 
