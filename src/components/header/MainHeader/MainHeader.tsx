@@ -19,7 +19,10 @@ interface Props {
 export const MainHeader: React.FC <Props> = ({ setMobileCategoriesAreOpen }) => {
   
   const { language } = useSelector((state: RootState) => state.language);
+  const { currency } = useSelector((state: RootState) => state.currency);
   const dispatch = useDispatch();
+
+  const selectedCurrency: string = currencies?.find(curr => curr.includes(currency)) || currencies[0];
 
   function changeLanguage(language: string) {
     dispatch(changeLang(language));
@@ -62,7 +65,7 @@ export const MainHeader: React.FC <Props> = ({ setMobileCategoriesAreOpen }) => 
         <MySelect 
           options={currencies}
           change={changeCurrencyHandler}
-          selOption={currencies[0]}
+          selOption={selectedCurrency}
         />
         <MySelect 
           options={languages}
