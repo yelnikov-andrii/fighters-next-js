@@ -16,6 +16,29 @@
     }
   }
 
+  &__button {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: teal;
+    border: 1px solid teal;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      background: lighten(lightblue, 20%);
+      color: teal;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    &--active {
+      background: lighten(lightblue, 20%);
+      color: teal;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+  }
+
   &__options {
     display: 'block';
     position: absolute;
@@ -28,6 +51,7 @@
     max-height: 250px;
     overflow-y: auto;
     margin: 4px 0 0 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     &--hidden {
       display: none;

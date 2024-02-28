@@ -13,7 +13,7 @@ export const Header = () => {
   return (
     <ReduxWrapper>
       <header className={styles.header}>
-      <MainHeader 
+      <MainHeader
         setMobileCategoriesAreOpen={setMobileCategoriesAreOpen}
       />
       <CategoriesMobile

@@ -49,7 +49,8 @@ const Categories = () => {
             {language === 'EN' ? 'All products' : 'Усі продукти'}
           </Link>
           {categories.map((category: CategoryInt) => (
-            <Link 
+            <Link
+              className={styles.categories__link}
               onMouseOver={() => {
                 setSelectedCategory(category);
                 if (subcategories.length > 0) {
