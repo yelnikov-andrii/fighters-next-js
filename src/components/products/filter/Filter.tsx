@@ -17,7 +17,6 @@ export const FIlter: React.FC = () => {
   const { colorFilters } = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch();
 
-
   function colorClickAction(color: string) {
     if (colorFilters.includes(color)) {
       dispatch(removeColorFilter(color));

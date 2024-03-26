@@ -13,15 +13,15 @@ export const Header = () => {
   return (
     <ReduxWrapper>
       <header className={styles.header}>
-      <MainHeader
-        setMobileCategoriesAreOpen={setMobileCategoriesAreOpen}
-      />
-      <CategoriesMobile
-        mobileCategoriesAreOpen={mobileCategoriesAreOpen}
-        setMobileCategoriesAreOpen={setMobileCategoriesAreOpen}
-      />
-      <Categories />
-      <CartSide />
+        <MainHeader
+          setMobileCategoriesAreOpen={setMobileCategoriesAreOpen}
+        />
+        <CategoriesMobile
+          mobileCategoriesAreOpen={mobileCategoriesAreOpen}
+          setMobileCategoriesAreOpen={setMobileCategoriesAreOpen}
+        />
+        <Categories />
+        <CartSide />
     </header>
     </ReduxWrapper>
   );

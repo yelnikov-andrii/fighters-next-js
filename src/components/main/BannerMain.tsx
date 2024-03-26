@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import venumBanner from '@/images/venum.jpg';
 import venumBannerSmall from '@/images/banner-main-sm.jpg';
 import styles from './main.module.scss';

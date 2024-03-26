@@ -11,6 +11,7 @@ import { openCart } from '@/redux/slices/cartSlice';
 import { changeCurrency } from '@/redux/slices/currencySlice';
 import { changeLang } from '@/redux/slices/langSlice';
 import { RootState } from '@/redux/store';
+import { MenuButton } from './MenuButton';
 
 interface Props {
   setMobileCategoriesAreOpen: Dispatch<SetStateAction<boolean>>;
@@ -33,10 +34,6 @@ export const MainHeader: React.FC <Props> = ({ setMobileCategoriesAreOpen }) => 
     dispatch(changeCurrency(currency));
   }
 
-  function openMobileCategories() {
-    setMobileCategoriesAreOpen(true);
-  }
-
   React.useEffect(() => {
     const languageFromStorage = localStorage.getItem('language-fighters');
     if (languageFromStorage) {
@@ -52,15 +49,9 @@ export const MainHeader: React.FC <Props> = ({ setMobileCategoriesAreOpen }) => 
       >
           Fighters Shop
       </Link>
-      <div className={styles.mainheader__menubutton}
-        onClick={() => {
-          openMobileCategories();
-        }}
-      >
-        <span className={styles.mainheader__span}></span>
-        <span className={styles.mainheader__span}></span>
-        <span className={styles.mainheader__span}></span>
-      </div>
+      <MenuButton 
+        setMobileCategoriesAreOpen={setMobileCategoriesAreOpen}
+      />
       <div className={styles.mainheader__authblock}>
         <MySelect 
           options={currencies}

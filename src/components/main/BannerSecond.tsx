@@ -58,7 +58,7 @@ export const BannerSecond: React.FC <Props> = ({ reverse, elements, }) => {
                 className={styles.main__img}
                 loading="lazy"
                 fill={true}
-                style={{height: '100%'}}
+                style={{ height: '100%' }}
               />
               <div
                 className={styles.main__txtWrapper + ' ' + styles['main__txtWrapper--small']}
