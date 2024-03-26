@@ -10,6 +10,7 @@ import { FIlter } from './filter/Filter';
 import { ProductInt } from '@/types/products';
 import styles from './products.module.scss';
 import { useSearchParams } from 'next/navigation'
+import { NextUIProvider } from '@nextui-org/react';
 
 export const Products = () => {
   const searchParams = useSearchParams();
@@ -36,11 +37,12 @@ export const Products = () => {
 
   const [page, setPage] = React.useState(1);
 
-  useFetchProducts(category, subcategory, subsubcategory, searchParams, page, dispatch, allFilters);
+  useFetchProducts(category, subcategory, subsubcategory, page, dispatch, allFilters);
   useScrollTop([page], 0, 0);
 
   return (
-    <div className={styles.products}>
+    <NextUIProvider>
+      <div className={styles.products}>
       <div className={styles.products__container}>
         <h1 className={styles.products__h1}>
           {countOfProducts > 0 && (
@@ -73,5 +75,6 @@ export const Products = () => {
         </div>
       </div>
     </div>
+    </NextUIProvider>
   );
 };

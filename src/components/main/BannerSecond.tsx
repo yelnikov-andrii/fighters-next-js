@@ -25,6 +25,7 @@ export const BannerSecond: React.FC <Props> = ({ reverse, elements, }) => {
           className={styles.main__img}
           loading="lazy"
           fill={true}
+          sizes="100vw"
           style={{height: '100%'}}
         />
         <div
@@ -58,6 +59,7 @@ export const BannerSecond: React.FC <Props> = ({ reverse, elements, }) => {
                 className={styles.main__img}
                 loading="lazy"
                 fill={true}
+                sizes="100vw"
                 style={{ height: '100%' }}
               />
               <div

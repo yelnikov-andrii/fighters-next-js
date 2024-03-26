@@ -3,8 +3,8 @@ import { fetchProductsAllPages, fetchProducts } from '../redux/action-creator/Pr
 import { AppDispatch } from '@/redux/store';
 import { AllFiltersInt, Option } from '@/types/filter';
 
-export const useFetchProducts = (category: string | null, subcategory: string | null, subsubcategory: string | null, location: any, page: number, dispatch: AppDispatch, allFilters: AllFiltersInt) => {
-
+export const useFetchProducts = (category: string | null, subcategory: string | null, subsubcategory: string | null, page: number, dispatch: AppDispatch, allFilters: AllFiltersInt) => {
+  console.log(allFilters, page)
   const sizes = allFilters.sizeFilters.reduce((init: string, size: Option) => init + size.name_en + ',', '');
   const ages = allFilters.ageFilters.reduce((init: string, age: Option) => init + age.name_en + ',', '');
   const genders = allFilters.genderFilters.reduce((init: string, gender: Option) => init + gender.name_en + ',', '');
@@ -39,5 +39,5 @@ export const useFetchProducts = (category: string | null, subcategory: string | 
 
     dispatch(fetchProducts(`?page=${page}&limit=9&colors=${colors}&sizes=${sizes}&ages=${ages}&genders=${genders}&materials=${materials}&brands=${brands}`));
     dispatch(fetchProductsAllPages());
-  }, [location, page, allFilters]);
+  }, [category, subcategory, subsubcategory, page, allFilters]);
 };

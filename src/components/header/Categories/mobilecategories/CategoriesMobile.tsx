@@ -34,6 +34,7 @@ export const CategoriesMobile: React.FC <Props> = ({ mobileCategoriesAreOpen, se
           {categories.map((category: any) => (
             <CategoryMobileBlock 
               category={category}
+              key={category.id}
             />
           ))}
         </div>
