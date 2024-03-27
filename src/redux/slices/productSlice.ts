@@ -10,6 +10,7 @@ export interface ProductState {
   product: ProductInt | null;
   productLoading: boolean;
   productError: string | null;
+  allProductsLoaded: boolean;
 }
 
 const initialState: ProductState = {
@@ -21,6 +22,7 @@ const initialState: ProductState = {
   product: null,
   productLoading: false,
   productError: '',
+  allProductsLoaded: false,
 };
 
 export const productSlice = createSlice({
@@ -58,10 +60,13 @@ export const productSlice = createSlice({
     },
     getProductsAllPagesSuccess: (state: ProductState, action: PayloadAction<ProductInt[]>) => {
       state.productsAllPages = action.payload;
+    },
+    setAllProductsLoaded: (state: ProductState, action: PayloadAction<boolean>) => {
+      state.allProductsLoaded = action.payload;
     }
   },
 });
 
-export const { getProductsError, getProducts, getProductsSuccess, getCountOfProducts, getOneProduct, getOneProductError, getOneProductsSuccess, getProductsAllPagesSuccess } = productSlice.actions;
+export const { getProductsError, getProducts, getProductsSuccess, getCountOfProducts, getOneProduct, getOneProductError, getOneProductsSuccess, getProductsAllPagesSuccess, setAllProductsLoaded } = productSlice.actions;
 
 export default productSlice.reducer;

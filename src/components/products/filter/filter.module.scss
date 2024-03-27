@@ -24,6 +24,10 @@
     color: teal;
     font-size: 18px;
     font-weight: 500;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__colors {
