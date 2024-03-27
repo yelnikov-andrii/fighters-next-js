@@ -2,13 +2,15 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import styles from './quantity.module.scss';
+import { VariantInt } from '@/types/products';
 
 interface Props {
   quantity: number;
   setQuantity: Dispatch<SetStateAction<number>>;
+  selectedVariant: VariantInt | null;
 }
 
-export const QuantityBlock: React.FC <Props> = ({ quantity, setQuantity }) => {
+export const QuantityBlock: React.FC <Props> = ({ quantity, setQuantity, selectedVariant }) => {
   const { language } = useSelector((state: RootState) => state.language);
 
   return (
@@ -18,7 +20,8 @@ export const QuantityBlock: React.FC <Props> = ({ quantity, setQuantity }) => {
       </h5>
       <div className={styles.quantity__block}>
         <button
-          className={styles.quantity__button}
+          className={quantity === 1 ? styles.quantity__button + ' ' + styles['quantity__button--disabled'] : styles.quantity__button}
+          disabled={quantity === 1}
           onClick={() => {
             if (quantity > 1) {
               setQuantity(prev => prev - 1);
@@ -38,7 +41,8 @@ export const QuantityBlock: React.FC <Props> = ({ quantity, setQuantity }) => {
           }}
         />
         <button
-          className={styles.quantity__button}
+          className={quantity >= (selectedVariant?.quantity || 0 ) ? styles.quantity__button + ' ' + styles['quantity__button--disabled'] : styles.quantity__button}
+          disabled={quantity >= (selectedVariant?.quantity || 0 )}
           onClick={() => {
             setQuantity(prev => prev + 1);
           }}

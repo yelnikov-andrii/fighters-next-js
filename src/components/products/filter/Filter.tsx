@@ -45,8 +45,6 @@ export const FIlter: React.FC<Props> = React.memo(({ page }) => {
       dispatch(addColorFilter(color)); 
     }
   }
-
-  console.log(filtersAreEmpty, 'filters are empty')
   
   return (
     <div className={styles.filter}>

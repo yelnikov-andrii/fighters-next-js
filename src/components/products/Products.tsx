@@ -1,17 +1,14 @@
 'use client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Product } from './product/Product';
-import { Pagination } from './pagination/Pagination';
 import { RootState } from '@/redux/store';
 import { useScrollTop } from '@/hooks/useScrollTop';
 import { useFetchProducts } from '@/hooks/useFetchProducts';
 import { FIlter } from './filter/Filter';
-import { ProductInt } from '@/types/products';
 import styles from './products.module.scss';
 import { useSearchParams } from 'next/navigation'
 import { NextUIProvider } from '@nextui-org/react';
-import { ProductsLoading } from './ProductsLoading';
+import { List } from './List';
 
 export const Products = () => {
   const searchParams = useSearchParams();
@@ -21,7 +18,7 @@ export const Products = () => {
 
   const dispatch = useDispatch();
 
-  const { products, countOfProducts, allProductsLoaded, productsLoading } = useSelector((state: RootState) => state.products);
+  const { countOfProducts, allProductsLoaded } = useSelector((state: RootState) => state.products);
   const { language } = useSelector((state: RootState) => state.language);
   const { colorFilters, brandFilters, ageFilters, materialFilters, sizeFilters, genderFilters } = useSelector((state: RootState) => state.filter);
 
@@ -56,31 +53,10 @@ export const Products = () => {
           <FIlter 
             page={page}
           />
-          <div className={styles.products__listwrapper}>
-            {productsLoading ? (
-              <ProductsLoading />
-            ) : (
-                <>
-                  <div className={styles.products__list}>
-                  {(products.length > 0 && allProductsLoaded && productsLoading === false) ? products.map((product: ProductInt) => (
-                    <Product 
-                      product={product}
-                      key={product.id}
-                    />
-                  )) : (
-                    <div className={styles.products__noproducts}>
-                      {language === 'EN' ? 'No products' : 'Немає продуктів'}
-                    </div>
-                  )}
-                  </div>
-                  <Pagination 
-                    countOfProducts={countOfProducts}
-                    setPage={setPage}
-                    currentPage={page}
-                  />
-                </> 
-            )}
-          </div>
+          <List 
+            page={page}
+            setPage={setPage}
+          />
         </div>
       </div>
     </div>

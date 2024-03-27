@@ -40,6 +40,7 @@ export const ImageBlock: React.FC <Props> = ({ photos }) => {
           navigation
           slidesPerView={1}
           modules={[Navigation, Pagination, Scrollbar, A11y]}
+          className={styles.imageblock__swiper}
         >
           {photos.map((photo: ProductPhotoInt) => (
             <SwiperSlide key={photo.id}>

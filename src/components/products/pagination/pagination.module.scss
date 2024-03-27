@@ -14,10 +14,18 @@
     background-color: '#fff';
     color: #333;
     font-weight: bold;
+    font-size: 16px;
     transition: all 0.2s;
     border-radius: 4px;
     user-select: none;
     border: 1px solid transparent;
+    transition: transform 0.2s;
+    border-color: transparent;
+
+    &:hover {
+      transform: scale(1.1);
+      border-color: teal;
+    }
 
     &--current {
       background-color: #007bff;
