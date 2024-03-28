@@ -41,7 +41,10 @@ const Categories = () => {
 
   if (categoriesLoading) {
     return (
-      <BlockLoading />
+      <div className={styles.categories}>
+        <BlockLoading />
+      </div>
+      
     );
   }
 
