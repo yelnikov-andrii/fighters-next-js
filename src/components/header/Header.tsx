@@ -16,12 +16,12 @@ export const Header = () => {
         <MainHeader
           setMobileCategoriesAreOpen={setMobileCategoriesAreOpen}
         />
+        <Categories />
+        <CartSide />
         <CategoriesMobile
           mobileCategoriesAreOpen={mobileCategoriesAreOpen}
           setMobileCategoriesAreOpen={setMobileCategoriesAreOpen}
         />
-        <Categories />
-        <CartSide />
     </header>
     </ReduxWrapper>
   );

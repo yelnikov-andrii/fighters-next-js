@@ -11,12 +11,11 @@ interface Props {
 
 export const CategoriesMobile: React.FC <Props> = ({ mobileCategoriesAreOpen, setMobileCategoriesAreOpen }) => {
   const { categories } = useSelector((state: RootState) => state.categories);
-  
 
   return (
     <div className={mobileCategoriesAreOpen ? styles.categoriesmobile : styles.categoriesmobile + ' ' + styles['categoriesmobile--hidden']}>
       <div
-        className={mobileCategoriesAreOpen ? styles.categoriesmobile__content : styles.categoriesmobile__content + ' ' + styles['categoriesmobile--hidden']}
+        className={mobileCategoriesAreOpen ? styles.categoriesmobile__content : styles.categoriesmobile__content + ' ' + styles['categoriesmobile__content--hidden']}
       >
         <div className={styles.categoriesmobile__buttonblock}>
           <div

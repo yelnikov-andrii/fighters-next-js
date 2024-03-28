@@ -1,14 +1,23 @@
 .productincart {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
   border-bottom: 1px solid #333;
+  overflow-y: scroll;
 
   &__name {
     margin: 0;
     color: #333;
     font-weight: 600;
     font-size: 18px;
+    width: fit-content;
+    display: inline-block;
+
+    @media screen and (max-width: 1024px) {
+      font-size: 16px;
+    }
   }
 
   &__size {
@@ -16,6 +25,10 @@
     color: #333;
     font-weight: 600;
     font-size: 16px;
+
+    @media screen and (max-width: 1024px) {
+      font-size: 14px;
+    }
   }
 
   &__price {
@@ -23,5 +36,22 @@
     color: #333;
     font-weight: 600;
     font-size: 16px;
+    min-width: 100px;
+
+    @media screen and (max-width: 1024px) {
+      font-size: 14px;
+    }
+  }
+
+  &__button {
+    font-size: 20px;
+    font-weight: 500;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 4px;
+
+    @media screen and (max-width: 1024px) {
+      font-size: 18px;
+    }
   }
 }

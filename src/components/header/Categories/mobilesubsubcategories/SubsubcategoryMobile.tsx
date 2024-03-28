@@ -22,7 +22,7 @@ export const SubsubcategoryMobile: React.FC <Props> = ({ subcategoryId }) => {
   const fetchSubsubCategories = async (subcategoryId: number) => {
     try {
       setLoadingSubsubcategories(true);
-      const response = await axios.get(`${baseUrl}/subsubcategories/${subcategoryId}`);
+      const response = await axios.get(`${baseUrl}/subsubcategories?subcategoryId=${subcategoryId}`);
       setSubsubcategories(response.data);
       setLoadingSubsubcategories(false);
     } catch(e: any) {

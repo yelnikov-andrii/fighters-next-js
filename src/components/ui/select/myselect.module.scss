@@ -19,6 +19,12 @@
       padding: 5px;
     }
 
+    @media screen and (max-width: 425px) {
+      font-size: 14px;
+      padding: 2px;
+      font-weight: 400;
+    }
+
     &:hover {
       background: lighten(lightblue, 20%);
       color: teal;
