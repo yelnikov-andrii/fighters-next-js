@@ -10,6 +10,8 @@ import { FilterOptionInt } from '@/types/filter';
 import styles from './filter.module.scss';
 import { useSearchParams } from 'next/navigation';
 import { useFetchProductsAll } from '@/hooks/useFetchAllProducts';
+import { Colors } from './Colors';
+import { Clear } from './Clear';
 
 interface Props {
   page: number;
@@ -42,40 +44,22 @@ export const FIlter: React.FC<Props> = React.memo(({ page }) => {
     if (colorFilters.includes(color)) {
       dispatch(removeColorFilter(color));
     } else {
-      dispatch(addColorFilter(color)); 
+      dispatch(addColorFilter(color));
     }
   }
   
   return (
     <div className={styles.filter}>
-      <div className={styles.filter__clear}>
-        <button
-          onClick={() => {
-            if (!filtersAreEmpty) {
-              dispatch(clearAllFilters());
-            }
-          }}
-          className={styles.filter__button}
-        >
-          {language === 'EN' ? 'Clear all' : 'Очистити фільтри'}
-        </button>
-      </div>
+      <Clear 
+        filtersAreEmpty={filtersAreEmpty}
+      />
       <MyDropdown
         butttonContent={language === 'EN' ? 'Colors' : 'Кольори'}
       >
-        <div className={styles.filter__colors}>
-          {colors.map((color: string) => (
-            <div
-              className={colorFilters.includes(color) ? styles.filter__color + ' ' + styles['filter__color--active'] : styles.filter__color} 
-              style={{background: color === 'khaki' ? '#7E805D' : color}}
-              onClick={() => {
-                colorClickAction(color);
-              }}
-              key={color}
-            >
-            </div>
-          ))}
-        </div>
+        <Colors 
+          colors={colors}
+          colorClickAction={colorClickAction}
+        />
       </MyDropdown>
       <MyDropdown
         butttonContent={language === 'EN' ? 'Brands' : 'Бренди'}

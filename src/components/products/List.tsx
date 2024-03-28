@@ -17,32 +17,30 @@ export const List: React.FC<Props> = ({ setPage, page }) => {
   const { language } = useSelector((state: RootState) => state.language);
 
   return (
-    <div>
-      <div className={styles.products__listwrapper}>
-        {productsLoading ? (
-          <ProductsLoading />
-        ) : (
-              <div className={styles.products__list}>
-              {(products.length > 0 && allProductsLoaded && productsLoading === false) ? products.map((product: ProductInt) => (
-                <Product 
-                  product={product}
-                  key={product.id}
-                />
-              )) : (
-                  <div className={styles.products__noproducts}>
-                    {language === 'EN' ? 'No products' : 'Немає продуктів'}
-                  </div>
-              )}
-              </div>
-        )}
-        {(products.length > 0 && allProductsLoaded && productsLoading === false) && (
-          <Pagination 
-            countOfProducts={countOfProducts}
-            setPage={setPage}
-            currentPage={page}
-          />
-        )}
-      </div>
+    <div className={styles.products__listwrapper}>
+      {productsLoading ? (
+        <ProductsLoading />
+      ) : (
+            <div className={styles.products__list}>
+            {(products.length > 0 && allProductsLoaded && productsLoading === false) ? products.map((product: ProductInt) => (
+              <Product 
+                product={product}
+                key={product.id}
+              />
+            )) : (
+                <div className={styles.products__noproducts}>
+                  {language === 'EN' ? 'No products' : 'Немає продуктів'}
+                </div>
+            )}
+            </div>
+      )}
+      {(products.length > 0 && allProductsLoaded && productsLoading === false) && (
+        <Pagination 
+          countOfProducts={countOfProducts}
+          setPage={setPage}
+          currentPage={page}
+        />
+      )}
     </div>
   )
 }

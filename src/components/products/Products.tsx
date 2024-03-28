@@ -21,22 +21,37 @@ export const Products = () => {
   const { countOfProducts, allProductsLoaded } = useSelector((state: RootState) => state.products);
   const { language } = useSelector((state: RootState) => state.language);
   const { colorFilters, brandFilters, ageFilters, materialFilters, sizeFilters, genderFilters } = useSelector((state: RootState) => state.filter);
+  const [allFilters, setAllFilters] = React.useState<any>({colorFilters, brandFilters, ageFilters, materialFilters, sizeFilters, genderFilters });
 
-  const allFilters = React.useMemo(() => {
-    return {
+  const [page, setPage] = React.useState(1);
+
+  useFetchProducts(category, subcategory, subsubcategory, page, dispatch, allFilters, allProductsLoaded);
+  useScrollTop([page], 0, 0);
+
+  const timerRef = React.useRef<any>(null);
+
+  React.useEffect(() => {
+    const filters = {
       colorFilters,
       brandFilters,
       ageFilters,
       materialFilters,
       sizeFilters,
       genderFilters
+    }
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+  
+    const newTimer = setTimeout(() => {
+      setAllFilters(filters)
+    }, 1000);
+    timerRef.current = newTimer;
+  
+    return () => {
+      clearTimeout(timerRef.current);
     };
   }, [colorFilters, brandFilters, ageFilters, materialFilters, genderFilters, sizeFilters]);
-
-  const [page, setPage] = React.useState(1);
-
-  useFetchProducts(category, subcategory, subsubcategory, page, dispatch, allFilters, allProductsLoaded);
-  useScrollTop([page], 0, 0);
 
   return (
     <NextUIProvider>
