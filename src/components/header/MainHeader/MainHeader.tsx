@@ -6,12 +6,11 @@ import Link from 'next/link';
 import { MySelect } from '@/components/ui/select/MySelect';
 import { currencies, languages } from '@/data/header';
 import login from '@/images/user-alt-1.svg';
-import cart from '@/images/shopping-cart-outline.svg';
-import { openCart } from '@/redux/slices/cartSlice';
 import { changeCurrency } from '@/redux/slices/currencySlice';
 import { changeLang } from '@/redux/slices/langSlice';
 import { RootState } from '@/redux/store';
 import { MenuButton } from './MenuButton';
+import { CartButton } from './CartButton';
 
 interface Props {
   setMobileCategoriesAreOpen: Dispatch<SetStateAction<boolean>>;
@@ -21,6 +20,7 @@ export const MainHeader: React.FC <Props> = ({ setMobileCategoriesAreOpen }) => 
   
   const { language } = useSelector((state: RootState) => state.language);
   const { currency } = useSelector((state: RootState) => state.currency);
+
   const dispatch = useDispatch();
 
   const selectedCurrency: string = currencies?.find(curr => curr.includes(currency)) || currencies[0];
@@ -71,17 +71,7 @@ export const MainHeader: React.FC <Props> = ({ setMobileCategoriesAreOpen }) => 
             height={20}
           />
         </div>
-        <div className={styles.mainheader__icon}>
-          <Image 
-            src={cart}
-            alt="cart button"
-            onClick={() => {
-              dispatch(openCart());
-            }}
-            width={20}
-            height={20}
-          />
-        </div>
+        <CartButton />
       </div>
     </nav>
   );

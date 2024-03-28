@@ -5,7 +5,10 @@
   gap: 10px;
   padding: 5px 10px;
   border-bottom: 1px solid #333;
-  overflow-y: scroll;
+  
+  @media screen and (max-width: 768px) {
+    overflow-x: scroll;
+  }
 
   &__name {
     margin: 0;

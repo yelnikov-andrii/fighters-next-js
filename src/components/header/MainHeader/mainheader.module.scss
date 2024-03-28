@@ -81,5 +81,21 @@
 
   &__icon {
     cursor: pointer;
+    position: relative;
+  }
+
+  &__span {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
   }
 }

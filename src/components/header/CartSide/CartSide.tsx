@@ -7,6 +7,8 @@ import { ProductAdded } from '@/types/products';
 import { closeCart } from '@/redux/slices/cartSlice';
 import { ProductInCart } from './productincart/ProductInCart';
 import Image from 'next/image';
+import clsx from 'clsx';
+import { Buttons } from './Buttons';
 
 export const CartSide = () => {
   const { cartIsOpen, productsInCart } = useSelector((state: RootState) => state.cart);
@@ -19,14 +21,20 @@ export const CartSide = () => {
 
   return (
     <div
-      className={cartIsOpen ? styles.cartside : styles.cartside + ' ' + styles['cartside--hidden']} 
+      className={clsx({
+        [styles.cartside]: true,
+        [styles['cartside--hidden']]: !cartIsOpen
+      })}
       onClick={() => {
         dispatch(closeCart());
       }}
     >
       <div 
         onClick={(e) => e.stopPropagation()}
-        className={cartIsOpen ? styles.cartside__content : styles.cartside__content + ' ' + styles['cartside__content--hidden']}
+        className={clsx({
+          [styles.cartside__content]: true,
+          [styles['cartside__content--hidden']]: !cartIsOpen
+        })}
       >
         <div
           className={styles.cartside__arrow}
@@ -63,6 +71,7 @@ export const CartSide = () => {
             </div>
           )}
         </React.Fragment>
+        <Buttons />
       </div>
     </div>
   );

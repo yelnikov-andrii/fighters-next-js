@@ -69,4 +69,30 @@
     font-weight: 600;
     color: #333;
   }
+
+  &__buttons {
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__button {
+    height: 40px;
+    min-width: 120px;
+    max-width: 140px;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

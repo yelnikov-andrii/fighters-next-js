@@ -10,6 +10,7 @@ import styles from './subcategories.module.scss';
 import { CategoryInt, SubcategoryInt } from '@/types/categories';
 import { baseUrl } from '@/data/url';
 import Image from 'next/image';
+import clsx from 'clsx';
 
 interface Props {
   category: CategoryInt;
@@ -38,7 +39,10 @@ export const Subcategories: React.FC <Props> = ({ category, setIsOpen, isOpen })
   if (subCategoriesLoading) {
     return (
       <div
-        className={(isOpen === true && !subCategoriesError && !subCategoriesLoading) ? styles.subcategories : styles.subcategories + ' ' + styles['subcategories--hidden']}
+        className={clsx({
+          [styles.subcategories]: true,
+          [styles['subcategories--hidden']]: !isOpen || subCategoriesError || subCategoriesLoading,
+        })}
         onMouseOver={() => {
           if (!subCategoriesError && !subCategoriesLoading) {
             setIsOpen(true);
@@ -55,7 +59,10 @@ export const Subcategories: React.FC <Props> = ({ category, setIsOpen, isOpen })
   
   return (
     <div
-    className={(isOpen === true && !subCategoriesError && !subCategoriesLoading) ? styles.subcategories : styles.subcategories + ' ' + styles['subcategories--hidden']}
+    className={clsx({
+      [styles.subcategories]: true,
+      [styles['subcategories--hidden']]: !isOpen || subCategoriesError || subCategoriesLoading,
+    })}
       onMouseOver={() => {
         if (!subCategoriesError && !subCategoriesLoading) {
           setIsOpen(true);

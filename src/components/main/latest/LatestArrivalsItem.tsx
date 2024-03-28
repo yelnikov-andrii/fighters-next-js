@@ -8,6 +8,7 @@ import { baseUrl } from '@/data/url';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './latest.module.scss';
+import clsx from 'clsx';
 
 interface Props {
   product: ProductInt;
@@ -55,8 +56,11 @@ export const LatestArrivalsItem: React.FC <Props> = ({ product }) => {
           />
         </Link>
       )}
-      <Link 
-        className={styles.latest__link + ' ' + styles['latest__link--txt']}
+      <Link
+        className={clsx({
+          [styles.latest__link]: true,
+          [styles['latest__link--txt']]: true
+        })}
         href={`/products/${product.id}`}>
         <p className={styles.latest__name}>
           {language === 'EN' ? product.name_en : product.name_ukr}
