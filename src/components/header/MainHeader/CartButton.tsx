@@ -30,7 +30,7 @@ export const CartButton = () => {
         width={20}
         height={20}
       />
-      {quantityOfProductsInCart && (
+      {quantityOfProductsInCart !== 0 && (
         <span className={styles.mainheader__span}>
           {quantityOfProductsInCart}
         </span>

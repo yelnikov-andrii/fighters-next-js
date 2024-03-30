@@ -39,7 +39,7 @@ export const ProductInCart: React.FC <Props> = ({ product }) => {
           }}
           className={styles.productincart__button}
         >
-          X
+          &#10006;
         </button>
       </div>
       </div>

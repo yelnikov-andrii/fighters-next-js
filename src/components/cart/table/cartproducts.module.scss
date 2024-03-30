@@ -1,0 +1,15 @@
+.cartproducts {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 20px 0;
+  }
+
+  &__title {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #444;
+    width: calc(100% / 3);
+  }
+}

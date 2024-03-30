@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import styles from './quantity.module.scss';
 import { VariantInt } from '@/types/products';
+import clsx from 'clsx';
 
 interface Props {
   quantity: number;
@@ -20,7 +21,10 @@ export const QuantityBlock: React.FC <Props> = ({ quantity, setQuantity, selecte
       </h5>
       <div className={styles.quantity__block}>
         <button
-          className={quantity === 1 ? styles.quantity__button + ' ' + styles['quantity__button--disabled'] : styles.quantity__button}
+          className={clsx({
+            [styles.quantity__button]: true,
+            [styles['quantity__button--disabled']]: quantity <= 1,
+          })}
           disabled={quantity === 1}
           onClick={() => {
             if (quantity > 1) {
@@ -41,7 +45,10 @@ export const QuantityBlock: React.FC <Props> = ({ quantity, setQuantity, selecte
           }}
         />
         <button
-          className={quantity >= (selectedVariant?.quantity || 0 ) ? styles.quantity__button + ' ' + styles['quantity__button--disabled'] : styles.quantity__button}
+          className={clsx({
+            [styles.quantity__button]: true,
+            [styles['quantity__button--disabled']]: quantity >= (selectedVariant?.quantity || 0 )
+          })}
           disabled={quantity >= (selectedVariant?.quantity || 0 )}
           onClick={() => {
             setQuantity(prev => prev + 1);
