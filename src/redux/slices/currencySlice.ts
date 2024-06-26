@@ -1,6 +1,6 @@
+import { CurrencyFromServerInt } from '@/types/products';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { CurrencyFromServerInt } from '../../types';
 
 export interface CurrencyState {
   currency: string;

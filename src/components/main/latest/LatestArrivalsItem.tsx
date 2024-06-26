@@ -2,8 +2,8 @@
 import React from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { ProductInt, ProductPhotoInt } from '@/app/types/products';
+import { RootState } from '../../../redux/store';
+import { ProductInt, ProductPhotoInt } from '@/types/products';
 import { baseUrl } from '@/data/url';
 import Link from 'next/link';
 import Image from 'next/image';

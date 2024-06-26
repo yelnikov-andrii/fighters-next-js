@@ -1,10 +1,11 @@
+'use client';
 import { configureStore } from '@reduxjs/toolkit';
 import langSliceReducer from './slices/langSlice';
 import categorySlice from './slices/categorySlice';
 import productSlice from './slices/productSlice';
 import productPhotosSlice from './slices/productPhotosSlice';
 import currencySlice from './slices/currencySlice';
-// import cartSlice from './slices/cartSlice';
+import cartSlice from './slices/cartSlice';
 import filterSlice from './slices/filterSlice';
 
 export const store = configureStore({
@@ -14,7 +15,7 @@ export const store = configureStore({
     products: productSlice,
     photos: productPhotosSlice,
     currency: currencySlice,
-    // cart: cartSlice,
+    cart: cartSlice,
     filter: filterSlice,
   },
   devTools: true,

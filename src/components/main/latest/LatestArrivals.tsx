@@ -3,8 +3,8 @@ import { LatestArrivalsItem } from './LatestArrivalsItem';
 import getLatestProducts from '@/app/lib/getLatestProducts';
 import { LatestTitle } from './LatestTitle';
 import styles from './latest.module.scss';
-import { ProductInt } from '@/app/types/products';
-import { ReduxWrapper } from '../reduxWrapper/Wrapper';
+import { ProductInt } from '@/types/products';
+import { ReduxWrapper } from '../../reduxWrapper/Wrapper';
 
 async function LatestArrivals () {
   const latestProducts = await getLatestProducts();

@@ -1,5 +1,5 @@
+import { ActionCategoriesError, ActionCategoriesSuccess, ActionSubCategoriesError, ActionSubCategoriesSuccess, CategoryStateInterface } from '@/types/categories';
 import { createSlice } from '@reduxjs/toolkit';
-import { ActionCategoriesError, ActionCategoriesSuccess, ActionSubCategoriesError, ActionSubCategoriesSuccess, CategoryStateInterface } from '../../types';
 
 const initialState: CategoryStateInterface = {
   categories: [],

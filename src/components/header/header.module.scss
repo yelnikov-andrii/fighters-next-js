@@ -1,0 +1,12 @@
+.header {
+  padding: 10px 20px 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: sticky;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 9;
+}
