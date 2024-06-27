@@ -40,11 +40,11 @@ const Categories = () => {
 
   return (
     <div className={styles.categories}>
-      <div>
+      <div className={styles.categories__container}>
         <div className={styles.categories__block}>
           <Link
             className={styles.categories__link}
-            href='products'
+            href='/products'
           >
             {language === 'EN' ? 'All products' : 'Усі продукти'}
           </Link>
@@ -60,7 +60,7 @@ const Categories = () => {
                 setIsOpen(false);
               }}
               key={category.id}
-              href={`products?category=${category.id}`}
+              href={`/products?category=${category.id}`}
             >
               {language === 'EN' ? category.name_en : category.name_ukr}
               <Image 

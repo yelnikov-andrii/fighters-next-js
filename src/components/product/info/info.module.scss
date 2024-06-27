@@ -1,0 +1,41 @@
+.info {
+  &__item {
+    width: calc((100% - 20px) / 2);
+    cursor: default;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    &--hover {
+      cursor: pointer;
+    }
+  }
+
+  &__button {
+    max-width: 320px;
+    width: 100%;
+    height: 60px;
+    outline: none;
+    border: 1px solid teal;
+    border-radius: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  &__quantity {
+    margin: 10px 0;
+    color: red;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  &__alert {
+    margin: 10px 0;
+    color: teal;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+}

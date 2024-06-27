@@ -14,7 +14,7 @@ export const CounterBlock: React.FC <Props> = ({ product }) => {
   return (
     <div className={styles.counter__block}>
       <button
-        className={styles.counte__button}
+        className={styles.counter__button}
         onClick={() => {
           dispatch(decreaseProduct(product));
         }}

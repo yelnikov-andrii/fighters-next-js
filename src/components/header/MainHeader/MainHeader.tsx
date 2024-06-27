@@ -37,7 +37,7 @@ export const MainHeader: React.FC <Props> = ({ setMobileCategoriesAreOpen }) => 
         className={styles.mainheader__logo}
         href="/"
       >
-          Sport Shop
+          Fighters Shop
       </Link>
       <div className={styles.mainheader__menubutton}
         onClick={() => {
@@ -57,7 +57,7 @@ export const MainHeader: React.FC <Props> = ({ setMobileCategoriesAreOpen }) => 
           options={languages}
           change={changeLanguage}
         />
-        <div>
+        <div className={styles.mainheader__icon}>
           <Image 
             src={login}
             alt="login button"
@@ -65,7 +65,7 @@ export const MainHeader: React.FC <Props> = ({ setMobileCategoriesAreOpen }) => 
             height={20}
           />
         </div>
-        <div>
+        <div className={styles.mainheader__icon}>
           <Image 
             src={cart}
             alt="cart button"

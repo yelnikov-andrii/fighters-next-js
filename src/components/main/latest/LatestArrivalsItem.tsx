@@ -56,7 +56,7 @@ export const LatestArrivalsItem: React.FC <Props> = ({ product }) => {
         </Link>
       )}
       <Link 
-        className={styles.latest__link}
+        className={styles.latest__link + ' ' + styles['latest__link--txt']}
         href={`/products/${product.id}`}>
         <p className={styles.latest__name}>
           {language === 'EN' ? product.name_en : product.name_ukr}
