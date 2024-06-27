@@ -6,6 +6,7 @@ import { ElementInt } from '@/types/main';
 import styles from './main.module.scss';
 import Link from 'next/link';
 import { RootState } from '@/redux/store';
+import clsx from 'clsx';
 
 interface Props {
   reverse: boolean;
@@ -16,15 +17,22 @@ export const BannerSecond: React.FC <Props> = ({ reverse, elements, }) => {
   const { language } = useSelector((state: RootState) => state.language);
   return (
     <div
-      className={reverse ? styles.main__banner + ' ' + styles['main__banner--reverse'] : styles.main__banner}
+      className={clsx({
+        [styles.main__banner]: true,
+        [styles['main__banner--reverse']]: reverse
+      })}
     >
-      <div className={styles.main__item + ' ' + styles['main__item--fullwidth']}>
+      <div className={clsx({
+        [styles.main__item]: true,
+        [styles['main__item--fullwidth']]: true
+      })}>
         <Image 
           src={elements[0].img}
           alt={elements[0].imgAlt}
           className={styles.main__img}
           loading="lazy"
           fill={true}
+          sizes="100vw"
           style={{height: '100%'}}
         />
         <div
@@ -44,7 +52,10 @@ export const BannerSecond: React.FC <Props> = ({ reverse, elements, }) => {
         </div>
       </div>
       <div
-        className={styles.main__item + ' ' + styles['main__item--column']}
+        className={clsx({
+          [styles.main__item]: true,
+          [styles['main__item--column']]: true
+        })}
       >
         <React.Fragment>
           {elements.slice(1).map((element: ElementInt) => (
@@ -58,10 +69,14 @@ export const BannerSecond: React.FC <Props> = ({ reverse, elements, }) => {
                 className={styles.main__img}
                 loading="lazy"
                 fill={true}
-                style={{height: '100%'}}
+                sizes="100vw"
+                style={{ height: '100%' }}
               />
               <div
-                className={styles.main__txtWrapper + ' ' + styles['main__txtWrapper--small']}
+                className={clsx({
+                  [styles.main__txtWrapper]: true,
+                  [styles['main__txtWrapper--small']]: true
+                })}
               >
                 <h2
                   className={styles.main__h2}

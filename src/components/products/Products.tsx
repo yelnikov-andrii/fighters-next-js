@@ -1,15 +1,14 @@
 'use client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Product } from './product/Product';
-import { Pagination } from './pagination/Pagination';
 import { RootState } from '@/redux/store';
 import { useScrollTop } from '@/hooks/useScrollTop';
 import { useFetchProducts } from '@/hooks/useFetchProducts';
 import { FIlter } from './filter/Filter';
-import { ProductInt } from '@/types/products';
 import styles from './products.module.scss';
 import { useSearchParams } from 'next/navigation'
+import { NextUIProvider } from '@nextui-org/react';
+import { List } from './List';
 
 export const Products = () => {
   const searchParams = useSearchParams();
@@ -19,28 +18,44 @@ export const Products = () => {
 
   const dispatch = useDispatch();
 
-  const { products, countOfProducts } = useSelector((state: RootState) => state.products);
+  const { countOfProducts, allProductsLoaded } = useSelector((state: RootState) => state.products);
   const { language } = useSelector((state: RootState) => state.language);
   const { colorFilters, brandFilters, ageFilters, materialFilters, sizeFilters, genderFilters } = useSelector((state: RootState) => state.filter);
+  const [allFilters, setAllFilters] = React.useState<any>({colorFilters, brandFilters, ageFilters, materialFilters, sizeFilters, genderFilters });
 
-  const allFilters = React.useMemo(() => {
-    return {
+  const [page, setPage] = React.useState(1);
+
+  useFetchProducts(category, subcategory, subsubcategory, page, dispatch, allFilters, allProductsLoaded);
+  useScrollTop([page], 0, 0);
+
+  const timerRef = React.useRef<any>(null);
+
+  React.useEffect(() => {
+    const filters = {
       colorFilters,
       brandFilters,
       ageFilters,
       materialFilters,
       sizeFilters,
       genderFilters
+    }
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+  
+    const newTimer = setTimeout(() => {
+      setAllFilters(filters)
+    }, 1000);
+    timerRef.current = newTimer;
+  
+    return () => {
+      clearTimeout(timerRef.current);
     };
   }, [colorFilters, brandFilters, ageFilters, materialFilters, genderFilters, sizeFilters]);
 
-  const [page, setPage] = React.useState(1);
-
-  useFetchProducts(category, subcategory, subsubcategory, searchParams, page, dispatch, allFilters);
-  useScrollTop([page], 0, 0);
-
   return (
-    <div className={styles.products}>
+    <NextUIProvider>
+      <div className={styles.products}>
       <div className={styles.products__container}>
         <h1 className={styles.products__h1}>
           {countOfProducts > 0 && (
@@ -50,28 +65,16 @@ export const Products = () => {
           )}
         </h1>
         <div className={styles.products__block}>
-          <FIlter />
-          <div className={styles.products__listwrapper}>
-            <div className={styles.products__list}>
-              {products.length > 0 ? products.map((product: ProductInt) => (
-                <Product 
-                  product={product}
-                  key={product.id}
-                />
-              )) : (
-                <div className={styles.products__noproducts}>
-                  {language === 'EN' ? 'No products' : 'Немає продуктів'}
-                </div>
-              )}
-            </div>
-            <Pagination 
-              countOfProducts={countOfProducts}
-              setPage={setPage}
-              currentPage={page}
-            />
-          </div>
+          <FIlter 
+            page={page}
+          />
+          <List 
+            page={page}
+            setPage={setPage}
+          />
         </div>
       </div>
     </div>
+    </NextUIProvider>
   );
 };

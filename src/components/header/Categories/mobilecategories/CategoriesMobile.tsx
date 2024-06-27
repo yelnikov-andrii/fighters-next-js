@@ -3,6 +3,7 @@ import { RootState } from '@/redux/store';
 import { useSelector } from 'react-redux';
 import { CategoryMobileBlock } from './CategoryMobileBlock';
 import styles from './categoriesmobile.module.scss';
+import clsx from 'clsx';
 
 interface Props {
   mobileCategoriesAreOpen: boolean;
@@ -11,12 +12,17 @@ interface Props {
 
 export const CategoriesMobile: React.FC <Props> = ({ mobileCategoriesAreOpen, setMobileCategoriesAreOpen }) => {
   const { categories } = useSelector((state: RootState) => state.categories);
-  
 
   return (
-    <div className={mobileCategoriesAreOpen ? styles.categoriesmobile : styles.categoriesmobile + ' ' + styles['categoriesmobile--hidden']}>
+    <div className={clsx({
+      [styles.categoriesmobile] : true,
+      [styles['categoriesmobile--hidden']] : !mobileCategoriesAreOpen
+  })}>
       <div
-        className={mobileCategoriesAreOpen ? styles.categoriesmobile__content : styles.categoriesmobile__content + ' ' + styles['categoriesmobile--hidden']}
+        className={clsx({
+          [styles.categoriesmobile__content] : true,
+          [styles['categoriesmobile__content--hidden']] : !mobileCategoriesAreOpen
+      })}
       >
         <div className={styles.categoriesmobile__buttonblock}>
           <div
@@ -34,6 +40,7 @@ export const CategoriesMobile: React.FC <Props> = ({ mobileCategoriesAreOpen, se
           {categories.map((category: any) => (
             <CategoryMobileBlock 
               category={category}
+              key={category.id}
             />
           ))}
         </div>

@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export interface CartState {
   cartIsOpen: boolean;
   productsInCart: ProductAdded[] | null;
+  totalSum: number;
 }
 let cartData;
 
@@ -15,6 +16,7 @@ if (typeof window !== 'undefined') {
 const initialState: CartState = {
   cartIsOpen: false,
   productsInCart: cartData ? JSON.parse(cartData) : [],
+  totalSum: 0,
 };
 
 export const cartSlice = createSlice({
@@ -83,10 +85,13 @@ export const cartSlice = createSlice({
     
       state.productsInCart = updatedProductsInCart.filter(product => product !== null);
       localStorage.setItem('cart', JSON.stringify(state.productsInCart));
-    }
+    },
+    setTotalSum: (state, action) => {
+      state.totalSum = action.payload;
+    },
   },
 });
 
-export const { openCart, closeCart, addProductToCart, increaseProduct, decreaseProduct, deleteProduct } = cartSlice.actions;
+export const { openCart, closeCart, addProductToCart, increaseProduct, decreaseProduct, deleteProduct, setTotalSum } = cartSlice.actions;
 
 export default cartSlice.reducer;

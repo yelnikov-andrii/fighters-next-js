@@ -32,15 +32,16 @@ export const ProductInCart: React.FC <Props> = ({ product }) => {
         <h5 className={styles.productincart__price}>
           {language === 'EN' ? `Price - ${price}` : `Ціна - ${price}`}
         </h5>
-      </div>
-      <div>
+        <div>
         <button
           onClick={() => {
             dispatch(deleteProduct(product));
           }}
+          className={styles.productincart__button}
         >
-          X
+          &#10006;
         </button>
+      </div>
       </div>
     </>
   );

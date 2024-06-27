@@ -7,6 +7,7 @@ import { ProductInt, ProductPhotoInt } from '@/types/products';
 import styles from './product.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
+import { PhotoLoading } from './PhotoLoading';
 
 interface Props {
   product: ProductInt;
@@ -47,9 +48,7 @@ export const Product: React.FC <Props> = ({ product }) => {
       className={styles.product__link}
     >
       {photosLoading ? (
-        <div>
-          loading...
-        </div>
+        <PhotoLoading />
       ) : (
         photos.length ? (
           <Image 

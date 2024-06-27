@@ -4,11 +4,11 @@ import styles from './myselect.module.scss';
 interface Props {
   options: string[];
   change: (option: string) => void;
+  selOption: string;
 }
 
-export const MySelect: React.FC <Props> = ({ options, change }) => {
+export const MySelect: React.FC <Props> = ({ options, change, selOption }) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [selectedOption, setSelectedOption] = React.useState<string>(options[0]);
   const dropdownRef = React.useRef<HTMLDivElement | null>(null);
 
   const toggleDropdown = () => {
@@ -16,7 +16,6 @@ export const MySelect: React.FC <Props> = ({ options, change }) => {
   };
 
   const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
     change(option);
     setIsOpen(false);
   };
@@ -45,7 +44,7 @@ export const MySelect: React.FC <Props> = ({ options, change }) => {
         onClick={toggleDropdown}
         className={styles.myselect__button}
       >
-        {selectedOption}
+        {selOption}
       </div>
       {isOpen && (
         <div 

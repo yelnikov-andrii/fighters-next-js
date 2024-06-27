@@ -23,7 +23,7 @@ export interface CategoryStateInterface {
   categoriesError: string;  
   subcategories: SubcategoryInt[],
   subCategoriesLoading: boolean,
-  subCategoriesError: string
+  subCategoriesError: string,
 }
 
 export interface ActionCategoriesSuccess {

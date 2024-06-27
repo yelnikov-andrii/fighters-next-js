@@ -11,7 +11,7 @@ export const info = [
       {
         name_en: 'Terms & Conditions',
         name_ukr: 'Правила та умови',
-        url: 'terms'
+        url: 'terms-of-service'
       }
     ]
   },
@@ -20,14 +20,14 @@ export const info = [
     name_ukr: 'Корисні посилання',
     items: [
       {
-        name_en: 'Contact us',
-        name_ukr: 'Контакти',
-        url: 'contacts'
+        name_en: 'Accessibility',
+        name_ukr: 'Доступність',
+        url: 'accessebility'
       },
       {
-        name_en: 'Terms & Conditions',
-        name_ukr: 'Правила та умови',
-        url: 'terms'
+        name_en: 'Privacy Policy',
+        name_ukr: 'Політика конфіденційності',
+        url: 'privacy'
       }
     ]
   },

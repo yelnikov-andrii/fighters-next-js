@@ -2,8 +2,8 @@
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   position: fixed;
-  height: auto;
   background: rgba(0, 0, 0, 0.5);
   visibility: visible;
   z-index: 3;
@@ -15,17 +15,19 @@
   &__content {
     background: white;
     display: block;
-    height: 99vh;
+    height: 100vh;
+    width: 100%;
     overflow-y: scroll;
+    position: fixed;
     top: 0;
-    left: auto;
+    left: 0;
     bottom: 0;
     right: 0;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s ease-in-out;
     padding: 20px 10px;
 
     &--hidden {
-      right: -100%;
+      left: -100%;
     }
   }
 

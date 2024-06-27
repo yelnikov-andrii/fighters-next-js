@@ -12,15 +12,14 @@ import { InfoBlock } from './info/InfoBlock';
 import { BrandInt, ProductInt, VariantInt } from '@/types/products';
 import { baseUrl } from '@/data/url';
 import styles from './product.module.scss';
+import { PhotosLoading } from './PhotosLoading';
 
 interface Props {
   product: ProductInt;
 }
 
 export const ProductCard: React.FC <Props> = ({ product }) => {
-
   const dispatch = useDispatch();
-
   const [variants, setVariants] = React.useState<VariantInt[]>([]);
   const [brand, setBrand] = React.useState<BrandInt>();
 
@@ -69,28 +68,25 @@ export const ProductCard: React.FC <Props> = ({ product }) => {
   return (
     <div className={styles.product}>
       <div>
-          <div className={styles.product__block}>
-            {photosLoading ? (
-              <div>
-                Loading...
-              </div>
-            ) : (
-              <ImageBlock 
-                photos={photos}
-              />
-            )}
-            {photosError && (
-              <div>
-                {photosError}
-              </div>
-            )}
-            <InfoBlock 
-              product={product}
-              variants={variants}
-              brand={brand}
-              setVariants={setVariants}
+        <div className={styles.product__block}>
+          {photosLoading ? (
+            <PhotosLoading />
+          ) : (
+            <ImageBlock 
+              photos={photos}
             />
-          </div>
+          )}
+          {photosError && (
+            <div>
+              {photosError}
+            </div>
+          )}
+          <InfoBlock 
+            product={product}
+            variants={variants}
+            brand={brand}
+          />
+        </div>
       </div>
     </div>
   );

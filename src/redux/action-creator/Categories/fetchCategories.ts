@@ -19,7 +19,7 @@ export const fetchSubCategories = (categoryId: any): any => {
   return async(dispatch: any) => {
     dispatch(getSubCategories());
     try {
-      const response = await axios.get(`${baseUrl}/subcategories/${categoryId}`);
+      const response = await axios.get(`${baseUrl}/subcategories?categoryId=${categoryId}`);
       dispatch(getSubCategoriesSuccess(response.data));
     } catch(e) {
       dispatch(getSubCategoriesError('Cant not load subcategories'));

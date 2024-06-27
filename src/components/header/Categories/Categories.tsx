@@ -11,18 +11,25 @@ import styles from './categories.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CategoryInt } from '@/types/categories';
+import { useDelayMouseenter } from '@/hooks/useDelayMouseEnter';
 
 const Categories = () => {
   const { language } = useSelector((state: RootState) => state.language);
   const { categories, categoriesLoading, categoriesError, subcategories } = useSelector((state: RootState) => state.categories);
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedCategory, setSelectedCategory] = React.useState(categories[0]);
+  const [isHovered, setIsHovered] = React.useState(false);
+  useDelayMouseenter(isHovered, setIsOpen);
   
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(fetchCategories());
   }, []);
+
+  function changeCategory(category: CategoryInt) {
+    setSelectedCategory(category);
+  }
 
   if (categoriesError) {
     return (
@@ -34,7 +41,10 @@ const Categories = () => {
 
   if (categoriesLoading) {
     return (
-      <BlockLoading />
+      <div className={styles.categories}>
+        <BlockLoading />
+      </div>
+      
     );
   }
 
@@ -49,16 +59,13 @@ const Categories = () => {
             {language === 'EN' ? 'All products' : 'Усі продукти'}
           </Link>
           {categories.map((category: CategoryInt) => (
-            <Link 
-              onMouseOver={() => {
-                setSelectedCategory(category);
-                if (subcategories.length > 0) {
-                  setIsOpen(true);
-                }
+            <Link
+              className={styles.categories__link}
+              onMouseEnter={() => {
+                changeCategory(category);
+                setIsHovered(true)
               }}
-              onMouseLeave={() => {
-                setIsOpen(false);
-              }}
+              onMouseLeave={() => setIsHovered(false)}
               key={category.id}
               href={`/products?category=${category.id}`}
             >

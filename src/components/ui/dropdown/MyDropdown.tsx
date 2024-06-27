@@ -43,13 +43,11 @@ export const MyDropdown: React.FC <Props> = ({ butttonContent, children, autoClo
       >
         {butttonContent}
       </div>
-      {isOpen && (
         <div
           className={isOpen ? styles.mydropdown__content + ' ' + styles['mydropdown__content--open'] : styles.mydropdown__content}
         >
           {children}
         </div>
-      )}
     </div>
   );
 };

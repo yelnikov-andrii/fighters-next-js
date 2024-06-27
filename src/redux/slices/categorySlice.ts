@@ -1,5 +1,5 @@
 import { ActionCategoriesError, ActionCategoriesSuccess, ActionSubCategoriesError, ActionSubCategoriesSuccess, CategoryStateInterface } from '@/types/categories';
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 const initialState: CategoryStateInterface = {
   categories: [],
@@ -39,7 +39,7 @@ export const categorySlice = createSlice({
       state.subcategories = [];
       state.subCategoriesLoading = false;
       state.subCategoriesError = action.payload;
-    }
+    },
   }
 });
 

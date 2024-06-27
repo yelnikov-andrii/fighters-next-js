@@ -4,6 +4,8 @@ import { getUniqueColors, getUniqueFilterOptions } from '@/helpers/filter';
 import { FilterOptionInt } from '@/types/filter';
 import { BrandInt, ProductInt } from '@/types/products';
 import { baseUrl } from '@/data/url';
+import { setAllProductsLoaded } from '@/redux/slices/productSlice';
+import { useDispatch } from 'react-redux';
 
 const useGetSizes = (products: ProductInt[], ) => {
   const [sizes, setSizes] = React.useState<FilterOptionInt[]>([]);
@@ -69,7 +71,7 @@ const useGetColors = (products: ProductInt[]) => {
 };
 
 export const useGetAllOptions = (products: ProductInt[]) => {
-
+  const dispatch = useDispatch();
   const { colors } = useGetColors(products);
   const { brands } = useGetBrands(products);
   const { sizes } = useGetSizes(products);
@@ -113,6 +115,6 @@ export const useGetAllOptions = (products: ProductInt[]) => {
       filterCategory: 'ages',
     },
   ];
-
-  return {options, colors, brands};
+  dispatch(setAllProductsLoaded(true));
+  return { options, colors, brands };
 };

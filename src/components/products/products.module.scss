@@ -48,4 +48,14 @@
     font-weight: 700;
     margin: 0 auto;
   }
+
+  &__loading {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__loadingCard {
+    width: calc((100% - 20px) / 3);
+  }
 }

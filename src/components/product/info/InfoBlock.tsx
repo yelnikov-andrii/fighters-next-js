@@ -8,18 +8,16 @@ import { QuantityBlock } from './quantity/QuantityBlock';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { addProductToCart } from '@/redux/slices/cartSlice';
-// import axios from 'axios';
-// import { baseUrl } from '../../helpers/baseUrl';
 import styles from './info.module.scss';
+import { addProductIntoCart } from '@/helpers/addProductIntoCart';
 
 interface Props {
   product: ProductInt | null;
   brand: BrandInt | undefined;
   variants: VariantInt[];
-  setVariants: Dispatch<SetStateAction<VariantInt[]>>;
 }
 
-export const InfoBlock: React.FC <Props> = ({ product, variants, setVariants, brand }) => {
+export const InfoBlock: React.FC <Props> = ({ product, variants, brand }) => {
   const { language } = useSelector((state: RootState) => state.language);
   const [quantity, setQuantity] = React.useState(1);
   const [selectedVariant, setSelectedVariant] = React.useState(variants.length > 0 ? variants[0] : null);
@@ -33,43 +31,6 @@ export const InfoBlock: React.FC <Props> = ({ product, variants, setVariants, br
       setSelectedVariant(variants[0]);
     }
   }, [variants]);
-
-  // async function updateCountOfProducts(variantId: number, quantity: number) {
-  //   try {
-  //     await axios.put(`${baseUrl}/variants/${variantId}`, { quantity });
-  //     if (product) {
-  //       const response = await axios.get(`${baseUrl}/variants/${product.id}`);
-  //       setVariants(response.data);
-  //     }
-  //   }
-  //   catch(e) {
-  //     console.log(e);
-  //   }
-  // }
-
-  async function addProductIntoCart() {
-    if (selectedVariant) {
-      if (quantity > selectedVariant?.quantity) {
-        if (language === 'EN') {
-          setQuantityError(`You can not add to cart more than ${selectedVariant.quantity} items of this product`);
-          return;
-        } else {
-          setQuantityError(`Ви не можете додати в кошик більше ${selectedVariant.quantity} найменувань цього продукту`);
-          return;
-        }
-      } else {
-        const newProductInCart = {...product, quantity, variant: selectedVariant};
-        dispatch(addProductToCart(newProductInCart));
-        // const updatedQuantity = selectedVariant.quantity - quantity;
-        if (language === 'EN') {
-          setAfterAddedMessage('Product has been added successfully!');
-        } else {
-          setAfterAddedMessage('Продукт успішно доданий до кошику!');
-        }
-        // await updateCountOfProducts(selectedVariant.id, updatedQuantity);
-      }
-    }
-  }
 
   React.useEffect(() => {
     if (quantityError) {
@@ -101,6 +62,7 @@ export const InfoBlock: React.FC <Props> = ({ product, variants, setVariants, br
           <QuantityBlock 
             quantity={quantity}
             setQuantity={setQuantity}
+            selectedVariant={selectedVariant}
           />
           <Description 
             product={product}
@@ -117,9 +79,10 @@ export const InfoBlock: React.FC <Props> = ({ product, variants, setVariants, br
           </p>
           <button
             onClick={() => {
-              addProductIntoCart();
+              addProductIntoCart(selectedVariant, quantity, language, setQuantityError, product, dispatch, addProductToCart, setAfterAddedMessage);
             }}
-            className={styles.info__button}
+            className={selectedVariant?.quantity === 0 ? styles.info__button + ' ' + styles['info__button--disabled'] : styles.info__button}
+            disabled={selectedVariant?.quantity === 0}
           >
             {language === 'EN' ? 'Add to cart' : 'Додати до кошику'}
           </button>

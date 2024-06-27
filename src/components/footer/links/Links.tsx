@@ -11,6 +11,7 @@ export const Links = () => {
           name_en={infoItem.name_en}
           name_ukr={infoItem.name_ukr}
           items={infoItem.items}
+          key={infoItem.name_en}
         />
       ))}
     </div>

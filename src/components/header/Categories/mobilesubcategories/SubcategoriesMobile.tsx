@@ -19,7 +19,7 @@ export const SubcategoriesMobile: React.FC <Props> = ({ categoryId }) => {
 
   async function fetchSubcategories() {
     try {
-      const response = await axios.get(`${baseUrl}/subcategories/${categoryId}`);
+      const response = await axios.get(`${baseUrl}/subcategories?categoryId=${categoryId}`);
       setSubcategories(response.data);
     } catch(e) {
       console.log(e);

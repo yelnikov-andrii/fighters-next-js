@@ -66,6 +66,7 @@ export const BlockWithFilterOptions: React.FC <Props> = ({ array, filterCategory
       {array.map((item: Option) => (
         <div
           key={filterCategory === 'brands' ? item.name : item.name_en}
+          className={styles.options__option}
         >
           <input 
             type='checkbox'

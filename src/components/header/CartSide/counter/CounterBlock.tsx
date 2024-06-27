@@ -42,3 +42,4 @@ export const CounterBlock: React.FC <Props> = ({ product }) => {
     </div>
   );
 };
+
