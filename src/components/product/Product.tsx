@@ -32,7 +32,6 @@ export const ProductCard: React.FC <Props> = ({ product }) => {
     }
 
     catch(e) {
-      console.log(e);
     }
   }
 
@@ -43,7 +42,6 @@ export const ProductCard: React.FC <Props> = ({ product }) => {
     }
 
     catch(e) {
-      console.log(e);
     }
   }
 

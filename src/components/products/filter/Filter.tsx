@@ -14,23 +14,23 @@ import { Colors } from './Colors';
 import { Clear } from './Clear';
 
 interface Props {
-  page: number;
+  productsAllPages: any[];
 }
 
-export const FIlter: React.FC<Props> = React.memo(({ page }) => {
+export const FIlter: React.FC<Props> = React.memo(({ productsAllPages }) => {
   const { language } = useSelector((state: RootState) => state.language);
-  const { productsAllPages } = useSelector((state: RootState) => state.products);
+  // const { productsAllPages } = useSelector((state: RootState) => state.products);
   const { brandFilters, ageFilters, materialFilters, genderFilters, sizeFilters } = useSelector((state: RootState) => state.filter);
 
   const searchParams = useSearchParams();
-  const category = searchParams.get('category');
-  const subcategory = searchParams.get('subcategory');
-  const subsubcategory = searchParams.get('subsubcategory');
+  // const category = searchParams.get('category');
+  // const subcategory = searchParams.get('subcategory');
+  // const subsubcategory = searchParams.get('subsubcategory');
 
   const { colors, options, brands } = useGetAllOptions(productsAllPages);
   const { colorFilters } = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch();
-  useFetchProductsAll(category, subcategory, subsubcategory, page, dispatch);
+  // useFetchProductsAll(category, subcategory, subsubcategory, page, dispatch);
 
   const filtersAreEmpty = React.useMemo(() => {
     if (!colorFilters.length && !brandFilters.length && !ageFilters.length && !materialFilters.length && !genderFilters.length && !sizeFilters.length ) {

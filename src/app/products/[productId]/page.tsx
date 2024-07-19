@@ -1,4 +1,5 @@
 import getProduct from '@/app/lib/getProduct';
+import Product from '@/components/modules/Product/Product';
 import { ProductCard } from '@/components/product/Product';
 import { ReduxWrapper } from '@/components/reduxWrapper/Wrapper';
 import { baseUrl } from '@/data/url';
@@ -32,12 +33,8 @@ export default async function Page({ params }: Props) {
   const product = await getProduct(productId);
 
   return (
-    <div>
-      <ReduxWrapper>
-        <ProductCard 
+        <Product 
           product={product}
         />
-      </ReduxWrapper>
-    </div>
   )
 }

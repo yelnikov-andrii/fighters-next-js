@@ -45,7 +45,7 @@ export const Product: React.FC <Props> = ({ product }) => {
   return (
     <Link 
       href={`/products/${product.id}`}
-      className={styles.product__link}
+      className={`${styles.product__link} relative`}
     >
       {photosLoading ? (
         <PhotoLoading />
@@ -54,9 +54,9 @@ export const Product: React.FC <Props> = ({ product }) => {
           <Image 
             src={`${baseUrl}/${photos[0].imageUrl}`}
             alt=""
-            width={100}
-            height={100}
-            layout="responsive"
+            className='img-full'
+            width={320}
+            height={320}
           />
         ) : (
           <div>

@@ -3,11 +3,13 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 const initialState: CategoryStateInterface = {
   categories: [],
-  categoriesLoading: false,
+  categoriesLoading: true,
   categoriesError: '',
   subcategories: [],
-  subCategoriesLoading: false,
+  subCategoriesLoading: true,
   subCategoriesError: '',
+  allSubsubcategories: [],
+  allSubcategories: []
 };
 
 export const categorySlice = createSlice({
@@ -40,9 +42,15 @@ export const categorySlice = createSlice({
       state.subCategoriesLoading = false;
       state.subCategoriesError = action.payload;
     },
+    getAllSubsubcategories: (state: CategoryStateInterface, action: PayloadAction<any>) => {
+      state.allSubsubcategories = action.payload;
+    },
+    getAllSubcategories: (state: CategoryStateInterface, action: PayloadAction<any>) => {
+      state.allSubcategories = action.payload;
+    }
   }
 });
 
-export const { getCategories, getCategoriesError, getCategoriesSuccess, getSubCategories, getSubCategoriesError, getSubCategoriesSuccess } = categorySlice.actions;
+export const { getCategories, getCategoriesError, getCategoriesSuccess, getSubCategories, getSubCategoriesError, getSubCategoriesSuccess, getAllSubsubcategories, getAllSubcategories } = categorySlice.actions;
 
 export default categorySlice.reducer;

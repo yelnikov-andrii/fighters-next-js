@@ -26,7 +26,6 @@ export const Counter: React.FC<Props> = ({ product }) => {
         onChange={(e) => {
           const value = +e.target.value;
           if (!isNaN(value)) {
-            console.log(' product quantity');
           }
         }}
         className={styles.counter__input}

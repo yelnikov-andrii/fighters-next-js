@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getCategories, getCategoriesError, getCategoriesSuccess, getSubCategories, getSubCategoriesError, getSubCategoriesSuccess } from '../../slices/categorySlice';
+import { getAllSubcategories, getAllSubsubcategories, getCategories, getCategoriesError, getCategoriesSuccess, getSubCategories, getSubCategoriesError, getSubCategoriesSuccess } from '../../slices/categorySlice';
 import { baseUrl } from '@/data/url';
 
 export const fetchCategories = (): any => {
@@ -26,3 +26,25 @@ export const fetchSubCategories = (categoryId: any): any => {
     }
   };
 };
+
+export const fetchSubsubcategories = () => {
+  return async(dispatch: any) => {
+    try {
+      const response = await axios.get(`${baseUrl}/subsubcategories`);
+      dispatch(getAllSubsubcategories(response.data));
+    } catch(e) {
+      
+    }
+  }
+}
+
+export const fetchAllSubcategories = () => {
+  return async(dispatch: any) => {
+    try {
+      const response = await axios.get(`${baseUrl}/subcategories`);
+      dispatch(getAllSubcategories(response.data));
+    } catch(e) {
+      
+    }
+  }
+}

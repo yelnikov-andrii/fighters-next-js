@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-osvald: 'Oswald', sans-serif;
+  --color-green: theme('colors.green');
+}
 
 * {
   box-sizing: border-box;
@@ -8,7 +18,8 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  font-size: 16px;
+  font-family: var(--font-sans);
 }
 
 a {
@@ -20,4 +31,91 @@ a {
   max-width: 1420px;
   margin: 0 auto;
   padding: 0 30px;
+}
+
+.button {
+  @apply p-3 rounded-sm bg-white text-black uppercase text-sm inline-block font-bold max-w-[190px] overflow-hidden relative;
+  z-index: 20;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--color-green);
+  transition: width 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.button:hover::before {
+  width: 100%;
+}
+
+.marquee-item {
+  animation: marquee 14s linear infinite;
+  animation-play-state: running;
+}
+
+.marquee-item--paused {
+  animation-play-state: paused;
+}
+
+.marquee-item--direct {
+  animation-direction: reverse;
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.categories-transition {
+  transition: transform 0.3s ease-in-out;
+}
+
+.transition-maxheight {
+  transition: max-height 0.3s ease-in-out;
+}
+
+.reviews .swiper-button-next {
+  width: 24px;
+  height: 24px;
+}
+
+.reviews .swiper-button-next::after {
+  width: 24px;
+  height: 24px;
+}
+
+.reviews .swiper-wrapper {
+  align-items: center;
+}
+
+.reviews .swiper-slide {
+  height: 50%;
+}
+
+.img-full {
+  width: 100%;
+  height: auto;
+}
+
+.move-circle {
+  transition: transform 0.5s ease;
+}
+
+.move-circle-bottom {
+  transform: translateX(-6px);
+}
+
+.move-circle-top {
+  transform: translateX(6px);
 }

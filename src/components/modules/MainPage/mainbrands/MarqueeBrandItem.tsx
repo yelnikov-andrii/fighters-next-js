@@ -1,0 +1,30 @@
+import Button from '@/components/elements/Button';
+import clsx from 'clsx';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import * as React from 'react';
+
+function MarqueeBrandItem(props: { isPaused: boolean }) {
+    const { isPaused } = props;
+    const t = useTranslations('common');
+
+    return (
+        <div className='flex gap-4 justify-around items-center min-w-fit px-4'>
+            <div
+                className={clsx("whitespace-nowrap marquee-item flex gap-8 items-center", {
+                    'marquee-item marquee-item--paused': isPaused,
+                    'marquee-item marquee-item--direct': true,
+                })}
+            >
+                <h2 className='font-bold font-osvald text-5xl uppercase hover:opacity-70 transition-opacity'>
+                    {t("premium_brands")}
+                </h2>
+                <Button url="/brands" style={{ border: '1px solid black', borderRadius: '4px', minWidth: '130px', display: 'flex', justifyContent: 'center' }}>
+                    {t('view_all_brands')}
+                </Button>
+            </div>
+        </div>
+    );
+}
+
+export default MarqueeBrandItem;

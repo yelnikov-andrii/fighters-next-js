@@ -8,6 +8,7 @@ interface FilterStateInt {
   materialFilters: Option[],
   genderFilters: Option[],
   sizeFilters: Option[],
+  filterIsOpen: boolean,
 }
 
 const initialState: FilterStateInt = {
@@ -17,6 +18,7 @@ const initialState: FilterStateInt = {
   materialFilters: [],
   genderFilters: [],
   sizeFilters: [],
+  filterIsOpen: false,
 };
 
 export const filterSlice = createSlice({
@@ -66,10 +68,13 @@ export const filterSlice = createSlice({
       state.genderFilters = [];
       state.materialFilters = [];
       state.sizeFilters = [];
+    },
+    toggleFilter: (state: FilterStateInt) => {
+      state.filterIsOpen = !state.filterIsOpen;
     }
   },
 });
 
-export const { addColorFilter, removeColorFilter, clearAllFilters, addGenderFilter, removeGenderFilter, addAgeFilter, removeAgeFilter, addBrandFilter, removeBrandFilter, addMaterialFilter, removeMaterialFilter, addSizeFilter, removeSizeFilter  } = filterSlice.actions;
+export const { addColorFilter, removeColorFilter, clearAllFilters, addGenderFilter, removeGenderFilter, addAgeFilter, removeAgeFilter, addBrandFilter, removeBrandFilter, addMaterialFilter, removeMaterialFilter, addSizeFilter, removeSizeFilter, toggleFilter } = filterSlice.actions;
 
 export default filterSlice.reducer;

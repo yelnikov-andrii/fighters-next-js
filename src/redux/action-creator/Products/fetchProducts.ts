@@ -36,7 +36,6 @@ export const fetchProductsAllPages = (productInfo: string = ''): any => {
       }
     } 
     catch(e: any) {
-      console.log('error');
     }
   };
 };

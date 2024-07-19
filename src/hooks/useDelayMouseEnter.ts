@@ -1,20 +1,21 @@
 import React, { Dispatch, SetStateAction } from "react";
 
-export const useDelayMouseenter = (isHovered: boolean, setIsOpen: Dispatch<SetStateAction<boolean>>) => {
+export const useDelayMouseenter = (isOpenState: {isOpen: boolean, isHovered: boolean}, setIsOpenState: Dispatch<SetStateAction<{isOpen: boolean, isHovered: boolean}>>) => {
   React.useEffect(() => {
     let timeoutId: any;
 
-    if (isHovered) {
+    if (isOpenState.isHovered === true) {
       timeoutId = setTimeout(() => {
-        setIsOpen(true);
-      }, 500);
+        setIsOpenState(prev => ({...prev, isOpen: true}));
+      }, 100);
     } else {
-      clearTimeout(timeoutId);
-      setIsOpen(false);
+      timeoutId = setTimeout(() => {
+        setIsOpenState(prev => ({...prev, isOpen: false}));
+      }, 400);
     }
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [isHovered]);
+  }, [isOpenState.isHovered]);
 }

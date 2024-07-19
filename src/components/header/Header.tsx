@@ -12,7 +12,7 @@ export const Header = () => {
   
   return (
     <ReduxWrapper>
-      <header className={styles.header}>
+      {/* <header className={`${styles.header}`}>
         <MainHeader
           setMobileCategoriesAreOpen={setMobileCategoriesAreOpen}
         />
@@ -22,6 +22,10 @@ export const Header = () => {
           mobileCategoriesAreOpen={mobileCategoriesAreOpen}
           setMobileCategoriesAreOpen={setMobileCategoriesAreOpen}
         />
+    </header> */}
+    <header className='container'>
+      
+
     </header>
     </ReduxWrapper>
   );

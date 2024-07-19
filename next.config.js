@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+const createNextIntlPlugin = require('next-intl/plugin');
+const withNextIntl = createNextIntlPlugin();
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -7,8 +10,12 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'sport-products.onrender.com',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost'
+      }
     ],
   },
 }
 
-module.exports = nextConfig
+module.exports = withNextIntl(nextConfig);

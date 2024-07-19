@@ -24,6 +24,8 @@ export interface CategoryStateInterface {
   subcategories: SubcategoryInt[],
   subCategoriesLoading: boolean,
   subCategoriesError: string,
+  allSubsubcategories: any[];
+  allSubcategories: any[];
 }
 
 export interface ActionCategoriesSuccess {

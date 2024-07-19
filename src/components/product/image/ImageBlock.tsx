@@ -22,12 +22,14 @@ export const ImageBlock: React.FC <Props> = ({ photos }) => {
         <Image 
           src={`${baseUrl}/${photos[0].imageUrl}`}
           alt=''
-          layout='responsive'
-          width={100}
-          height={100}
+          // layout='responsive'
+          // width={100}
+          // height={100}
+          fill
           onClick={() => {
             setActive(true);
           }}
+          className='img-full'
         />
       )}
       <MyModal
@@ -47,9 +49,11 @@ export const ImageBlock: React.FC <Props> = ({ photos }) => {
               <Image
                 src={`${baseUrl}/${photo.imageUrl}`}
                 alt=""
-                layout='responsive'
-                width={100}
-                height={100}
+                fill
+                // layout='responsive'
+                // width={100}
+                // height={100}
+                className='img-full'
               />
             </SwiperSlide>
           ))}

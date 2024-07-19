@@ -1,8 +1,8 @@
-import  Main from '@/components/main/Main';
+import  Main from '@/components/templates/main/Main';
 
 function Home() {
   return (
-      <main>
+      <main className='main'>
         <Main />
       </main>
   )

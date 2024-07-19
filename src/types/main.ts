@@ -1,9 +1,14 @@
 import { StaticImageData } from "next/image";
 
 export interface ElementInt {
-  name_en: string;
-  name_ukr: string;
+  translation_key: string;
   img: StaticImageData;
   imgAlt: string;
   linkUrl: string;
+}
+
+export interface BrandI {
+  id: number;
+  name: string;
+  img: string;
 }

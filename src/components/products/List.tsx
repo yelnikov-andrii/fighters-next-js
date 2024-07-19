@@ -8,12 +8,13 @@ import { ProductsLoading } from './ProductsLoading';
 import { Product } from './product/Product';
 
 interface Props {
-  page: number;
-  setPage: Dispatch<SetStateAction<number>>;
+  // page: number;
+  // setPage: Dispatch<SetStateAction<number>>;
+  products: any;
 }
 
-export const List: React.FC<Props> = ({ setPage, page }) => {
-  const { products, countOfProducts, allProductsLoaded, productsLoading } = useSelector((state: RootState) => state.products);
+export const List: React.FC<Props> = ({ products }) => {
+  const { countOfProducts, allProductsLoaded, productsLoading } = useSelector((state: RootState) => state.products);
   const { language } = useSelector((state: RootState) => state.language);
 
   return (
@@ -22,7 +23,7 @@ export const List: React.FC<Props> = ({ setPage, page }) => {
         <ProductsLoading />
       ) : (
             <div className={styles.products__list}>
-            {(products.length > 0 && allProductsLoaded && productsLoading === false) ? products.map((product: ProductInt) => (
+            {(products?.rows?.length > 0) ? products?.rows.map((product: ProductInt) => (
               <Product 
                 product={product}
                 key={product.id}
@@ -34,11 +35,9 @@ export const List: React.FC<Props> = ({ setPage, page }) => {
             )}
             </div>
       )}
-      {(products.length > 0 && allProductsLoaded && productsLoading === false) && (
-        <Pagination 
-          countOfProducts={countOfProducts}
-          setPage={setPage}
-          currentPage={page}
+      {(products?.rows?.length > 0 ) && (
+        <Pagination
+          countOfProducts={products?.count}
         />
       )}
     </div>
