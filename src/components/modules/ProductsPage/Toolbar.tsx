@@ -20,7 +20,7 @@ function Toolbar() {
                     <p className="font-medium">
                         Filter
                     </p>
-                    <svg width="20" height="20" viewBox="0 0 20 20" stroke-width="1.25" stroke="currentColor" aria-hidden="true" focusable="false" role="presentation"><path stroke-linecap="round" stroke-linejoin="round" d="M1 6h18M1 14h18"></path><circle cx="7" cy="6" r="3" className={clsx('move-circle',{'move-circle-top': filterIsOpen })}></circle><circle cx="13" cy="14" r="3" className={clsx('move-circle',{ 'move-circle-bottom': filterIsOpen })} ></circle></svg>
+                    <svg width="20" height="20" viewBox="0 0 20 20" strokeWidth="1.25" stroke="currentColor" aria-hidden="true" focusable="false" role="presentation"><path strokeLinecap="round" strokeLinejoin="round" d="M1 6h18M1 14h18"></path><circle cx="7" cy="6" r="3" className={clsx('move-circle',{'move-circle-top': filterIsOpen })}></circle><circle cx="13" cy="14" r="3" className={clsx('move-circle',{ 'move-circle-bottom': filterIsOpen })} ></circle></svg>
                 </button>
                 <span className="w-[0.8px] h-[100%] bg-gray-dark opacity-20 block">
                 </span>

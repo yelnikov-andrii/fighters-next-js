@@ -11,7 +11,8 @@ function BannerSecond() {
                 src="/no-gi-banner.png"
                 alt='No gi banner'
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 50vw"
+                quality={100}
                 className='absolute top-0 left-0 right-0 bottom-0 object-cover'
             />
             <div className='absolute top-[60%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]'>

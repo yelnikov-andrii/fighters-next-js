@@ -18,7 +18,6 @@ export const CartSide = () => {
 
   const totalCount = (productsInCart && productsInCart.reduce((init: number, elem: ProductAdded) => init + elem.price * elem.quantity, 0)) || 1;
   const price = `${(totalCount * coefficient).toFixed(1).replace(/\.0$/, '')} ${currency}`;
-  console.log(cartIsOpen)
 
   return (
     <div

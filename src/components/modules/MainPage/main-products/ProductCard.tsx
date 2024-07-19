@@ -14,6 +14,7 @@ function ProductCard(props: { product: any }) {
                     src={product.image.src}
                     alt={product.image.alt}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                 />
             </div>
             <div className="pt-4">

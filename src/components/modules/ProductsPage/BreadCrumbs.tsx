@@ -37,7 +37,7 @@ function BreadCrumbs() {
             <Link href="/" className='text-sm'>
                 Home
             </Link>
-            <svg style={{width: '14px', height: '14px'}} width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="m9.693 4.5 7.5 7.5-7.5 7.5" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg>
+            <svg style={{width: '14px', height: '14px'}} width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="m9.693 4.5 7.5 7.5-7.5 7.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
             <Link href={url} className='text-sm'>
                 {currentPageName}
             </Link>

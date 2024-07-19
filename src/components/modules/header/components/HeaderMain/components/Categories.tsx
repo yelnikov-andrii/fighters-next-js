@@ -128,7 +128,7 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
                                 }}
                             >
                                 {language === 'EN' ? category.name_en : category.name_ukr}
-                                <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg>
+                                <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
                             </div>
                         ) : (
                             <Link
@@ -141,7 +141,7 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
                                 className="font-bold justify-between md:justify-start uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
                             >
                                 {language === 'EN' ? category.name_en : category.name_ukr}
-                                <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg>
+                                <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
                             </Link>
                         )
                     ))}

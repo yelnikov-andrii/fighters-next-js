@@ -60,7 +60,7 @@ function ImageBlock({ photos }: Props) {
                     <button className={clsx('next bg-white p-2 rounded-sm', {
                         'opacity-50': isEnd
                     })} disabled={isEnd}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="m9.693 4.5 7.5 7.5-7.5 7.5" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="m9.693 4.5 7.5 7.5-7.5 7.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
                     </button>
                 </div>
             </Swiper>

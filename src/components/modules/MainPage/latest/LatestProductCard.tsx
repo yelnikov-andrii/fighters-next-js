@@ -51,12 +51,14 @@ function LatestProductCard({ product }: { product: ProductInt }) {
                         src={`${baseUrl}/${images.arr[0].imageUrl}`}
                         alt="sport product"
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                         className={`img-full transition-opacity duration-500 absolute top-0 left-0 w-full ${isHovered ? 'opacity-0' : ''}`}
                     />
                     <Image
                         src={`${baseUrl}/${images.arr[1].imageUrl}`}
                         alt="sport product"
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                         className={`transition-opacity duration-500 absolute top-0 left-0 w-full ${isHovered ? '' : 'opacity-0'}`}
                     />
                 </Link>

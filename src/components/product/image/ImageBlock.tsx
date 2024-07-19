@@ -22,9 +22,7 @@ export const ImageBlock: React.FC <Props> = ({ photos }) => {
         <Image 
           src={`${baseUrl}/${photos[0].imageUrl}`}
           alt=''
-          // layout='responsive'
-          // width={100}
-          // height={100}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           fill
           onClick={() => {
             setActive(true);
@@ -50,9 +48,7 @@ export const ImageBlock: React.FC <Props> = ({ photos }) => {
                 src={`${baseUrl}/${photo.imageUrl}`}
                 alt=""
                 fill
-                // layout='responsive'
-                // width={100}
-                // height={100}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                 className='img-full'
               />
             </SwiperSlide>
