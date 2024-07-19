@@ -1,4 +1,3 @@
-import { Header } from '@/components/header/Header';
 import { Metadata } from 'next';
 import React from 'react';
 
