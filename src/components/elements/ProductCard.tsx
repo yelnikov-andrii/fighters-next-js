@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-function ProductCard({ product, style }: { product: ProductInt, style: any }) {
+function ProductCard({ product, style }: { product: ProductInt, style?: any }) {
     const [images, setImages] = useState<{ arr: ProductPhotoInt[], loading: boolean, error: string }>({ arr: [], loading: true, error: '' });
     const { language } = useSelector((state: RootState) => state.language);
     const { currency } = useSelector((state: RootState) => state.currency);

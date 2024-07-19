@@ -1,6 +1,5 @@
 import getLatestProducts from '@/app/lib/getLatestProducts';
 import * as React from 'react';
-import LatestProductCard from './LatestProductCard';
 import { ProductInt } from '@/types/products';
 import LatestMarquee from './LatestMarquee';
 import ProductCard from '@/components/elements/ProductCard';
