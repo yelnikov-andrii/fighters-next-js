@@ -14,15 +14,10 @@ interface Props {
 }
 
 function BreadCrumbs({ product }: Props) {
-    // const category = searchParams.get('category');
-    // const subcategory = searchParams.get('subcategory');
-    // const subsubcategory = searchParams.get('subsubcategory');
-
     let url = `/products?`;
     let currentPageName = '';
     const { categories, subcategories, allSubsubcategories, allSubcategories } = useSelector((state: RootState) => state.categories);
     const dispatch = useDispatch();
-    console.log(subcategories, 'subcategories')
 
     useEffect(() => {
         dispatch(fetchSubsubcategories());

@@ -27,7 +27,7 @@ export const fetchSubCategories = (categoryId: any): any => {
   };
 };
 
-export const fetchSubsubcategories = () => {
+export const fetchSubsubcategories = (): any => {
   return async(dispatch: any) => {
     try {
       const response = await axios.get(`${baseUrl}/subsubcategories`);
@@ -38,7 +38,7 @@ export const fetchSubsubcategories = () => {
   }
 }
 
-export const fetchAllSubcategories = () => {
+export const fetchAllSubcategories = (): any => {
   return async(dispatch: any) => {
     try {
       const response = await axios.get(`${baseUrl}/subcategories`);
