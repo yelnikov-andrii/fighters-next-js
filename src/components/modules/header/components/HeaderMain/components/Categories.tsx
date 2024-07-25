@@ -73,7 +73,7 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
         }
     }, [menuState.isMenuOpen]);
 
-    if (categoriesLoading) {
+    if (categoriesLoading && menuState.isMenuOpen) {
         return (
             <div
                 className={clsx(
@@ -108,43 +108,63 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
         >
             <div className="container relative z-10 md:static">
                 <div className="flex gap-1 md:gap-4 flex-col md:flex-row items-center flex-wrap 3xl:justify-between">
-                    <Link
-                        href='/products'
-                        className="font-bold uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
-                        onMouseEnter={() => {
-                            if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
-                        }}
-                    >
-                        {language === 'EN' ? 'All products' : 'Усі продукти'}
-                    </Link>
-                    {categories.map((category: CategoryInt) => (
-                        isMobile ? (
-                            <div
-                                className="font-bold justify-between hover:cursor-pointer md:justify-start uppercase py-1 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-1 items-center"
-                                onClick={() => {
-                                    if (isMobile) changeCategory(category);
-                                    if (isMobile) setSubcategoriesAreOpen(true);
-
-                                }}
-                            >
-                                {language === 'EN' ? category.name_en : category.name_ukr}
-                                <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
-                            </div>
-                        ) : (
+                    {isMobile ? (
+                        <>
                             <Link
+                                href='/products'
+                                className="font-bold uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
                                 onMouseEnter={() => {
-                                    if (!isMobile) changeCategory(category);
-                                    if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: true }));
+                                    if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
                                 }}
-                                key={category.id}
-                                href={`/products?category=${category.name_en.replaceAll(' ', '-').replaceAll('&', 'and')}`}
-                                className="font-bold justify-between md:justify-start uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
+                                onClick={() => {
+                                    menuState.setIsMenuOpen(false)
+                                }}
                             >
-                                {language === 'EN' ? category.name_en : category.name_ukr}
-                                <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
+                                {language === 'EN' ? 'All products' : 'Усі продукти'}
                             </Link>
-                        )
-                    ))}
+                            {categories.map((category: CategoryInt) => (
+                                <div
+                                    className="font-bold justify-between hover:cursor-pointer md:justify-start uppercase py-1 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-1 items-center"
+                                    onClick={() => {
+                                        if (isMobile) changeCategory(category);
+                                        if (isMobile) setSubcategoriesAreOpen(true);
+
+                                    }}
+                                >
+                                    {language === 'EN' ? category.name_en : category.name_ukr}
+                                    <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
+                                </div>
+
+
+                            ))}
+                        </>
+                    ) : (
+                        <>
+                            <Link
+                                href='/products'
+                                className="font-bold uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
+                                onMouseEnter={() => {
+                                    if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
+                                }}
+                            >
+                                {language === 'EN' ? 'All products' : 'Усі продукти'}
+                            </Link>
+                            {categories.map(category => (
+                                <Link
+                                    onMouseEnter={() => {
+                                        if (!isMobile) changeCategory(category);
+                                        if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: true }));
+                                    }}
+                                    key={category.id}
+                                    href={`/products?category=${category.name_en.replaceAll(' ', '-').replaceAll('&', 'and')}`}
+                                    className="font-bold justify-between md:justify-start uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
+                                >
+                                    {language === 'EN' ? category.name_en : category.name_ukr}
+                                    <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
+                                </Link>
+                            ))}
+                        </>
+                    )}
                 </div>
                 <Subcategories
                     category={selectedCategory}

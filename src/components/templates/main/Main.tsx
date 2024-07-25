@@ -8,13 +8,12 @@ import Latest from '@/components/modules/MainPage/latest/Latest';
 import MainBrands from '@/components/modules/MainPage/mainbrands/MainBrands';
 import MainMedia from '@/components/modules/MainPage/main-media/MainMedia';
 import MainReviews from '@/components/modules/MainPage/main-reviews/MainReviews';
-import BackBlock from '@/components/elements/BackBlock';
 
 const Main = () => {
   const t = useTranslations('common');
 
   return (
-    <div className='pb-24'>
+    <div className='pb-8'>
       <BannerMain />
       <Marquee
         images={[
@@ -122,10 +121,9 @@ const Main = () => {
       <div className='mb-8'>
         <MainMedia />
       </div>
-      <div className='mb-8'>
+      <div className='mb-2 md:mb-8'>
         <MainReviews />
       </div>
-      <BackBlock />
     </div>
   )
 }

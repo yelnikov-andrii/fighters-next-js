@@ -97,4 +97,6 @@ export const reviews = [
     body: 'Extremely comfortable shorts with a beautiful design',
     date: '1 month ago'
   }
-]
+];
+
+export const averageRating = (reviews.reduce((init, rev) => init + rev.rating, 0) / reviews.length).toFixed(1);

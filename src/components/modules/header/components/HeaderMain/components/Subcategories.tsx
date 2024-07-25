@@ -40,7 +40,7 @@ const Subcategories: FunctionComponent<SubcategoriesProps> = ({ category, setIsO
                 <div
                     style={style}
                     className={clsx(
-                        `absolute p-2 box-border bg-white w-full left-0 right-0 overflow-hidden transition-all duration-[100ms] ease-in-out shadow-lg`,
+                        `absolute p-2 box-border bg-white w-full left-0 top-0 right-0 overflow-hidden transition-all duration-[100ms] ease-in-out shadow-lg`,
                         {
                             "invisible max-h-0": !isOpenState.isOpen && !menuState.isMenuOpen,
                             "visible max-h-[400px]": isOpenState.isOpen && !menuState.isMenuOpen,
@@ -67,6 +67,7 @@ const Subcategories: FunctionComponent<SubcategoriesProps> = ({ category, setIsO
                         {subcategories?.map((subcategory) => (
                             <SubSubCategory
                                 subcategory={subcategory}
+                                menuState={menuState}
                                 key={subcategory.id}
                             />
                         ))}
@@ -94,14 +95,13 @@ const Subcategories: FunctionComponent<SubcategoriesProps> = ({ category, setIsO
                 }}
             >
                 {subCategoriesLoading ? (
-                    <div className="flex flex-wrap justify-between gap-8 md:gap-2">
-                        <SubCategoriesLoading />
-                    </div>
+                    null
                 ) : (
                     <div className="flex flex-wrap justify-between gap-8 md:gap-2">
                         {subcategories?.map((subcategory) => (
                             <SubSubCategory
                                 subcategory={subcategory}
+                                menuState={menuState}
                                 key={subcategory.id}
                             />
                         ))}

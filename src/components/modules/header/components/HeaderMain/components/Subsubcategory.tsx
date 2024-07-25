@@ -3,14 +3,15 @@ import { RootState } from "@/redux/store";
 import { SubcategoryInt, SubsubcategoryInt } from "@/types/categories";
 import axios from "axios";
 import Link from "next/link";
-import { FunctionComponent, useEffect, useState } from "react";
+import { Dispatch, FunctionComponent, SetStateAction, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 interface SubSubCategoryProps {
     subcategory: SubcategoryInt;
+    menuState: { isMenuOpen: boolean, setIsMenuOpen: Dispatch<SetStateAction<boolean>> };
 }
 
-const SubSubCategory: FunctionComponent<SubSubCategoryProps> = ({ subcategory }) => {
+const SubSubCategory: FunctionComponent<SubSubCategoryProps> = ({ subcategory, menuState }) => {
     const { language } = useSelector((state: RootState) => state.language);
     const [subsubcategories, setSubsubcategories] = useState([]);
     const [loadingSubsubcategories, setLoadingSubsubcategories] = useState(false);
@@ -36,6 +37,7 @@ const SubSubCategory: FunctionComponent<SubSubCategoryProps> = ({ subcategory })
             <Link
                 href={`/products?subcategory=${subcategory.name_en}`}
                 className="font-bold mb-4 inline-block hover:text-silver"
+                onClick={() => menuState.setIsMenuOpen(false)}
             >
                 {language === 'EN' ? subcategory.name_en : subcategory.name_ukr}
             </Link>
@@ -46,6 +48,7 @@ const SubSubCategory: FunctionComponent<SubSubCategoryProps> = ({ subcategory })
                             className="capitalize hover:text-silver text-sm"
                             href={`/products?subsubcategory=${subsubcategory.name_en}`}
                             key={subsubcategory.id}
+                            onClick={() => menuState.setIsMenuOpen(false)}
                         >
                             {language === 'EN' ? subsubcategory.name_en : subsubcategory.name_ukr}
                         </Link>

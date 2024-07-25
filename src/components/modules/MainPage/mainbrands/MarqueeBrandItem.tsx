@@ -9,17 +9,20 @@ function MarqueeBrandItem(props: { isPaused: boolean }) {
     const t = useTranslations('common');
 
     return (
-        <div className='flex gap-4 justify-around items-center min-w-fit px-4'>
+        <div className='flex gap-2 md:gap-4 justify-around items-center min-w-fit px-2 md:px-4'>
             <div
                 className={clsx("whitespace-nowrap marquee-item flex gap-8 items-center", {
                     'marquee-item marquee-item--paused': isPaused,
                     'marquee-item marquee-item--direct': true,
                 })}
             >
-                <h2 className='font-bold font-osvald text-5xl uppercase hover:opacity-70 transition-opacity'>
+                <h2 className='font-bold font-osvald text-3xl md:text-5xl uppercase hover:opacity-70 transition-opacity'>
                     {t("premium_brands")}
                 </h2>
-                <Button url="/brands" style={{ border: '1px solid black', borderRadius: '4px', minWidth: '130px', display: 'flex', justifyContent: 'center' }}>
+                <Button
+                    url="/brands"
+                    style={{ border: '1px solid black', borderRadius: '4px', minWidth: '130px', display: 'flex', justifyContent: 'center' }}
+                >
                     {t('view_all_brands')}
                 </Button>
             </div>

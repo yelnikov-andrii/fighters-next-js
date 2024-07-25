@@ -15,7 +15,11 @@ function MarqueeBrands() {
     }
 
     return (
-        <div className='overflow-hidden marquee py-4 bg-gray-light flex items-center' onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
+        <div
+            className='overflow-hidden marquee mb-8 md:mb-0 py-2 md:py-4 bg-gray-light flex items-center'
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
+        >
             <MarqueeBrandItem
                 isPaused={isPaused}
             />

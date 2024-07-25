@@ -38,13 +38,13 @@ function Topblock() {
                 </nav>
             </div>
             <nav>
-                <b>
+                <b className='mb-4 block'>
                     Customer service
                 </b>
-                <ul>
+                <ul className='flex flex-col gap-2'>
                     {customerService.map(item => (
                         <li key={item.name}>
-                            <Link href={item.url}>
+                            <Link href={item.url} className='hover:underline'>
                                 {item.name}
                             </Link>
                         </li>
@@ -52,13 +52,13 @@ function Topblock() {
                 </ul>
             </nav>
             <nav>
-                <b>
+                <b className='mb-4 block'>
                     About
                 </b>
-                <ul>
+                <ul className='flex flex-col gap-2'>
                     {about.map(item => (
                         <li key={item.name}>
-                            <Link href={item.url}>
+                            <Link href={item.url} className='hover:underline'>
                                 {item.name}
                             </Link>
                         </li>
@@ -66,13 +66,13 @@ function Topblock() {
                 </ul>
             </nav>
             <nav>
-                <b>
+                <b className='mb-4 block'>
                     Useful links
                 </b>
-                <ul>
+                <ul className='flex flex-col gap-2'>
                     {usefulLinks.map(item => (
                         <li key={item.name}>
-                            <Link href={item.url}>
+                            <Link href={item.url} className='hover:underline'>
                                 {item.name}
                             </Link>
                         </li>

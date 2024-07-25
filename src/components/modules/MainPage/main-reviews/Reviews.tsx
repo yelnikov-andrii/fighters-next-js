@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react';
-import { reviews } from '@/data/main';
+import { reviews, averageRating } from '@/data/main';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import BasicRating from '@/components/elements/BasicRating';
 import 'swiper/css';
@@ -13,7 +13,6 @@ import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 
 function Reviews() {
-    const averageRating = (reviews.reduce((init, rev) => init + rev.rating, 0) / reviews.length).toFixed(1);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
     const swiperRef = useRef(null);
@@ -31,9 +30,9 @@ function Reviews() {
     };
 
     return (
-        <div className='container reviews'>
-            <div className='flex gap-2 flex-col md:flex-row'>
-                <div className='w-[18%] shadow-xl bg-gray-light p-2 min-w-[240px] flex flex-col justify-center items-center'>
+        <div className='md:container px-2 md:px-none reviews'>
+            <div className='flex gap-2 flex-col items-center md:items-none md:flex-row'>
+                <div className='w-[100%] max-w-[450px] mb-8 md:mb-0 md:max-w-none md:w-[18%] shadow-xl bg-gray-light p-2 min-w-[240px] flex flex-col justify-center items-center'>
                     <b>
                         {t("excellent")}
                     </b>
@@ -47,7 +46,7 @@ function Reviews() {
                         {reviews.length} {t("reviews")}
                     </p>
                 </div>
-                <div className='flex gap-4 w-[80%]'>
+                <div className='flex gap-1 md:gap-4 w-[100%] md:w-[80%] max-w-[450px] md:max-w-none'>
                     <div className='prev flex flex-col justify-center'>
                         <button disabled={isBeginning} className={clsx({
                             'opacity-50': isBeginning

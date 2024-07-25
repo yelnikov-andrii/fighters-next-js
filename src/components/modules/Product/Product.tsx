@@ -61,7 +61,7 @@ function Product({ product }: Props) {
     }, [product]);
 
     return (
-        <div className="px-8 py-16">
+        <div className="px-8 pt-16 pb-20">
             <BreadCrumbs 
               product={product}
             />

@@ -8,7 +8,7 @@ function MarqueeItem({isPaused}: {isPaused: boolean}) {
     return ( 
             <div className='flex gap-4 justify-around items-center min-w-fit px-4'>
             <div
-                className={clsx("whitespace-nowrap marquee-item flex text-white text-4xl font-osvald gap-8 items-center", {
+                className={clsx("whitespace-nowrap marquee-item flex text-white text-3xl md:text-4xl font-osvald gap-8 items-center", {
                     'marquee-item marquee-item--paused': isPaused,
                     'marquee-item marquee-item--direct': true,
                 })}
