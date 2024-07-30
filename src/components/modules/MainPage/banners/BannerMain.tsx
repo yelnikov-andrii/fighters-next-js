@@ -6,7 +6,7 @@ import venumBannerSmall from '@/images/banner-main-sm.jpg';
 import { unstable_getImgProps as getImgProps } from 'next/image'
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import Button from '@/components/elements/Button';
+import LinkButton from '@/components/elements/LinkButton';
 
 function BannerMain() {
     const { props: { srcSet: small } } = getImgProps({ alt: "Venum banner", src: venumBannerSmall })
@@ -29,9 +29,9 @@ function BannerMain() {
                     <p className='text-white mb-4' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)' }}>
                         {t("latest_venum_collection")}
                     </p>
-                    <Button url={`/products?brands=Venum`}>
+                    <LinkButton url={`/products?brands=Venum`}>
                         {t("shop_all_venum")}
-                    </Button>
+                    </LinkButton>
                 </div>
             </div>
         </section>

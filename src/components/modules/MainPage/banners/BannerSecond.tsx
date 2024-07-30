@@ -1,4 +1,4 @@
-import Button from '@/components/elements/Button';
+import LinkButton from '@/components/elements/LinkButton';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import * as React from 'react';
@@ -23,12 +23,12 @@ function BannerSecond() {
                     {t("latest_rashguards")}
                 </p>
                 <div className='flex flex-col md:flex-row gap-4 md:gap-8 items-center mt-4'>
-                    <Button url={`/products?subsubcategory=21`}>
+                    <LinkButton url={`/products?subsubcategory=21`}>
                         {t("shop_fight_shorts")}
-                    </Button>
-                    <Button url="/products?subsubcategory=20">
+                    </LinkButton>
+                    <LinkButton url="/products?subsubcategory=20">
                         {t("shop_all_rashguards")}
-                    </Button>
+                    </LinkButton>
                 </div>
             </div>
         </section>

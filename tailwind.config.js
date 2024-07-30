@@ -24,7 +24,8 @@ module.exports = {
       'gray-dark': '#273444',
       'gray': '#e6e6e6',
       'gray-light': '#f5f5f5',
-      'border-color': 'rgba(0, 0, 0, 0.15)'
+      'border-color': 'rgba(0, 0, 0, 0.15)',
+      'input-border': 'rgba(0, 0, 0, 0.2)'
     },
     fontSize: {
       sm: '0.875rem',

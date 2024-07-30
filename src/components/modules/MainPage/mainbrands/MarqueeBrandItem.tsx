@@ -1,4 +1,4 @@
-import Button from '@/components/elements/Button';
+import LinkButton from '@/components/elements/LinkButton';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
@@ -19,12 +19,12 @@ function MarqueeBrandItem(props: { isPaused: boolean }) {
                 <h2 className='font-bold font-osvald text-3xl md:text-5xl uppercase hover:opacity-70 transition-opacity'>
                     {t("premium_brands")}
                 </h2>
-                <Button
+                <LinkButton
                     url="/brands"
                     style={{ border: '1px solid black', borderRadius: '4px', minWidth: '130px', display: 'flex', justifyContent: 'center' }}
                 >
                     {t('view_all_brands')}
-                </Button>
+                </LinkButton>
             </div>
         </div>
     );

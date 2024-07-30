@@ -1,5 +1,4 @@
-import { Privacy } from '@/components/privacy/Privacy'
-import { ReduxWrapper } from '@/components/reduxWrapper/Wrapper'
+import Privacy from '@/components/templates/privacy/Privacy'
 import React from 'react'
 
 export default function page() {

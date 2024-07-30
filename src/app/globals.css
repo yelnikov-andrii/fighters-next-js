@@ -38,6 +38,27 @@ a {
   z-index: 20;
 }
 
+.button-form {
+  @apply uppercase text-sm inline-block font-bold overflow-hidden relative;
+  z-index: 20;
+}
+
+.button-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: rgb(2, 211, 142);
+  transition: width 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.button-form:hover::before {
+  width: 100%;
+}
+
 .button::before {
   content: '';
   position: absolute;

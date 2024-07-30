@@ -96,7 +96,7 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
                 {
                     'visible relative': menuState.isMenuOpen && isMobile,
                     'hidden relative': !menuState.isMenuOpen && isMobile,
-                    'top-[-100px] absolute': !categoriesAreOpen && !isMobile,
+                    'top-[-200%] absolute': !categoriesAreOpen && !isMobile,
                 }
             )}
             onMouseEnter={() => {

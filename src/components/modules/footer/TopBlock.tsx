@@ -1,4 +1,4 @@
-import Button from '@/components/elements/Button';
+import LinkButton from '@/components/elements/LinkButton';
 import Logo from '@/components/elements/Logo';
 import { about, customerService, usefulLinks } from '@/data/footer';
 import Link from 'next/link';
@@ -14,9 +14,9 @@ function Topblock() {
                 <p className='max-w-[320px] my-4'>
                     Fighters is the premier retailer of boxing, martial arts and combat sports products. Est 2024.
                 </p>
-                <Button url='/about'>
+                <LinkButton url='/about'>
                     About us
-                </Button>
+                </LinkButton>
                 <nav className='my-4'>
                     <ul className='flex gap-8 items-center'>
                         <li>

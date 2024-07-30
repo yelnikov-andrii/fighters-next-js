@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BrandI } from "@/types/main";
 import Image from 'next/image';
 import { baseUrl } from '@/data/url';
-import Button from '@/components/elements/Button';
+import LinkButton from '@/components/elements/LinkButton';
 import { useTranslations } from 'next-intl';
 import NavBrands from './NavBrands';
 
@@ -28,9 +28,9 @@ function Brands({ brands }: { brands: BrandI[] }) {
                     <NavBrands
                         brand={brand}
                     />
-                    <Button url={`/products?brands=${brand.name}`} style={{ border: '1px solid black', borderRadius: '4px', minWidth: '130px', display: 'flex', justifyContent: 'center' }}>
+                    <LinkButton url={`/products?brands=${brand.name}`} style={{ border: '1px solid black', borderRadius: '4px', minWidth: '130px', display: 'flex', justifyContent: 'center' }}>
                         {`${t('shop_all')} ${brand.name}`}
-                    </Button>
+                    </LinkButton>
                 </div>
             ))}
         </div>

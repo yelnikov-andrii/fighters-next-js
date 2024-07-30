@@ -1,4 +1,4 @@
-import { ReduxWrapper } from '@/components/reduxWrapper/Wrapper'
+import { ReduxWrapper } from '@/app/Wrapper'
 import { Terms } from '@/components/terms-of-service/Terms'
 import React from 'react'
 

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import * as React from 'react';
-import Button from '../Button';
+import LinkButton from '../LinkButton';
 
 interface Props {
     isPaused: boolean;
@@ -18,16 +18,16 @@ function MarqueeItem({ isPaused }: Props) {
                 'marquee-item marquee-item--direct': true,
             })}
         >
-            <Link className="sm:text-xl md:text-4xl hover:opacity-70" href="/sign-up">
+            <Link className="sm:text-xl md:text-3xl hover:opacity-70" href="/sign-up">
                 {t("sign_up_and_get_free")}
             </Link>
-            <Button
+            <LinkButton
                 url="/sign-up"
-                style={{ borderRadius: '2px', minWidth: '130px', height: '30px', padding: '5px 0', display: 'flex', justifyContent: 'center', color: 'white', background: 'black' }}
+                style={{ borderRadius: '2px', minWidth: '130px', height: '30px', padding: '5px 10px', display: 'flex', justifyContent: 'center', color: 'white', background: 'black' }}
                 isDark={true}
             >
                 {t('get_ten_off')}
-            </Button>
+            </LinkButton>
         </div>
     );
 }

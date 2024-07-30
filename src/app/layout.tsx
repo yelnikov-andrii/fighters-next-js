@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Oswald, Open_Sans } from 'next/font/google';
 import './globals.css'
-import { ReduxWrapper } from '@/components/reduxWrapper/Wrapper';
+import { ReduxWrapper } from '@/app/Wrapper';
 import MainLayout from '@/components/layouts/Layout';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReduxWrapper } from '../reduxWrapper/Wrapper';
+import { ReduxWrapper } from '../../app/Wrapper';
 
 interface Props {
   children: React.ReactNode;

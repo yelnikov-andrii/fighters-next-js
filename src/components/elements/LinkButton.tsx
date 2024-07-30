@@ -2,7 +2,7 @@ import * as React from 'react';
 import Link from "next/link";
 import clsx from 'clsx';
 
-function Button({ children, url, style, isDark }: { children: React.ReactNode, url: string, style?: any, isDark?: boolean }) {
+function LinkButton({ children, url, style, isDark }: { children: React.ReactNode, url: string, style?: any, isDark?: boolean }) {
   return (
     <Link href={url} className={clsx({
       'button button-dark': isDark,
@@ -13,4 +13,4 @@ function Button({ children, url, style, isDark }: { children: React.ReactNode, u
   );
 }
 
-export default Button;
+export default LinkButton;

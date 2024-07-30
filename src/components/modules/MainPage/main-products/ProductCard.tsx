@@ -1,4 +1,4 @@
-import Button from "@/components/elements/Button";
+import LinkButton from "@/components/elements/LinkButton";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,9 +26,9 @@ function ProductCard(props: { product: any }) {
                         {product.description}
                     </p>
                 )}
-                <Button url={product.href} style={{ border: '1px solid black', borderRadius: '4px', minWidth: '130px', display: 'flex', justifyContent: 'center' }}>
+                <LinkButton url={product.href} style={{ border: '1px solid black', borderRadius: '4px', minWidth: '130px', display: 'flex', justifyContent: 'center' }}>
                     {t("shop_now")}
-                </Button>
+                </LinkButton>
             </div>
         </div>
     );

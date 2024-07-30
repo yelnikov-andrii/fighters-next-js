@@ -34,7 +34,7 @@ const HeaderMain: FunctionComponent<HeaderMainProps> = () => {
         <header className={clsx(
             'py-2 md:py-4 md:pb-0 bg-white top-0 z-40 shadow-lg',
             {
-                'static': isMenuOpen,
+                'sticky sm:sticky md:static': isMenuOpen,
                 'sticky': !isMenuOpen,
                 'md:pb-2': !categoriesAreOpen
             }
