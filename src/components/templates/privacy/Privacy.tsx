@@ -13,7 +13,7 @@ function Privacy() {
                     <p className='max-w-[400px] w-full mb-4 mx-auto'>
                         {t('keep_your_data')}
                     </p>
-                    <ol className='p-0 mx-auto font-bold max-w-[500px] flex flex-col gap-4'>
+                    <ol className='text-xl list-decimal font-osvald mx-auto font-bold max-w-[500px] flex flex-col gap-8'>
                         <li>
                             <b className='text-left mb-2 block'>{t('for_your_benefit')}</b>
                             <span className='block text-sm font-normal text-left'>{t('we_use_to_improve')}</span>
