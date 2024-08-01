@@ -9,6 +9,7 @@ import { ProductInCart } from './ProductInCart';
 import Image from 'next/image';
 import clsx from 'clsx';
 import { Buttons } from './Buttons';
+import EmptyCart from '@/components/elements/empty-cart/EmptyCart';
 
 export const CartSide = () => {
   const { cartIsOpen, productsInCart } = useSelector((state: RootState) => state.cart);
@@ -64,14 +65,12 @@ export const CartSide = () => {
               </div>
             </div>
           ) : (
-            <div className="flex flex-col gap-2">
-              <div className="m-0 font-bold text-2xl text-center justify-center flex items-center">
-                {language === 'EN' ? 'Cart is empty' : 'Кошик порожній'}
-              </div>
-            </div>
+            <EmptyCart />
           )}
         </React.Fragment>
-        <Buttons />
+        {productsInCart && productsInCart.length > 0 && (
+          <Buttons />
+        )}
       </div>
     </div>
   );

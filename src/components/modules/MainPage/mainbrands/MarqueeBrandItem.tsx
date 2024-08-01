@@ -1,4 +1,4 @@
-import LinkButton from '@/components/elements/LinkButton';
+import LinkButton from '@/components/elements/link-button/LinkButton';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';

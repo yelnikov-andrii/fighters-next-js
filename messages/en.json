@@ -112,6 +112,12 @@
         "contact_description": "Many common questions are answered within our Help & FAQ Section. If you still need assistance, feel free to reach out to us. LIVE CHAT. The best way to contact us is via our live chat feature on the bottom right hand corner of the page. EMAIL. Alternatively, please fill in the contact form below and one of our team will get back to you within 48hours. Please note emails are only responded to within our opening times, Monday: 10am - 4pm. Tuesday - Friday 9.30am - 4.30pm.",
         "full_name": "Full name",
         "write_message": "Write your message",
-        "send": "Send"
+        "send": "Send",
+        "your_cart": "Your cart",
+        "cart_is_empty": "Cart is empty",
+        "go_shoping": "Go to shoping",
+        "order_summary": "ORDER SUMMARY",
+        "tax_included": "Tax included, shipping and discounts calculated at checkout.",
+        "total": "Total"
     }
 }

@@ -11,7 +11,7 @@ export const Buttons = () => {
   return (
     <div className="mt-4 flex flex-col gap-4 items-center">
       <Link
-        className="h-12 cursor-pointer max-w-[140px] min-w-[120px] w-full text-white border-none outline-none px-2 py-4 flex rounded-sm justify-center items-center"
+        className="h-12 cursor-pointer max-w-[140px] min-w-[120px] w-full border-none outline-none px-2 py-4 flex rounded-sm justify-center items-center text-black"
         href="/cart"
         onClick={() => {
           dispatch(closeCart());
@@ -20,7 +20,7 @@ export const Buttons = () => {
         {language === 'EN' ? 'View cart' : 'До кошику'}
       </Link>
       <Link
-        className="h-12 cursor-pointer max-w-[140px] min-w-[120px] w-full text-white border-none outline-none px-2 py-4 flex rounded-sm justify-center items-center"
+        className="h-12 cursor-pointer max-w-[140px] min-w-[120px] w-full text-black border-none outline-none px-2 py-4 flex rounded-sm justify-center items-center"
         href="/checkout"
         onClick={() => {
           dispatch(closeCart());

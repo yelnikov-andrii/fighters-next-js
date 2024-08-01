@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BrandI } from "@/types/main";
 import Image from 'next/image';
 import { baseUrl } from '@/data/url';
-import LinkButton from '@/components/elements/LinkButton';
+import LinkButton from '@/components/elements/link-button/LinkButton';
 import { useTranslations } from 'next-intl';
 import NavBrands from './NavBrands';
 

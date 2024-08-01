@@ -5,6 +5,8 @@ import Nav from "./components/Nav";
 import Categories from "./components/Categories";
 // clsx
 import clsx from "clsx";
+import { fetchCurrencies } from "@/redux/action-creator/Currencies/fetchCurrencies";
+import { useDispatch } from "react-redux";
 
 interface HeaderMainProps {
 
@@ -16,6 +18,8 @@ const HeaderMain: FunctionComponent<HeaderMainProps> = () => {
     const [position, setPosition] = useState(0);
 
     const headerRef: MutableRefObject<HTMLHeadingElement | null> = useRef(null);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,6 +33,10 @@ const HeaderMain: FunctionComponent<HeaderMainProps> = () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, [position]);
+
+    useEffect(() => {
+        dispatch(fetchCurrencies());
+    }, []);
 
     return (
         <header className={clsx(

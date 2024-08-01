@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import Header from "../modules/header/Header";
 import Footer from "../modules/footer/Footer";
 import Features from "../elements/features-slider/Features";
-import BackBlock from "../elements/BackBlock";
+import BackBlock from "../elements/back/BackBlock";
 import MarqueeSignUp from "../elements/marqueeSignUp/MarqueeSignUp";
 
 interface MainLayoutProps {

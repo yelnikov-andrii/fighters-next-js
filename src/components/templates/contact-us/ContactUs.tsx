@@ -1,5 +1,5 @@
 'use client'
-import FormButton from '@/components/elements/FormButton';
+import FormButton from '@/components/elements/form-button/FormButton';
 import FormInput from '@/components/elements/input/FormInput';
 import { useTranslations } from 'next-intl';
 import * as React from 'react';

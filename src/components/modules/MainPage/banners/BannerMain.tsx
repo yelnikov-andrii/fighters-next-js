@@ -6,7 +6,7 @@ import venumBannerSmall from '@/images/banner-main-sm.jpg';
 import { unstable_getImgProps as getImgProps } from 'next/image'
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import LinkButton from '@/components/elements/LinkButton';
+import LinkButton from '@/components/elements/link-button/LinkButton';
 
 function BannerMain() {
     const { props: { srcSet: small } } = getImgProps({ alt: "Venum banner", src: venumBannerSmall })

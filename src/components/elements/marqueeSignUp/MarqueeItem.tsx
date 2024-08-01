@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import * as React from 'react';
-import LinkButton from '../LinkButton';
+import LinkButton from '../link-button/LinkButton';
 
 interface Props {
     isPaused: boolean;

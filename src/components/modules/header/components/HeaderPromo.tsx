@@ -13,7 +13,7 @@ import { RootState } from "@/redux/store";
 import { changeLang } from "@/redux/slices/langSlice";
 import { changeCurrency } from "@/redux/slices/currencySlice";
 //components and data
-import MySelect from "@/components/elements/MySelect";
+import MySelect from "@/components/elements/select/MySelect";
 import { currencies, languages } from '@/data/header';
 // cookies
 import { setLanguageCookie, getLanguageCookie } from "@/utils/cookies";

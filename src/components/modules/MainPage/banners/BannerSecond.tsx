@@ -1,4 +1,4 @@
-import LinkButton from '@/components/elements/LinkButton';
+import LinkButton from '@/components/elements/link-button/LinkButton';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import * as React from 'react';

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useTranslations } from 'next-intl';
 import FormInput from '@/components/elements/input/FormInput';
 import { useState } from 'react';
-import FormButton from '@/components/elements/FormButton';
+import FormButton from '@/components/elements/form-button/FormButton';
 import Link from 'next/link';
 
 function Login() {

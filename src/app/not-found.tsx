@@ -1,6 +1,6 @@
 'use client'
-import { Error } from '@/components/error/Error';
-import { ErrorBlock } from '@/components/error/ErrorBlock';
+import { Error } from '@/components/elements/error/Error';
+import { ErrorBlock } from '@/components/elements/error/ErrorBlock';
 import React from 'react'
 
 export default function error() {

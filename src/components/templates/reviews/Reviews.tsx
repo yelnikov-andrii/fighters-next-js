@@ -1,4 +1,4 @@
-import BasicRating from '@/components/elements/BasicRating';
+import BasicRating from '@/components/elements/rating/BasicRating';
 import { averageRating, reviews } from '@/data/main';
 import { Avatar } from '@mui/material';
 import { useTranslations } from 'next-intl';

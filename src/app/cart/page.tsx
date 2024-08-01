@@ -1,5 +1,4 @@
-import { Cart } from '@/components/cart/Cart'
-import { ReduxWrapper } from '@/app/Wrapper'
+import Cart from '@/components/templates/cart/Cart'
 import React from 'react'
 
 export default function page() {

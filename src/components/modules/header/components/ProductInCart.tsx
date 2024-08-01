@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteProduct } from '@/redux/slices/cartSlice';
 import { RootState } from '@/redux/store';
 import { ProductAdded } from '@/types/products';
-import { CounterBlock } from './CounterBlock';
+import { CounterBlock } from '@/components/elements/counter-block/CounterBlock';
 
 interface Props {
   product: ProductAdded;

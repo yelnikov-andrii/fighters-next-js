@@ -1,5 +1,5 @@
-import LinkButton from '@/components/elements/LinkButton';
-import Logo from '@/components/elements/Logo';
+import LinkButton from '@/components/elements/link-button/LinkButton';
+import Logo from '@/components/elements/logo/Logo';
 import { about, customerService, usefulLinks } from '@/data/footer';
 import Link from 'next/link';
 import * as React from 'react';

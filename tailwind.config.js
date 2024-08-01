@@ -17,7 +17,7 @@ module.exports = {
     colors: {
       'black': '#2e2e2e',
       'silver': '#777',
-      'red': 'rgb(174 0 0)',
+      'red': 'rgb(180 12 28)',
       'white': '#fff',
       'green': '#02e69b',
       'yellow': '#ffc82c',
@@ -51,6 +51,8 @@ module.exports = {
         'calc-33-16': 'calc((100% - 32px) / 3)',
         'calc-25-16': 'calc((100% - 32px) / 4)', 
         'calc-66-16': 'calc(((100% - 32px) / 3) * 2)',
+        'calc-60-16': 'calc(((100% - 32px) / 5) * 3)',
+        'calc-40-16': 'calc(((100% - 32px) / 5) * 2)',
         'calc-75-16': 'calc(((100% - 32px) / 4) * 3)',
       },
       borderRadius: {

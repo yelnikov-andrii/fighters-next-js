@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { reviews, averageRating } from '@/data/main';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import BasicRating from '@/components/elements/BasicRating';
+import BasicRating from '@/components/elements/rating/BasicRating';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';

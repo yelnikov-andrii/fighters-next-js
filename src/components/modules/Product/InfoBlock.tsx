@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Variants } from './Variants';
 import Quantity from './Quantity';
-import MyDropdown from '@/components/elements/MyDropdown';
+import MyDropdown from '@/components/elements/dropdown/MyDropdown';
 import { addProductIntoCart } from '@/helpers/addProductIntoCart';
 import { addProductToCart } from '@/redux/slices/cartSlice';
 
