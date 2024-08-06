@@ -20,12 +20,15 @@ module.exports = {
       'red': 'rgb(180 12 28)',
       'white': '#fff',
       'green': '#02e69b',
+      'green-indigo': "#377569",
       'yellow': '#ffc82c',
       'gray-dark': '#273444',
       'gray': '#e6e6e6',
       'gray-light': '#f5f5f5',
       'border-color': 'rgba(0, 0, 0, 0.15)',
-      'input-border': 'rgba(0, 0, 0, 0.2)'
+      'input-border': 'rgba(0, 0, 0, 0.2)',
+      'gray-second': "#6A6A6A",
+      'black-second': "#161616"
     },
     fontSize: {
       sm: '0.875rem',

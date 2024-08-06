@@ -1,10 +1,10 @@
-import Button from '@/components/elements/Button';
 import { baseUrl } from '@/data/url';
 import { BrandI } from '@/types/main';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import * as React from 'react';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import LinkButton from '@/components/elements/link-button/LinkButton';
 
 function Brands({ brands }: { brands: BrandI[] }) {
     const t = useTranslations('common');
@@ -28,12 +28,12 @@ function Brands({ brands }: { brands: BrandI[] }) {
                             <h2 className='text-xl font-bold font-osvald uppercase mb-4'>
                                 {brand.name}
                             </h2>
-                            <Button
+                            <LinkButton
                                 url={`/products?brands=${brand.name}`}
                                 style={{ borderRadius: '50%', border: '1px solid black' }}
                             >
                                 <ArrowForwardIcon />
-                            </Button>
+                            </LinkButton>
                         </div>
                     ))}
                 </div>

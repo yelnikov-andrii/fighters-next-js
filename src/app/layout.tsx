@@ -27,9 +27,7 @@ export default async function RootLayout({
       <body className={opensans.className}>
         <ReduxWrapper>
           <NextIntlClientProvider messages={messages}>
-            <MainLayout>
               {children}
-            </MainLayout>
           </NextIntlClientProvider>
         </ReduxWrapper>
 

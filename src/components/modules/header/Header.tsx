@@ -6,20 +6,20 @@ import HeaderMain from "./components/HeaderMain/HeaderMain";
 import { CartSide } from "./components/CartSide";
 
 interface HeaderProps {
-    
+
 }
- 
+
 const Header: FunctionComponent<HeaderProps> = () => {
     return (
         <>
-        <header className="visible">
-            <Sales />
-            <HeaderPromo />
-        </header>
-        <HeaderMain />
-        <CartSide />
+            <header className="visible">
+                <Sales />
+                <HeaderPromo />
+            </header>
+            <HeaderMain />
+            <CartSide />
         </>
-     );
+    );
 }
- 
+
 export default Header;

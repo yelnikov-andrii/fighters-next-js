@@ -1,10 +1,13 @@
 import LinkButton from '@/components/elements/link-button/LinkButton';
 import Logo from '@/components/elements/logo/Logo';
 import { about, customerService, usefulLinks } from '@/data/footer';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import * as React from 'react';
 
 function Topblock() {
+    const t = useTranslations('common');
+
     return (
         <div className='flex flex-col md:flex-row gap-2 justify-between'>
             <div>
@@ -12,10 +15,10 @@ function Topblock() {
                     <Logo />
                 </div>
                 <p className='max-w-[320px] my-4'>
-                    Fighters is the premier retailer of boxing, martial arts and combat sports products. Est 2024.
+                    {t('figters_footer_description')}
                 </p>
                 <LinkButton url='/about'>
-                    About us
+                    {t('about')}
                 </LinkButton>
                 <nav className='my-4'>
                     <ul className='flex gap-8 items-center'>
@@ -39,13 +42,13 @@ function Topblock() {
             </div>
             <nav>
                 <b className='mb-4 block'>
-                    Customer service
+                    {t('customer_service')}
                 </b>
                 <ul className='flex flex-col gap-2'>
                     {customerService.map(item => (
                         <li key={item.name}>
                             <Link href={item.url} className='hover:underline'>
-                                {item.name}
+                                {t(item.name)}
                             </Link>
                         </li>
                     ))}
@@ -53,13 +56,13 @@ function Topblock() {
             </nav>
             <nav>
                 <b className='mb-4 block'>
-                    About
+                    {t('about')}
                 </b>
                 <ul className='flex flex-col gap-2'>
                     {about.map(item => (
                         <li key={item.name}>
                             <Link href={item.url} className='hover:underline'>
-                                {item.name}
+                                {t(item.name)}
                             </Link>
                         </li>
                     ))}
@@ -67,13 +70,13 @@ function Topblock() {
             </nav>
             <nav>
                 <b className='mb-4 block'>
-                    Useful links
+                    {t('useful_links')}
                 </b>
                 <ul className='flex flex-col gap-2'>
                     {usefulLinks.map(item => (
                         <li key={item.name}>
                             <Link href={item.url} className='hover:underline'>
-                                {item.name}
+                                {t(item.name)}
                             </Link>
                         </li>
                     ))}

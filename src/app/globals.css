@@ -7,6 +7,7 @@
 :root {
   --font-osvald: 'Oswald', sans-serif;
   --color-green: theme('colors.green');
+  --color-black-second: theme('colors.black-second')
 }
 
 * {
@@ -143,4 +144,8 @@ a {
 
 .move-circle-top {
   transform: translateX(6px);
+}
+
+.footer-link:hover svg {
+  fill: var(--color-black-second);
 }

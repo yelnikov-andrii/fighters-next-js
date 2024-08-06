@@ -93,7 +93,7 @@
         "we_will_send": "We will send you an email to reset your password.",
         "submit": "Submit",
         "cancel": "Cancel",
-        "privacy_policy": "PRIVACY POLICY",
+        "privacy_policy": "Privacy policy",
         "keep_your_data": "Fighters shop are committed to keeping your data safe. For your peace of mind, here is how we will use it:",
         "for_your_benefit": "It's for your benefit",
         "we_use_to_improve": "We will only use your data to improve your experience with us",
@@ -118,6 +118,18 @@
         "go_shoping": "Go to shoping",
         "order_summary": "ORDER SUMMARY",
         "tax_included": "Tax included, shipping and discounts calculated at checkout.",
-        "total": "Total"
+        "total": "Total",
+        "figters_footer_description": "Fighters is the premier retailer of boxing, martial arts and combat sports products. Est 2024.",
+        "customer_service": "Customer service",
+        "delivery_and_return": "Delivery and return",
+        "brands": "Brands",
+        "size_charts": "Size charts",
+        "cookie_policy": "Cookie policy",
+        "useful_links": "Useful links",
+        "return_to_shop": "Return to shop",
+        "get_more_info": "Get more information",
+        "how_to_help": "How can we help?",
+        "all_articles": "All articles",
+        "home": "Home"
     }
 }

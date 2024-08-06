@@ -1,57 +1,57 @@
 
 export const customerService = [
+  // {
+  //   url: '/return',
+  //   name: 'Start a return'
+  // },
   {
-    url: '/return',
-    name: 'Start a return'
-  },
-  {
-    url: '/help',
-    name: 'Help and FAQ'
+    url: '/help-and-faq',
+    name: 'help_and_faq'
   },
   {
     url: '/delivery',
-    name: 'Delivery and return'
+    name: 'delivery_and_return'
   },
   {
     url: '/contact-us',
-    name: 'Contact us'
+    name: 'contact_us'
   },
   {
     url: '/terms-of-service',
-    name: 'Terms and conditions'
+    name: 'terms_of_service'
   }
 ];
 
 export const about = [
   {
     url: '/about',
-    name: 'About'
+    name: 'about'
   },
   {
     url: '/reviews',
-    name: "Customer reviews"
+    name: "customer_reviews"
   },
   {
     url: '/brands',
-    name: 'Brands'
+    name: 'brands'
   }
 ];
 
 export const usefulLinks = [
   {
     url: '/accessibility',
-    name: 'Accessibility'
+    name: 'accessibility'
   },
   {
     url: '/privacy-policy',
-    name: 'Privacy Policy'
+    name: 'privacy_policy'
   },
   {
     url: '/sizes',
-    name: 'Size charts'
+    name: 'size_charts'
   },
   {
     url: '/cookie-policy',
-    name: 'Cookie policy'
+    name: 'cookie_policy'
   }
-]
+];
