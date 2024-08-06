@@ -1,7 +1,7 @@
 export const allArticles = [
     {
         id: 1,
-        link: 'help-and-faq/articles/orders',
+        link: '/help-and-faq/articles/orders',
         name_en: 'Orders',
         name_ukr: 'Замовлення',
         description_en: 'Express Delivery orders must be placed before 12pm Mon-Friday to deliver the next working day.',
@@ -39,7 +39,7 @@ export const allArticles = [
     },
     {
         id: 2,
-        link: 'help-and-faq/articles/delivery',
+        link: '/help-and-faq/articles/delivery',
         name_en: 'Delivery',
         name_ukr: 'Доставка',
         description_en: 'Free Delivery is available on orders over $99. Excluding Heavy/Oversized items.',
@@ -63,7 +63,7 @@ export const allArticles = [
     },
     {
         id: 3,
-        link: 'help-and-faq/articles/about-us',
+        link: '/help-and-faq/articles/about-us',
         name_en: 'About us',
         name_ukr: 'Про нас',
         description_en: 'We are the Highest Rated Combat Sports Store with 5000+ Reviews!',
@@ -115,7 +115,7 @@ export const allArticles = [
     },
     {
         id: 4,
-        link: 'help-and-faq/articles/technical-support',
+        link: '/help-and-faq/articles/technical-support',
         name_en: 'Technical Support',
         name_ukr: 'Технічна підтримка',
         description_en: '',
@@ -139,7 +139,7 @@ export const allArticles = [
     },
     {
         id: 5,
-        link: 'help-and-faq/articles/return-and-refund',
+        link: '/help-and-faq/articles/return-and-refund',
         name_en: 'Refunds & Returns',
         name_ukr: 'Відшкодування та повернення',
         description_en: '',
@@ -177,7 +177,7 @@ export const allArticles = [
     },
     {
         id: 6,
-        link: 'help-and-faq/articles/payment-discount-codes',
+        link: '/help-and-faq/articles/payment-discount-codes',
         name_en: 'Payment, Discount Codes & Promotions',
         name_ukr: 'Оплата, коди знижок і акції',
         description_en: '',

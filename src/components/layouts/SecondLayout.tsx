@@ -8,7 +8,7 @@ function SecondLayout({ children }: { children: React.ReactNode }) {
 
     return (
         <>
-            <header className="">
+            <header className="py-4">
                 <nav>
                     <div className="px-2 container flex justify-between items-center flex-wrap gap-4">
                         <div className="grow-1">
