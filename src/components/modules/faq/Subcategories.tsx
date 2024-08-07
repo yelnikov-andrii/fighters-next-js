@@ -11,7 +11,7 @@ interface Props {
 function Subcategories(props: Props) {
     const { articles, article_name } = props;
     return (
-        <div className='flex flex-wrap sm:gap-[8px] md:gap-[16px]'>
+        <div className='flex flex-wrap gap-[8px] md:gap-[16px]'>
             {articles.map(article => (
                 <ArticleLink
                     article={article}
