@@ -97,7 +97,7 @@ function SearchResults(props: Props) {
 
     return (
         <div
-            className={clsx(`absolute bottom-0 left-0 right-0 top-[${height}px] min-h-[500px] bg-white z-50 flex flex-col gap-1 p-4 overflow-y-auto`, {
+            className={clsx(`absolute bottom-0 left-0 right-0 top-[40px] min-h-[500px] bg-white z-50 flex flex-col gap-1 p-4 overflow-y-auto`, {
                 'min-h-0': !query
             })}
             ref={searchResRef}
