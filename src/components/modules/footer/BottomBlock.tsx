@@ -3,7 +3,7 @@ import CopyrightIcon from '@mui/icons-material/Copyright';
 
 function BottomBlock() {
     return (
-        <div className='flex justify-between items-center'>
+        <div className='flex flex-col sm:flex-row gap-2 sm:gap-1 justify-between items-center'>
             <div className='flex gap-2 items-center'>
                 <CopyrightIcon
                     fontSize='small'

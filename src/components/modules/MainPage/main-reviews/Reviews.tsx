@@ -30,8 +30,8 @@ function Reviews() {
     };
 
     return (
-        <div className='md:container px-2 md:px-none reviews'>
-            <div className='flex gap-2 flex-col items-center md:items-none md:flex-row'>
+        <div className='px-2 md:px-none reviews'>
+            <div className='flex gap-2 flex-col items-center md:items-none md:justify-between md:flex-row'>
                 <div className='w-[100%] max-w-[450px] mb-8 md:mb-0 md:max-w-none md:w-[18%] shadow-xl bg-gray-light p-2 min-w-[240px] flex flex-col justify-center items-center'>
                     <b>
                         {t("excellent")}
@@ -46,7 +46,7 @@ function Reviews() {
                         {reviews.length} {t("reviews")}
                     </p>
                 </div>
-                <div className='flex gap-1 md:gap-4 w-[100%] md:w-[80%] max-w-[450px] md:max-w-none'>
+                <div className='flex gap-1 md:gap-2 w-[100%] md:w-[70%] lg:w-[75%] max-w-[450px] md:max-w-none'>
                     <div className='prev flex flex-col justify-center'>
                         <button disabled={isBeginning} className={clsx({
                             'opacity-50': isBeginning

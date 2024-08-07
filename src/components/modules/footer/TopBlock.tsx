@@ -44,7 +44,7 @@ function Topblock() {
                 <b className='mb-4 block'>
                     {t('customer_service')}
                 </b>
-                <ul className='flex flex-col gap-2'>
+                <ul className='flex flex-col gap-2 flex-wrap'>
                     {customerService.map(item => (
                         <li key={item.name}>
                             <Link href={item.url} className='hover:underline'>
@@ -58,7 +58,7 @@ function Topblock() {
                 <b className='mb-4 block'>
                     {t('about')}
                 </b>
-                <ul className='flex flex-col gap-2'>
+                <ul className='flex flex-col gap-2 flex-wrap'>
                     {about.map(item => (
                         <li key={item.name}>
                             <Link href={item.url} className='hover:underline'>
@@ -72,7 +72,7 @@ function Topblock() {
                 <b className='mb-4 block'>
                     {t('useful_links')}
                 </b>
-                <ul className='flex flex-col gap-2'>
+                <ul className='flex flex-col gap-2 flex-wrap'>
                     {usefulLinks.map(item => (
                         <li key={item.name}>
                             <Link href={item.url} className='hover:underline'>

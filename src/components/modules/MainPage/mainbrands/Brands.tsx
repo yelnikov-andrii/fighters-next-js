@@ -10,7 +10,7 @@ function Brands({ brands }: { brands: BrandI[] }) {
     const t = useTranslations('common');
 
     return (
-        <div className='flex flex-col sm:flex-row container gap-8 flex-wrap justify-center md:justify-between xl:justify-between'>
+        <div className='flex flex-col sm:flex-row container gap-16 md:gap-8 flex-wrap justify-center items-center sm:items-center md:items-stetch sm:justify-center md:justify-between xl:justify-between'>
             {brands.slice(0, 4).map(brand => (
                 <div className='w-[100%] md:w-[45%] lg:w-[25%] xl:w-[20%] flex flex-col justify-between min-w-[230px] max-w-[320px]'>
                         <Image

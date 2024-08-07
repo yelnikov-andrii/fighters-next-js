@@ -33,7 +33,7 @@ export const CartSide = () => {
       <div
         onClick={(e) => e.stopPropagation()}
         className={clsx({
-          'bg-white block w-[50%] max-w-[700px] h-screen fixed top-0 left-auto bottom-0 right-0 transition-all duration-500 py-4 px-2': true,
+          'bg-white block w-[90%] md-w-[50%] max-w-[700px] h-screen fixed top-0 left-auto bottom-0 right-0 transition-all duration-500 py-4 px-2': true,
           'right-[-100%]': !cartIsOpen
         })}
       >

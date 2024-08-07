@@ -1,4 +1,4 @@
-import { Dispatch, FunctionComponent, SetStateAction, useEffect, useMemo, useState } from "react";
+import { Dispatch, FunctionComponent, SetStateAction, useEffect, useMemo, useRef, useState } from "react";
 // clsx
 import clsx from "clsx";
 // translation
@@ -10,6 +10,8 @@ import { openCart } from "@/redux/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { ProductAdded } from "@/types/products";
+import SearchResults from "./SearchResults";
+import { useInput } from "@/hooks/useInput";
 
 
 interface NavProps {
@@ -19,12 +21,15 @@ interface NavProps {
 const Nav: FunctionComponent<NavProps> = ({ menuState }) => {
   const [query, setQuery] = useState('');
   const [placeholder, setPlaceholder] = useState('');
-
+  const { language } = useSelector((state: RootState) => state.language);
+  const [isVisible, setIsVisible] = useState(true);
   const t = useTranslations('common');
 
   const phrases = [t("searching_boxing_gloves"), t("searching_gi")];
   const [indexes, setIndexes] = useState({ index: 0, currentIndex: 0 });
   const { productsInCart } = useSelector((state: RootState) => state.cart);
+
+  const appliedInput = useInput(query);
 
   const dispatch = useDispatch();
 
@@ -50,6 +55,8 @@ const Nav: FunctionComponent<NavProps> = ({ menuState }) => {
     return productsInCart?.reduce((init: number, product: ProductAdded) => init + product.quantity, 0) || 0;
   }, [productsInCart]);
 
+  const inputRef = useRef(null);
+
   return (
     <nav>
       <div className="px-2 container flex justify-between items-center flex-wrap gap-4">
@@ -67,6 +74,21 @@ const Nav: FunctionComponent<NavProps> = ({ menuState }) => {
           <input
             className="rounded-md ps-16 bg-gray full-size absolute left-0 right-0 top-0 bottom-0"
             placeholder={placeholder}
+            ref={inputRef}
+            value={query}
+            onChange={(e)=> {
+              setQuery(e.target.value)
+            }}
+            onClick={(e) => {
+              setIsVisible(true);
+            }}
+          />
+          <SearchResults 
+            query={appliedInput}
+            language={language}
+            inputRef={inputRef}
+            isVisible={isVisible}
+            setIsVisible={setIsVisible}
           />
         </div>
         <div className="md:order-2 flex pr-2 gap-4 grow-[1] justify-end items-center" style={{ flexShrink: 1, flexBasis: 'auto' }}>
