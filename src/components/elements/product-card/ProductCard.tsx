@@ -46,7 +46,7 @@ function ProductCard({ product, style }: { product: ProductInt, style?: any }) {
 
     return (
         <div 
-          className="flex flex-col gap-8 justify-between min-w-[310px] w-[30%] max-w-[360px] min-h-[360px]" 
+          className="flex flex-col gap-8 justify-between min-w-[310px] w-[30%] max-w-[360px] min-h-[360px] px-2 md:px-4"
           onMouseEnter={handleMouseEnter} 
           onMouseLeave={handleMouseLeave}
           style={style}
