@@ -23,10 +23,10 @@ function BannerSecond() {
                     {t("latest_rashguards")}
                 </p>
                 <div className='flex flex-col md:flex-row gap-4 md:gap-8 items-center mt-4'>
-                    <LinkButton url={`/products?subsubcategory=21`}>
+                    <LinkButton url={`/products?subsubcategory=NO-GI-SHORTS`}>
                         {t("shop_fight_shorts")}
                     </LinkButton>
-                    <LinkButton url="/products?subsubcategory=20">
+                    <LinkButton url="/products?subsubcategory=RASH-GUARDS">
                         {t("shop_all_rashguards")}
                     </LinkButton>
                 </div>

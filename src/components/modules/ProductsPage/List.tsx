@@ -4,9 +4,8 @@ import { RootState } from '@/redux/store';
 import { ProductInt } from '@/types/products';
 import * as React from 'react';
 import Pagination from './Pagination';
-import { useState } from 'react';
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Filter from './Filter';
 
 function List({ data }: { data: any }) {
@@ -21,12 +20,13 @@ function List({ data }: { data: any }) {
                     </div>
                 )}
                 <div className={clsx('flex flex-wrap', {
-                    'w-calc-50-4 md:w-calc-50-8 lg:w-calc-66-16 xl:w-calc-75-16': filterIsOpen
+                    'w-calc-50-4 md:w-calc-50-8 lg:w-calc-66-16 xl:w-calc-75-16': filterIsOpen,
+                    'w-full': !filterIsOpen
                 })}>
                     {(data?.data?.rows?.length > 0) ? data?.data?.rows.map((product: ProductInt) => (
                         <div className={clsx({
                             'w-[100%] md:w-[100%] lg:w-[50%] xl:w-[33%]': filterIsOpen,
-                            'w-[50%] md:w-[50%] lg:w-[33%] xl:w-[25%]': !filterIsOpen
+                            'w-[100%] md:w-[50%] lg:w-[33%] xl:w-[25%]': !filterIsOpen
                         })} key={product.id}>
                             <ProductCard
                                 product={product}

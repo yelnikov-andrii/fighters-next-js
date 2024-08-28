@@ -11,17 +11,17 @@ function NavBrands({ brand }: { brand: BrandI }) {
             {brand.name === 'Venum' && (
                 <ul className='flex flex-col gap-2'>
                     <li>
-                        <Link href="/products?subcategory=1&brands=Venum" className='hover:underline'>
+                        <Link href="/products?subcategory=Gloves&brands=Venum" className='hover:underline'>
                             Venum {t("boxing_gloves")}
                         </Link>
                     </li>
                     <li>
-                        <Link href="/products?subcategory=4&brands=Venum" className='hover:underline'>
+                        <Link href="/products?subcategory=Clothing&brands=Venum" className='hover:underline'>
                             Venum {t("boxing_clothes")}
                         </Link>
                     </li>
                     <li>
-                        <Link href="/products?subsubcategory=5&brands=Venum" className='hover:underline'>
+                        <Link href="/products?subsubcategory=Boxing-Mouth-Guards-And-Gumshields&brands=Venum" className='hover:underline'>
                             Venum {t("mouth_guards")}
                         </Link>
                     </li>
@@ -30,17 +30,17 @@ function NavBrands({ brand }: { brand: BrandI }) {
             {brand.name === 'Reebok' && (
                 <ul className='flex flex-col gap-2'>
                     <li>
-                        <Link href="/products?subcategory=1&brands=Reebok" className='hover:underline'>
+                        <Link href="/products?subcategory=Gloves&brands=Reebok" className='hover:underline'>
                             Reebok {t("boxing_gloves")}
                         </Link>
                     </li>
                     <li>
-                        <Link href="/products?subcategory=3&brands=Reebok" className='hover:underline'>
+                        <Link href="/products?subcategory=Punch-bags-and-Accessories&brands=Reebok" className='hover:underline'>
                             Reebok {t("punch_bags")}
                         </Link>
                     </li>
                     <li>
-                        <Link href="/products?subsubcategory=36&brands=Reebok" className='hover:underline'>
+                        <Link href="/products?subsubcategory=Skipping-Ropes&brands=Reebok" className='hover:underline'>
                             Reebok {t("skipping_ropes")}
                         </Link>
                     </li>
@@ -49,12 +49,12 @@ function NavBrands({ brand }: { brand: BrandI }) {
             {brand.name === 'Ringside' && (
                 <ul className='flex flex-col gap-2'>
                     <li>
-                        <Link href="/subcategory=1&brands=Ringside" className='hover:underline'>
+                        <Link href="/subcategory=Gloves&brands=Ringside" className='hover:underline'>
                             Ringside {t("boxing_gloves")}
                         </Link>
                     </li>
                     <li>
-                        <Link href="/products?subcategory=2&brands=Ringside" className='hover:underline'>
+                        <Link href="/products?subcategory=Protection&brands=Ringside" className='hover:underline'>
                             Ringside {t("protection")}
                         </Link>
                     </li>
@@ -63,12 +63,12 @@ function NavBrands({ brand }: { brand: BrandI }) {
             {brand.name === 'Rival' && (
                 <ul className='flex flex-col gap-2'>
                     <li>
-                        <Link href="/brands=Rival&subcategory=1" className='hover:underline'>
+                        <Link href="/brands=Rival&subcategory=Gloves" className='hover:underline'>
                             Rival {t("boxing_gloves")}
                         </Link>
                     </li>
                     <li>
-                        <Link href="/products?subcategory=5&brands=Rival" className='hover:underline'>
+                        <Link href="/products?subcategory=Coaching-equipment&brands=Rival" className='hover:underline'>
                             Rival {t("coaching_equipment")}
                         </Link>
                     </li>

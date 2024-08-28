@@ -35,7 +35,7 @@ const SubSubCategory: FunctionComponent<SubSubCategoryProps> = ({ subcategory, m
     return (
         <div>
             <Link
-                href={`/products?subcategory=${subcategory.name_en}`}
+                href={`/products?subcategory=${subcategory.name_en.replaceAll(' ', '-').replaceAll('&', 'and')}`}
                 className="font-bold mb-4 inline-block hover:text-silver"
                 onClick={() => menuState.setIsMenuOpen(false)}
             >
@@ -46,7 +46,7 @@ const SubSubCategory: FunctionComponent<SubSubCategoryProps> = ({ subcategory, m
                     <li key={subsubcategory.id}>
                         <Link
                             className="capitalize hover:text-silver text-sm"
-                            href={`/products?subsubcategory=${subsubcategory.name_en}`}
+                            href={`/products?subsubcategory=${subsubcategory.name_en.replaceAll(' ', '-').replaceAll('&', 'and')}`}
                             key={subsubcategory.id}
                             onClick={() => menuState.setIsMenuOpen(false)}
                         >
