@@ -75,6 +75,9 @@ module.exports = {
       animation: {
         scroll: 'scroll 10s linear infinite',
       },
+      transitionProperty: {
+        'max-height': 'max-height'
+      }
     }
   },
   

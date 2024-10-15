@@ -104,11 +104,7 @@ a {
 }
 
 .categories-transition {
-  transition: transform 0.3s ease-in-out;
-}
-
-.transition-maxheight {
-  transition: max-height 0.3s ease-in-out;
+  transition: transform 0.4s ease, max-height 0.4s ease;
 }
 
 .reviews .swiper-button-next {

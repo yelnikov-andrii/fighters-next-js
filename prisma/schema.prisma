@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://db_october_user:WHLHRryIHWRzc3kmDFmeGpdR9Cs0jemw@dpg-cs61c9tumphs73b41k2g-a.oregon-postgres.render.com/db_october"
+}
+
+model UserSportproducts {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique @db.VarChar(255)
+  name      String   @db.VarChar(255)
+  lastName  String   @db.VarChar(255)
+  password  String   @db.VarChar(255)
+  role      String?  @default("user") @db.VarChar(255)
+}

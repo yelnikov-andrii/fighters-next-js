@@ -7,9 +7,11 @@ import Pagination from './Pagination';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import Filter from './Filter';
+import { useTranslations } from 'next-intl';
 
 function List({ data }: { data: any }) {
     const { filterIsOpen } = useSelector((state: RootState) => state.filter);
+    const t = useTranslations('common');
 
     return (
         <div className="py-4">
@@ -35,8 +37,7 @@ function List({ data }: { data: any }) {
                         </div>
                     )) : (
                         <div>
-                            {/* {language === 'EN' ? 'No products' : 'Немає продуктів'} */}
-                            No products
+                            {t('no_products')}
                         </div>
                     )}
                 </div>

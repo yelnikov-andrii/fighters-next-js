@@ -81,7 +81,7 @@ const HeaderPromo: FunctionComponent<HeaderPromoProps> = () => {
                 <nav className="hidden md:block">
                     <ul className="flex gap-2 items-center">
                         <li className="w-max relative px-4">
-                            <Link className="font-bold" href="/help">{t("help_and_faq")}</Link>
+                            <Link className="font-bold" href="/help-and-faq">{t("help_and_faq")}</Link>
                         </li>
                         <li className="w-max relative px-1 lg:px-4 z-50">
                             <MySelect

@@ -132,6 +132,11 @@
         "all_articles": "All articles",
         "home": "Home",
         "categories": "Categories",
-        "no_products": "No products"
+        "no_products": "No products",
+        "success_reg": "User has been registered successfully",
+        "failed_reg": "User is already exist",
+        "error_login": "Error during login",
+        "user_not_found": "User not found",
+        "invalid_password": "Invalid password"
     }
 }

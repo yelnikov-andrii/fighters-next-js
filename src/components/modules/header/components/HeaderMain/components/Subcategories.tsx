@@ -22,9 +22,10 @@ interface SubcategoriesProps {
     style: any;
     menuState: { isMenuOpen: boolean, setIsMenuOpen: Dispatch<SetStateAction<boolean>> };
     subcategoriesState: { isMobile: boolean, subcategoriesAreOpen: boolean, setSubcategoriesAreOpen: Dispatch<SetStateAction<boolean>> };
+    timerRef: any;
 }
 
-const Subcategories: FunctionComponent<SubcategoriesProps> = ({ category, setIsOpenState, isOpenState, style, menuState, subcategoriesState }) => {
+const Subcategories: FunctionComponent<SubcategoriesProps> = ({ category, setIsOpenState, isOpenState, style, timerRef, menuState, subcategoriesState }) => {
     const { subcategories, subCategoriesLoading, subCategoriesError } = useSelector((state: RootState) => state.categories);
     const dispatch = useDispatch();
 
@@ -78,44 +79,45 @@ const Subcategories: FunctionComponent<SubcategoriesProps> = ({ category, setIsO
             <div
                 style={style}
                 className={clsx(
-                    `absolute p-2 box-border bg-white w-full left-0 right-0 overflow-hidden transition-all duration-[100ms] ease-in-out shadow-lg`,
+                    `absolute box-border bg-white w-full left-0 right-0 overflow-hidden duration-[300ms] ease-in-out shadow-lg categories-transition origin-top`,
                     {
-                        "invisible max-h-0": !isOpenState.isOpen && !menuState.isMenuOpen,
-                        "visible max-h-[400px]": isOpenState.isOpen && !menuState.isMenuOpen,
-                        "opacity-100 max-h-[400px] z-50 visible overflow-y-scroll": menuState.isMenuOpen && subcategoriesState.isMobile && subcategoriesState.subcategoriesAreOpen,
-                        "opacity-0": !menuState.isMenuOpen && subcategoriesState.isMobile && !subcategoriesState.subcategoriesAreOpen
+                        "overflow-hidden p-0 max-h-0 categories-transition": !isOpenState.isOpen && !menuState.isMenuOpen,
+                        "translate-y-0 p-2 max-h-[400px]": isOpenState.isOpen && !menuState.isMenuOpen,
+                        "opacity-100 max-h-[400px] p-2 z-50 visible overflow-y-scroll": menuState.isMenuOpen && subcategoriesState.isMobile && subcategoriesState.subcategoriesAreOpen,
+                        "opacity-0 invisible": !menuState.isMenuOpen && subcategoriesState.isMobile && !subcategoriesState.subcategoriesAreOpen
                     }
                 )}
                 onMouseOver={() => {
+                    if (timerRef.current) {
+                        clearTimeout(timerRef.current);
+                        timerRef.current = null;
+                    }
                     setIsOpenState(prev => ({ ...prev, isHovered: true }));
                 }}
                 onMouseLeave={() => {
-                    setIsOpenState(prev => ({ ...prev, isHovered: false }));
-
+                    timerRef.current = setTimeout(() => {
+                        setIsOpenState(prev => ({ ...prev, isHovered: false }));
+                    }, 500);
                 }}
             >
-                {subCategoriesLoading ? (
-                    null
-                ) : (
-                    <div className="flex flex-wrap justify-between gap-8 md:gap-2">
-                        {subcategories?.map((subcategory) => (
-                            <SubSubCategory
-                                subcategory={subcategory}
-                                menuState={menuState}
-                                key={subcategory.id}
-                            />
-                        ))}
-                        <div>
-                            <Image
-                                src={`${baseUrl}/${category?.photo}` || ''}
-                                alt=""
-                                className="w-72 h-75"
-                                width={280}
-                                height={300}
-                            />
-                        </div>
+                <div className="flex flex-wrap justify-between gap-8 md:gap-2">
+                    {subcategories?.map((subcategory) => (
+                        <SubSubCategory
+                            subcategory={subcategory}
+                            menuState={menuState}
+                            key={subcategory.id}
+                        />
+                    ))}
+                    <div>
+                        <Image
+                            src={`${baseUrl}/${category?.photo}` || ''}
+                            alt=""
+                            className="w-72 h-75"
+                            width={280}
+                            height={300}
+                        />
                     </div>
-                )}
+                </div>
             </div >
         )
     );

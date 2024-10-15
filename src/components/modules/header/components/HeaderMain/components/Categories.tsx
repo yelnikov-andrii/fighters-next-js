@@ -32,6 +32,8 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
     const [subcategoriesAreOpen, setSubcategoriesAreOpen] = useState(false);
     const [style, setStyle] = useState({});
 
+    const leaveTimer: any = useRef();
+
     const dispatch = useDispatch();
 
     useDelayMouseenter(isOpenState, setIsOpenState);
@@ -68,7 +70,6 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
 
     useEffect(() => {
         if (!menuState.isMenuOpen) {
-            setSelectedCategory(null);
             setSubcategoriesAreOpen(false);
         }
     }, [menuState.isMenuOpen]);
@@ -92,22 +93,16 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
     return (
         <div
             className={clsx(
-                'p-2 lg:p-4 border-b-2 border-gray transition-visibility categories categories-transition',
+                'p-2 lg:p-4 border-b-2 border-gray transition-visibility transition-max-height categories categories-transition transition-maxheight',
                 {
                     'visible relative': menuState.isMenuOpen && isMobile,
                     'hidden relative': !menuState.isMenuOpen && isMobile,
                     'top-[-200%] absolute': !categoriesAreOpen && !isMobile,
                 }
             )}
-            onMouseEnter={() => {
-                if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: true }));
-            }}
-            onMouseLeave={() => {
-                if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
-            }}
         >
             <div className="container relative z-10 md:static">
-                <div className="flex gap-1 md:gap-4 flex-col md:flex-row items-center flex-wrap 3xl:justify-between">
+                <div className="flex gap-1 md:gap-0 flex-col md:flex-row items-center flex-wrap 3xl:justify-between">
                     {isMobile ? (
                         <>
                             <Link
@@ -142,7 +137,7 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
                         <>
                             <Link
                                 href='/products'
-                                className="font-bold uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
+                                className="font-bold uppercase py-2 px-4 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
                                 onMouseEnter={() => {
                                     if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
                                 }}
@@ -152,12 +147,26 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
                             {categories.map(category => (
                                 <Link
                                     onMouseEnter={() => {
-                                        if (!isMobile) changeCategory(category);
-                                        if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: true }));
+                                        if (!isMobile) {
+                                            if(leaveTimer.current) {
+                                                clearTimeout(leaveTimer.current);
+                                                leaveTimer.current = null;
+                                            }
+
+                                            changeCategory(category);
+                                            setIsOpenState(prev => ({ ...prev, isHovered: true }));
+                                        }
+                                    }}
+                                    onMouseLeave={() => {
+                                        if (!isMobile) {
+                                            leaveTimer.current = setTimeout(() => {
+                                                setIsOpenState(prev => ({...prev, isHovered: false}));
+                                            }, 500);
+                                        }
                                     }}
                                     key={category.id}
                                     href={`/products?category=${category.name_en.replaceAll(' ', '-').replaceAll('&', 'and')}`}
-                                    className="font-bold justify-between md:justify-start uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
+                                    className="font-bold justify-between md:justify-start uppercase py-2 px-4 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
                                 >
                                     {language === 'EN' ? category.name_en : category.name_ukr}
                                     <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
@@ -173,6 +182,7 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
                     style={style}
                     menuState={menuState}
                     subcategoriesState={{ isMobile, subcategoriesAreOpen, setSubcategoriesAreOpen }}
+                    timerRef={leaveTimer}
                 />
             </div>
         </div>
