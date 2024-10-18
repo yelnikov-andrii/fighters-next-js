@@ -29,7 +29,7 @@ function Checkout(props: Props) {
                     {`${currency} ${(sum * coefficient).toFixed(1).replace(/\.0$/, '')}`}
                 </span>
             </div>
-            <FormButton>
+            <FormButton type='button'>
                 Checkout
             </FormButton>
         </div>
