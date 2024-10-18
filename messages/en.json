@@ -137,6 +137,17 @@
         "failed_reg": "User is already exist",
         "error_login": "Error during login",
         "user_not_found": "User not found",
-        "invalid_password": "Invalid password"
+        "invalid_password": "Invalid password",
+        "not_found_page": "Error, page not found",
+        "back_to_home": "Back to home",
+        "united_kingdom": "United Kingdom",
+        "standart_delivery": "Standard Delivery",
+        "standart_delivery_desc": "£4.50 FREE - Spend over £99 (*Mainland UK only) - Delivered within 3 working days - Estimated delivery date provided at checkout - Tracking number available once shipped",
+        "express_delivery": "Express delivery",
+        "express_delivery_desc": "£7.99 - Delivered next working day - Estimated delivery date provided at checkout - Tracking number available once shipped - Subject to order cut off times. *Order before 12pm.",
+        "oversized_orders": "Oversized Orders",
+        "oversized_orders_desc": "from £20 - For orders over 100cm in length or 30kg in weight. - Oversized items are not eligible for free delivery - Total cost calculated at checkout. Please check dimensions and weight are suitable before completing your order to save any unexpected returns costs.",
+        "returns": "Returns",
+        "returns_desc": "Easy Returns available on all UK mainland orders via our returns centre - Please complete the returns form in full and send your order back to us via your selected method. - Returns will be processed within 7-14 days of receipt - If your order is oversized please contact us to arrange an alternative returns method. For more information view our returns policy."
     }
 }

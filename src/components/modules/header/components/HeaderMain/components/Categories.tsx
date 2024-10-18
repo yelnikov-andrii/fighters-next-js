@@ -33,6 +33,7 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
     const [style, setStyle] = useState({});
 
     const leaveTimer: any = useRef();
+    const hoverTimer: any = useRef();
 
     const dispatch = useDispatch();
 
@@ -91,99 +92,108 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
     }
 
     return (
-        <div
-            className={clsx(
-                'p-2 lg:p-4 border-b-2 border-gray transition-visibility transition-max-height categories categories-transition transition-maxheight',
-                {
-                    'visible relative': menuState.isMenuOpen && isMobile,
-                    'hidden relative': !menuState.isMenuOpen && isMobile,
-                    'top-[-200%] absolute': !categoriesAreOpen && !isMobile,
-                }
-            )}
-        >
-            <div className="container relative z-10 md:static">
-                <div className="flex gap-1 md:gap-0 flex-col md:flex-row items-center flex-wrap 3xl:justify-between">
-                    {isMobile ? (
-                        <>
-                            <Link
-                                href='/products'
-                                className="font-bold uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
-                                onMouseEnter={() => {
-                                    if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
-                                }}
-                                onClick={() => {
-                                    menuState.setIsMenuOpen(false)
-                                }}
-                            >
-                                {language === 'EN' ? 'All products' : 'Усі продукти'}
-                            </Link>
-                            {categories.map((category: CategoryInt) => (
-                                <div
-                                    className="font-bold justify-between hover:cursor-pointer md:justify-start uppercase py-1 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-1 items-center"
-                                    onClick={() => {
-                                        if (isMobile) changeCategory(category);
-                                        if (isMobile) setSubcategoriesAreOpen(true);
-
-                                    }}
-                                >
-                                    {language === 'EN' ? category.name_en : category.name_ukr}
-                                    <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
-                                </div>
-
-
-                            ))}
-                        </>
-                    ) : (
-                        <>
-                            <Link
-                                href='/products'
-                                className="font-bold uppercase py-2 px-4 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
-                                onMouseEnter={() => {
-                                    if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
-                                }}
-                            >
-                                {language === 'EN' ? 'All products' : 'Усі продукти'}
-                            </Link>
-                            {categories.map(category => (
+        <div className={clsx('overflow-hidden categories-transition', {
+            'max-h-[0px]': !categoriesAreOpen && !isMobile,
+            'max-h-[70px]': categoriesAreOpen && !isMobile,
+        })}>
+            <div
+                className={clsx(
+                    'p-2 lg:p-4 border-b-2 border-gray transition-visibility transition-max-height categories categories-transition transition-maxheight',
+                    {
+                        'visible relative': menuState.isMenuOpen && isMobile,
+                        'hidden relative': !menuState.isMenuOpen && isMobile,
+                        'translate-y-[-200%]': !categoriesAreOpen && !isMobile,
+                    }
+                )}
+            >
+                <div className="container relative z-10 md:static">
+                    <div className="flex gap-1 md:gap-0 flex-col md:flex-row items-center flex-wrap 3xl:justify-between">
+                        {isMobile ? (
+                            <>
                                 <Link
+                                    href='/products'
+                                    className="font-bold uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
                                     onMouseEnter={() => {
-                                        if (!isMobile) {
-                                            if(leaveTimer.current) {
-                                                clearTimeout(leaveTimer.current);
-                                                leaveTimer.current = null;
-                                            }
-
-                                            changeCategory(category);
-                                            setIsOpenState(prev => ({ ...prev, isHovered: true }));
-                                        }
+                                        if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
                                     }}
-                                    onMouseLeave={() => {
-                                        if (!isMobile) {
-                                            leaveTimer.current = setTimeout(() => {
-                                                setIsOpenState(prev => ({...prev, isHovered: false}));
-                                            }, 500);
-                                        }
+                                    onClick={() => {
+                                        menuState.setIsMenuOpen(false)
                                     }}
-                                    key={category.id}
-                                    href={`/products?category=${category.name_en.replaceAll(' ', '-').replaceAll('&', 'and')}`}
-                                    className="font-bold justify-between md:justify-start uppercase py-2 px-4 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
                                 >
-                                    {language === 'EN' ? category.name_en : category.name_ukr}
-                                    <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
+                                    {language === 'EN' ? 'All products' : 'Усі продукти'}
                                 </Link>
-                            ))}
-                        </>
-                    )}
+                                {categories.map((category: CategoryInt) => (
+                                    <div
+                                        className="font-bold justify-between hover:cursor-pointer md:justify-start uppercase py-1 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-1 items-center"
+                                        onClick={() => {
+                                            if (isMobile) changeCategory(category);
+                                            if (isMobile) setSubcategoriesAreOpen(true);
+
+                                        }}
+                                    >
+                                        {language === 'EN' ? category.name_en : category.name_ukr}
+                                        <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
+                                    </div>
+
+
+                                ))}
+                            </>
+                        ) : (
+                            <>
+                                <Link
+                                    href='/products'
+                                    className="font-bold mb-1 uppercase py-2 px-4 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
+                                    onMouseEnter={() => {
+                                        if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
+                                    }}
+                                >
+                                    {language === 'EN' ? 'All products' : 'Усі продукти'}
+                                </Link>
+                                {categories.map(category => (
+                                    <Link
+                                        onMouseEnter={() => {
+                                            if (!isMobile) {
+                                                if (leaveTimer.current) {
+                                                    clearTimeout(leaveTimer.current);
+                                                    leaveTimer.current = null;
+                                                }
+
+                                                hoverTimer.current = setTimeout(() => {
+                                                    changeCategory(category);
+                                                    setIsOpenState(prev => ({ ...prev, isHovered: true }));
+                                                }, 300);
+                                            }
+                                        }}
+                                        onMouseLeave={() => {
+                                            if (!isMobile) {
+                                                clearTimeout(hoverTimer.current);
+                                                hoverTimer.current = null;
+                                                leaveTimer.current = setTimeout(() => {
+                                                    setIsOpenState(prev => ({ ...prev, isHovered: false }));
+                                                }, 300);
+                                            }
+                                        }}
+                                        key={category.id}
+                                        href={`/products?category=${category.name_en.replaceAll(' ', '-').replaceAll('&', 'and')}`}
+                                        className="font-bold mb-1 justify-between md:justify-start uppercase py-2 px-4 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
+                                    >
+                                        {language === 'EN' ? category.name_en : category.name_ukr}
+                                        <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
+                                    </Link>
+                                ))}
+                            </>
+                        )}
+                    </div>
+                    <Subcategories
+                        category={selectedCategory}
+                        setIsOpenState={setIsOpenState}
+                        isOpenState={isOpenState}
+                        style={style}
+                        menuState={menuState}
+                        subcategoriesState={{ isMobile, subcategoriesAreOpen, setSubcategoriesAreOpen }}
+                        timerRef={leaveTimer}
+                    />
                 </div>
-                <Subcategories
-                    category={selectedCategory}
-                    setIsOpenState={setIsOpenState}
-                    isOpenState={isOpenState}
-                    style={style}
-                    menuState={menuState}
-                    subcategoriesState={{ isMobile, subcategoriesAreOpen, setSubcategoriesAreOpen }}
-                    timerRef={leaveTimer}
-                />
             </div>
         </div>
     );

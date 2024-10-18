@@ -15,7 +15,7 @@ function EmptyCart() {
                 {t('cart_is_empty')}
             </div>
             <div className='max-w-[400px] mx-auto'>
-                <FormButton>
+                <FormButton type="button">
                     <Link href="/products" onClick={() => dispatch(closeCart())}>
                         {t('go_shoping')}
                     </Link>

@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 // components
 import HeaderPromo from "./components/HeaderPromo";
 import Sales from "./components/Sales";

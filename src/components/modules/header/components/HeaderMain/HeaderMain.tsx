@@ -15,24 +15,46 @@ interface HeaderMainProps {
 const HeaderMain: FunctionComponent<HeaderMainProps> = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [categoriesAreOpen, setCategoriesAreOpen] = useState(true);
-    const [position, setPosition] = useState(0);
 
     const headerRef: MutableRefObject<HTMLHeadingElement | null> = useRef(null);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
+        let lastScrollPosition = window.pageYOffset;
+        let isScrollingUp = false; // Флаг для направления прокрутки
+        const scrollThreshold = 50; // Минимальное расстояние для срабатывания скролла
+    
         const handleScroll = () => {
-            let moving = window.pageYOffset;
-            setCategoriesAreOpen(position >= moving);
-            setPosition(moving);
+            let currentScrollPosition = window.pageYOffset;
+            let scrollDifference = Math.abs(currentScrollPosition - lastScrollPosition); // Разница между текущей и последней позицией
+    
+            if (scrollDifference > scrollThreshold) {
+                if (currentScrollPosition > lastScrollPosition) {
+                    // Скроллим вниз
+                    console.log('scrolling down');
+                    if (isScrollingUp || categoriesAreOpen) {
+                        setCategoriesAreOpen(false);
+                        isScrollingUp = false;
+                    }
+                } else if (currentScrollPosition <= lastScrollPosition) {
+                    // Скроллим вверх
+                    console.log('scrolling up');
+                    if (!isScrollingUp || !categoriesAreOpen) {
+                        setCategoriesAreOpen(true);
+                        isScrollingUp = true;
+                    }
+                }
+                lastScrollPosition = currentScrollPosition; // Обновляем позицию только после значительного скролла
+            }
         };
+    
         window.addEventListener("scroll", handleScroll);
-
+    
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, [position]);
+    }, []);
 
     useEffect(() => {
         dispatch(fetchCurrencies());
