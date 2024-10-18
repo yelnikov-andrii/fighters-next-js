@@ -32,7 +32,7 @@ function ForgotPassword() {
                         name='email'
                         change={handleChange}
                     />
-                    <FormButton>
+                    <FormButton type='submit'>
                         {t('submit')}
                     </FormButton>
                     <Link href="/account/login" className='self-center underline hover:text-silver transition-all'>

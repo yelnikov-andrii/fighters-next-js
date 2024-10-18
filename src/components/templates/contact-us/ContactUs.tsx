@@ -69,7 +69,7 @@ function ContactUs() {
                         rows={5}
                     >
                     </textarea>
-                    <FormButton>
+                    <FormButton type='submit'>
                         {t('send')}
                     </FormButton>
                 </form>
