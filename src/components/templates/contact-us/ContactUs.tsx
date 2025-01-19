@@ -29,6 +29,10 @@ function ContactUs() {
         }
     }
 
+    function handleSubmit() {
+        console.log('submit contact us')
+    }
+
     return (
         <section className='py-10'>
             <div className='container'>
