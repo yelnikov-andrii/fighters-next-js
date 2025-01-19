@@ -41,7 +41,7 @@ function ContactUs() {
                 <strong className='block max-w-[800px] mx-auto my-8 text-xl'>
                     {t('contact_us')}
                 </strong>
-                <form className='py-2 max-w-[400px] mx-auto flex flex-col gap-6'>
+                <form className='py-2 max-w-[400px] mx-auto flex flex-col gap-6' onSubmit={handleSubmit}>
                     <FormInput
                         label={t('full_name')}
                         placeholder={t('full_name')}

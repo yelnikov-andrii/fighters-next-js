@@ -5,6 +5,7 @@ import { ReduxWrapper } from '@/app/Wrapper';
 import MainLayout from '@/components/layouts/Layout';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import { Analytics } from "@vercel/analytics/react"
 
 const opensans = Open_Sans({ subsets: ['latin'], variable: '--font-sans' });
 export const osvald = Oswald({ subsets: ['latin'], variable: '--font-osvald' });
@@ -30,7 +31,7 @@ export default async function RootLayout({
               {children}
           </NextIntlClientProvider>
         </ReduxWrapper>
-
+        <Analytics />
       </body>
     </html>
   )
