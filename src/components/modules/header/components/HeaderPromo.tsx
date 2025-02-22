@@ -25,8 +25,8 @@ interface HeaderPromoProps {
 }
 
 const HeaderPromo: FunctionComponent<HeaderPromoProps> = () => {
-    const { language } = useSelector((state: RootState) => state.language);
-    const { currency } = useSelector((state: RootState) => state.currency);
+    const language = useSelector((state: RootState) => state.language.language);
+    const currency = useSelector((state: RootState) => state.currency.currency);
     const router = useRouter();
 
     const t = useTranslations('common');

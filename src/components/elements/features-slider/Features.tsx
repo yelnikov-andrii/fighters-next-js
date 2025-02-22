@@ -132,7 +132,7 @@ function Features() {
                                     <SwiperSlide key={feature.title} className='py-4 px-2'>
                                         <div className='flex flex-col justtify-between items-center p-2'>
                                             <Image 
-                                              src={feature.img}
+                                              src={feature?.img}
                                               alt={feature.alt}
                                               width={32}
                                               height={32}

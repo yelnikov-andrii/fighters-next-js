@@ -10,14 +10,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const imageLoader: any = () => {
-    return (
-        <div>
-            Loading...
-        </div>
-    )
-  }
-
 function ProductCard({ product, style }: { product: ProductInt, style?: any }) {
     const [images, setImages] = useState<{ arr: ProductPhotoInt[], loading: boolean, error: string }>({ arr: [], loading: true, error: '' });
     const { language } = useSelector((state: RootState) => state.language);

@@ -13,7 +13,7 @@ import EmptyCart from '@/components/elements/empty-cart/EmptyCart';
 
 export const CartSide = () => {
   const { cartIsOpen, productsInCart } = useSelector((state: RootState) => state.cart);
-  const { language } = useSelector((state: RootState) => state.language);
+  const language = useSelector((state: RootState) => state.language.language);
   const { currency, coefficient } = useSelector((state: RootState) => state.currency);
   const dispatch = useDispatch();
 

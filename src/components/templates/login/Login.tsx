@@ -42,7 +42,6 @@ function Login() {
     
             const result = await response.json();
             if (!response.ok) {
-                console.log(result, 'reusts')
                 setAlert(result?.message || t('error_login'));
                 return;
             }

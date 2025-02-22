@@ -26,7 +26,7 @@ function Toolbar() {
                 </span>
             </div>
             <div>
-                right
+                
             </div>
         </div>
     );

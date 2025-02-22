@@ -1,11 +1,11 @@
 import * as React from 'react';
-import Link from "next/link";
+import MemoizedLink from '../memoizedLink/MemoizedLink';
 
 function Logo() {
     return (
-            <Link href="/" className='md:order-1 font-bold grow-[1] font-osvald text-3xl'>
-                Fighters
-            </Link>
+        <MemoizedLink href="/" className='md:order-1 font-bold grow-[1] font-osvald text-3xl'>
+            Fighters
+        </MemoizedLink>
     );
 }
 

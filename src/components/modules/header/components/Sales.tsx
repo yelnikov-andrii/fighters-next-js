@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 // translation
 import { useTranslations } from "next-intl";
 // next
-import Link from "next/link";
+import MemoizedLink from "@/components/elements/memoizedLink/MemoizedLink";
 
 
 interface SalesProps {
@@ -20,9 +20,9 @@ const Sales: FunctionComponent<SalesProps> = () => {
                 <span>
                     {t('save_up')} 70%
                 </span>
-                <Link href="/" className="py-1 px-6 bg-black text-white font-bold uppercase text-sm rounded">
+                <MemoizedLink href="/" className="py-1 px-6 bg-black text-white font-bold uppercase text-sm rounded">
                    {t('shop_now')}
-                </Link>
+                </MemoizedLink>
             </div>
         </div>
     );

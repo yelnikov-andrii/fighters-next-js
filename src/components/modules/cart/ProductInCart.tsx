@@ -41,7 +41,7 @@ function ProductInCart(props: Props) {
                 setBrand(response.data);
             })
             .catch((e) => {
-                console.log(e);
+                console.error(e);
             })
     }
 

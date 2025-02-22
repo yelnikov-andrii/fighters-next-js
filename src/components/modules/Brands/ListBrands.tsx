@@ -5,12 +5,11 @@ import * as React from 'react';
 
 async function ListBrands() {
     const response = await axios.get(`${baseUrl}/brands`);
-    console.log(response, 'response');
     const brands: any = [];
     return (
         <div>
             {brands?.map((brand: BrandI) => (
-                <div>
+                <div key={brand.id}>
                     {brand.name}
                 </div>
             ))}

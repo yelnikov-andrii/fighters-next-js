@@ -32,14 +32,12 @@ const HeaderMain: FunctionComponent<HeaderMainProps> = () => {
             if (scrollDifference > scrollThreshold) {
                 if (currentScrollPosition > lastScrollPosition) {
                     // Скроллим вниз
-                    console.log('scrolling down');
                     if (isScrollingUp || categoriesAreOpen) {
                         setCategoriesAreOpen(false);
                         isScrollingUp = false;
                     }
                 } else if (currentScrollPosition <= lastScrollPosition) {
                     // Скроллим вверх
-                    console.log('scrolling up');
                     if (!isScrollingUp || !categoriesAreOpen) {
                         setCategoriesAreOpen(true);
                         isScrollingUp = true;

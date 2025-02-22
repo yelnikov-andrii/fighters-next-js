@@ -1,3 +1,4 @@
+import MemoizedLink from "@/components/elements/memoizedLink/MemoizedLink";
 import { baseUrl } from "@/data/url";
 import { RootState } from "@/redux/store";
 import { SubcategoryInt, SubsubcategoryInt } from "@/types/categories";
@@ -57,7 +58,7 @@ const SubSubCategory: FunctionComponent<SubSubCategoryProps> = ({ subcategory, m
 
     return (
         <div>
-            <Link
+            <MemoizedLink
                 href={`/products?subcategory=${subcategory.name_en.replaceAll(' ', '-').replaceAll('&', 'and')}`}
                 className={clsx('font-bold mb-4 inline-block hover:text-silver transition-opacity duration-1000', {
                     'opacity-1': textIsVisible,
@@ -66,11 +67,11 @@ const SubSubCategory: FunctionComponent<SubSubCategoryProps> = ({ subcategory, m
                 onClick={() => menuState.setIsMenuOpen(false)}
             >
                 {language === 'EN' ? subcategory.name_en : subcategory.name_ukr}
-            </Link>
+            </MemoizedLink>
             <ul>
                 {subsubcategories.map((subsubcategory: SubsubcategoryInt) => (
                     <li key={subsubcategory.id}>
-                        <Link
+                        <MemoizedLink
                             className={clsx('capitalize hover:text-silver text-sm transition-opacity duration-1000', {
                                 'opacity-1': textIsVisible,
                                 'opacity-0': !textIsVisible,
@@ -80,7 +81,7 @@ const SubSubCategory: FunctionComponent<SubSubCategoryProps> = ({ subcategory, m
                             onClick={() => menuState.setIsMenuOpen(false)}
                         >
                             {language === 'EN' ? subsubcategory.name_en : subsubcategory.name_ukr}
-                        </Link>
+                        </MemoizedLink>
                     </li>
                 ))}
             </ul>

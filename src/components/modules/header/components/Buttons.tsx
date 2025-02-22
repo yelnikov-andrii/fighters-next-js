@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { closeCart } from '@/redux/slices/cartSlice';
 
 export const Buttons = () => {
-  const { language } = useSelector((state: RootState) => state.language);
+  const language = useSelector((state: RootState) => state.language.language);
   const dispatch = useDispatch();
 
   return (
