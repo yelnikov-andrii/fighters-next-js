@@ -1,11 +1,29 @@
 export const currencies = [
-  'USD $',
-  'GBP £',
-  'PLN zł',
-  'UAH ₴',
+  {
+    value: '$',
+    label: 'USD $'
+  },
+  {
+    value: '£',
+    label: 'GBP £'
+  },
+  {
+    value: 'zł',
+    label: 'PLN zł'
+  },
+  {
+    value: '₴',
+    label: 'UAH ₴'
+  }
 ];
 
 export const languages = [
-  'EN',
-  'UKR'
+  {
+    value: 'EN',
+    label: 'EN'
+  },
+  {
+    value: 'UKR',
+    label: 'UKR'
+  }
 ];

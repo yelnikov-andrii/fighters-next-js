@@ -24,6 +24,7 @@ function Filter({ productsAllPages }: Props) {
     function colorClickAction(color: string) {
         if (colorFilters.includes(color)) {
             dispatch(removeColorFilter(color));
+            
         } else {
             dispatch(addColorFilter(color));
         }

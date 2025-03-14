@@ -2,6 +2,11 @@ import { CurrencyFromServerInt } from '@/types/products';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
+interface SelectItemI {
+  value: string;
+  label: string;
+}
+
 export interface CurrencyState {
   currency: string;
   currenciesArr: CurrencyFromServerInt[];
@@ -24,10 +29,10 @@ export const currencySlice = createSlice({
       state.currenciesArr = action.payload;
       state.currenciesError = '';
     },
-    changeCurrency: (state, action: PayloadAction<string>) => {
-      state.currency = action.payload.split(' ')[1];
+    changeCurrency: (state, action: PayloadAction<SelectItemI>) => {
+      state.currency = action.payload.value;
       const usdRate = state.currenciesArr?.find(item => item.cc === 'USD')?.rate || 1;
-      const foundCurrencyRate = state.currenciesArr.find(item => item.cc === action.payload.split(' ')[0])?.rate || 1;
+      const foundCurrencyRate = state.currenciesArr.find(item => item.cc === action.payload.value)?.rate || 1;
       state.coefficient = usdRate / foundCurrencyRate;
     },
     getCurrenciesError: (state, action: PayloadAction<string>) => {

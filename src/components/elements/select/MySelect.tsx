@@ -1,10 +1,15 @@
 import { FunctionComponent } from "react";
-import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+
+interface SelectItemI {
+  value: string;
+  label: string;
+}
 
 interface Props {
 selected: string;
-menuItems: string[];
+menuItems: SelectItemI[];
 action: (value: string) => void;
 }
 
@@ -35,7 +40,7 @@ const MySelect: FunctionComponent<Props> = ({ selected, menuItems, action }) => 
               >
                 {menuItems.map((menuItem) => (
                   <ListboxOption
-                    key={menuItem}
+                    key={menuItem.value}
                     className={({ focus }) =>
                       classNames(
                         focus ? 'bg-indigo-600 text-silver hover:cursor-pointer' : '',
@@ -43,13 +48,13 @@ const MySelect: FunctionComponent<Props> = ({ selected, menuItems, action }) => 
                         'relative cursor-default select-none py-2 pl-3 pr-9',
                       )
                     }
-                    value={menuItem}
+                    value={menuItem.value}
                   >
                     {({ selected, focus }) => (
                       <>
                         <div className="flex items-center">
                           <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block')}>
-                            {menuItem}
+                            {menuItem.label}
                           </span>
                         </div>
   

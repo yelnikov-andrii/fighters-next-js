@@ -14,6 +14,8 @@ export async function GET(request: Request) {
     const brands = searchParams.get('brands');
     const page = searchParams.get('page') || '1';
     const limit = searchParams.get('limit') || '9';
+    const lang = searchParams.get('lang') || 'en';
+    const sort = searchParams.get('sort') || 'AlphAsc';
 
     let str = '';
 
@@ -79,6 +81,22 @@ export async function GET(request: Request) {
         }
     }
 
+    if (sort) {
+        if (str) {
+            str += `&sort=${sort}`;
+        } else {
+            str += `sort=${sort}`;
+        }
+    }
+
+    if (lang) {
+        if (str) {
+            str += `&lang=${lang}`;
+        } else {
+            str += `lang=${lang}`;
+        }
+    }
+
     let strWithPageAndLimit = str;
 
     if (str.length > 0) {
@@ -107,6 +125,6 @@ export async function GET(request: Request) {
             const allProducts = await allProductsResponse.json();
             return NextResponse.json({ data: data, allProducts: allProducts });
         }
-       
+
     }
 }

@@ -17,18 +17,36 @@ function Colors({ colors, colorClickAction }: Props) {
 
     const createQueryString = useCallback(
         (name: string, value: string) => {
-            const params = new URLSearchParams(searchParams.toString())
-            params.set(name, value)
+            const params = new URLSearchParams(searchParams.toString());
+
+            if (!value) {
+                params.delete(name);
+            } else {
+                params.set(name, value);
+            }
 
             return params.toString();
         },
         [searchParams]
     );
+
+    function getColorFilterHref(color: string) {
+        const updatedColors = colorFilters.includes(color)
+            ? colorFilters.filter(col => col !== color)
+            : [...colorFilters, color];
+
+        const queryString = createQueryString('colors', updatedColors.join(','));
+
+        return queryString ? `?${queryString}` : window.location.pathname;
+    }
+
+
+
     return (
         <div className='py-4 px-2 flex flex-col sm:flex-row gap-2 items-center'>
             {colors.map((color: string) => (
                 <Link
-                    href={colorFilters.includes(color) ? `?${createQueryString('colors', colorFilters.filter(col => col !== color).join(','))}` : `?${createQueryString('colors', [...colorFilters, color].join(','))}`}
+                    href={getColorFilterHref(color)}
                     className={clsx('w-[20px] h-[20px] rounded-full min-w-[20px] min-h-[20px] border-black border-[1px]', {
                         'border-[3px] border-black': colorFilters.includes(color)
                     })}

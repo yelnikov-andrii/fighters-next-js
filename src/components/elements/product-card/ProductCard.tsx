@@ -9,12 +9,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import clsx from 'clsx';
 
 function ProductCard({ product, style }: { product: ProductInt, style?: any }) {
     const [images, setImages] = useState<{ arr: ProductPhotoInt[], loading: boolean, error: string }>({ arr: [], loading: true, error: '' });
     const { language } = useSelector((state: RootState) => state.language);
-    const { currency } = useSelector((state: RootState) => state.currency);
+    const { currency, coefficient } = useSelector((state: RootState) => state.currency);
     const [isHovered, setIsHovered] = useState(false);
+    const listView = useSelector((state: RootState) => state.listView.listView);
 
     function fetchImages(productId: number) {
         setImages(prev => ({ ...prev, loading: true }));
@@ -45,14 +47,19 @@ function ProductCard({ product, style }: { product: ProductInt, style?: any }) {
     }
 
     return (
-        <div 
-          className="flex flex-col gap-8 justify-between min-w-[310px] w-[30%] max-w-[360px] min-h-[360px] px-2 md:px-4"
-          onMouseEnter={handleMouseEnter} 
-          onMouseLeave={handleMouseLeave}
-          style={style}
+        <div
+            className={clsx("flex gap-8 min-w-[310px] w-[30%] max-w-[360px] min-h-[360px] px-2 md:px-4", {
+                "flex-row w-full max-w-full justify-start gap-2": listView === 'column',
+                "flex-col justify-between": listView === 'row'
+            })}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={style}
         >
             {!images.loading && images.arr.length > 0 ? (
-                <Link href={`products/${product.id}`} className="relative w-full pb-[100%]">
+                <Link href={`products/${product.id}`} className={clsx("relative w-full pb-[100%]", {
+                    "max-w-[360px] pb-0": listView === 'column',
+                })}>
                     <Image
                         src={`${baseUrl}/${images?.arr[0]?.imageUrl}`}
                         alt="sport product"
@@ -87,7 +94,7 @@ function ProductCard({ product, style }: { product: ProductInt, style?: any }) {
                     {language === 'EN' ? product.name_en : product.name_ukr}
                 </h4>
                 <h5 className="font-bold">
-                    {`${product.price} ${currency}`}
+                    {`${currency} ${(product.price * coefficient).toFixed(1).replace(/\.0$/, '')}`}
                 </h5>
             </Link>
         </div>

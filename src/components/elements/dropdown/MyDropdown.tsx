@@ -34,7 +34,7 @@ function MyDropdown({ butttonContent, children, autoClose }: Props) {
 
     return (
         <div
-            className='relative rounded-lg p-0'
+            className='relative rounded-lg p-0 w-full'
             ref={dropdownRef}
         >
             <div

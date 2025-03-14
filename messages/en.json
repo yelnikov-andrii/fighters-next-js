@@ -148,6 +148,12 @@
         "oversized_orders": "Oversized Orders",
         "oversized_orders_desc": "from £20 - For orders over 100cm in length or 30kg in weight. - Oversized items are not eligible for free delivery - Total cost calculated at checkout. Please check dimensions and weight are suitable before completing your order to save any unexpected returns costs.",
         "returns": "Returns",
-        "returns_desc": "Easy Returns available on all UK mainland orders via our returns centre - Please complete the returns form in full and send your order back to us via your selected method. - Returns will be processed within 7-14 days of receipt - If your order is oversized please contact us to arrange an alternative returns method. For more information view our returns policy."
+        "returns_desc": "Easy Returns available on all UK mainland orders via our returns centre - Please complete the returns form in full and send your order back to us via your selected method. - Returns will be processed within 7-14 days of receipt - If your order is oversized please contact us to arrange an alternative returns method. For more information view our returns policy.",
+        "filter": "Filter",
+        "sortBy": "Sort by",
+        "alphAsc": "Alphabetically ascending",
+        "alphDesc": "Alphabetically descending",
+        "priceAsc": "Price (Low to High)",
+        "priceDesc": "Price (High to Low)"
     }
 }

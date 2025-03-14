@@ -20,18 +20,14 @@ import { setLanguageCookie, getLanguageCookie } from "@/utils/cookies";
 //translation
 import { useTranslations } from "next-intl";
 
-interface HeaderPromoProps {
-
-}
-
-const HeaderPromo: FunctionComponent<HeaderPromoProps> = () => {
+const HeaderPromo = () => {
     const language = useSelector((state: RootState) => state.language.language);
     const currency = useSelector((state: RootState) => state.currency.currency);
     const router = useRouter();
 
     const t = useTranslations('common');
 
-    const selectedCurrency: string = currencies?.find(curr => curr.includes(currency)) || currencies[0];
+    const selectedCurrency: string = currencies?.find(curr => curr.value.includes(currency))?.label || currencies[0].label;
 
     const dispatch = useDispatch();
 
@@ -42,14 +38,15 @@ const HeaderPromo: FunctionComponent<HeaderPromoProps> = () => {
     }
 
     function changeCurrencyHandler(currency: string) {
-        dispatch(changeCurrency(currency));
+        const foundCurrency = currencies.find(curr => curr.value === currency) || currencies[0];
+        dispatch(changeCurrency(foundCurrency));
     }
 
     useEffect(() => {
-      const lang = getLanguageCookie();
-      if (lang) {
-        dispatch(changeLang(lang.toUpperCase()));
-      }
+        const lang = getLanguageCookie();
+        if (lang) {
+            dispatch(changeLang(lang.toUpperCase()));
+        }
     }, []);
 
     return (
