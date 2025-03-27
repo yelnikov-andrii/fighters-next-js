@@ -1,4 +1,3 @@
-import { ProductAdded } from '@/types/products';
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface CartState {

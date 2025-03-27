@@ -1,7 +1,6 @@
 import getProduct from '@/app/lib/getProduct';
 import Product from '@/components/modules/Product/Product';
 import { baseUrl } from '@/data/url';
-import { ProductInt } from '@/types/products';
 import axios from 'axios';
 import type { Metadata, ResolvingMetadata } from 'next';
  

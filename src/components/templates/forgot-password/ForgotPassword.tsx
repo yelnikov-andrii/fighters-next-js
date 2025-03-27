@@ -35,7 +35,7 @@ function ForgotPassword() {
                     <FormButton type='submit'>
                         {t('submit')}
                     </FormButton>
-                    <Link href="/account/login" className='self-center underline hover:text-silver transition-all'>
+                    <Link href="/login" className='self-center underline hover:text-silver transition-all'>
                         {t('cancel')}
                     </Link>
                 </form>

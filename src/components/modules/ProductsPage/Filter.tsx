@@ -4,10 +4,8 @@ import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Colors from './Colors';
 import { useGetAllOptions } from '@/hooks/filterHooks';
-import { ProductInt } from '@/types/products';
 import { addColorFilter, removeColorFilter } from '@/redux/slices/filterSlice';
 import BlockWithFilterOptions from './BlockWithFilterOptions';
-import { FilterOptionInt } from '@/types/filter';
 
 interface Props {
     productsAllPages: ProductInt[];

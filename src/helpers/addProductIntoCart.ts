@@ -1,4 +1,3 @@
-import { ProductAdded, ProductInt, VariantInt } from "@/types/products";
 import { Dispatch, SetStateAction } from "react";
 
 export async function addProductIntoCart(selectedVariant: VariantInt | null, quantity: number, language: string, setQuantityError: Dispatch<SetStateAction<string>>, product: ProductInt, dispatch: any, addProductToCart: (product: ProductAdded) => void, setAfterAddedMessage: Dispatch<SetStateAction<string>>) {

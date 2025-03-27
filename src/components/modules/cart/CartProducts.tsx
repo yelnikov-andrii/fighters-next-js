@@ -2,7 +2,6 @@
 import EmptyCart from '@/components/elements/empty-cart/EmptyCart';
 import { setTotalSum } from '@/redux/slices/cartSlice';
 import { RootState } from '@/redux/store';
-import { ProductAdded } from '@/types/products';
 import * as React from 'react';
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,9 +30,10 @@ function CartProducts() {
             {productsInCart && productsInCart.length > 0 ? (
                 <div className='flex gap-[32px]'>
                     <div className='w-calc-60-16 flex flex-col gap-4 pr-16'>
-                        {productsInCart.map(product => (
+                        {productsInCart.map((product: ProductAdded) => (
                             <ProductInCart
                                 product={product}
+                                key={product.id}
                             />
                         ))}
                     </div>

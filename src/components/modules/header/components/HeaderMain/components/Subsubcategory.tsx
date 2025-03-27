@@ -1,7 +1,6 @@
 import MemoizedLink from "@/components/elements/memoizedLink/MemoizedLink";
 import { baseUrl } from "@/data/url";
 import { RootState } from "@/redux/store";
-import { SubcategoryInt, SubsubcategoryInt } from "@/types/categories";
 import axios from "axios";
 import clsx from "clsx";
 import Link from "next/link";

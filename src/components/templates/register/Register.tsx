@@ -52,7 +52,7 @@ function Register() {
             clearFields();
             setTimeout(() => {
                 setAlert(obj => ({ ...obj, success: '' }));
-                router.push("/account/login");
+                router.push("/login");
             }, 2500);
         } else {
             const data = await response.json();
@@ -117,7 +117,7 @@ function Register() {
                 </form>
                 <div className='text-center mt-8 flex gap-2 justify-center'>
                     <span>{t('already_have_account')}</span>
-                    <Link href="/account/login" className='hover:text-silver transition-all'>
+                    <Link href="/login" className='hover:text-silver transition-all'>
                         {t('login')}
                     </Link>
                 </div>

@@ -2,7 +2,6 @@
 import { baseUrl } from '@/data/url';
 import { fetchPhotos } from '@/redux/action-creator/Products/fetchPhotosOneProduct';
 import { RootState } from '@/redux/store';
-import { BrandInt, ProductInt, VariantInt } from '@/types/products';
 import axios from 'axios';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';

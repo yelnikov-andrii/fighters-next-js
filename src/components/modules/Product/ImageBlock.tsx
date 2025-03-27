@@ -1,4 +1,3 @@
-import { ProductPhotoInt } from '@/types/products';
 import * as React from 'react';
 import Image from 'next/image';
 import { baseUrl } from '@/data/url';

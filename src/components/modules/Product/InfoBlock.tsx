@@ -1,5 +1,4 @@
 import { RootState } from '@/redux/store';
-import { BrandInt, ProductInt, VariantInt } from '@/types/products';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Variants } from './Variants';

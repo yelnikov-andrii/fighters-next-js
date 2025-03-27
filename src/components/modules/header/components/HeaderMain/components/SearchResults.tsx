@@ -1,5 +1,4 @@
 import { baseUrl } from '@/data/url';
-import { ProductInt, ProductPhotoInt } from '@/types/products';
 import React, { Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';

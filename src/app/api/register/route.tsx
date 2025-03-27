@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import db from "@/app/lib/db"; // Импортируй свою настройку базы данных
+import db from "@/app/lib/db";
 
 interface RegisterRequest {
   name: string;
@@ -12,7 +12,6 @@ interface RegisterRequest {
 export async function POST(request: Request) {
   const { name, lastName, email, password }: RegisterRequest = await request.json();
 
-  // Проверка на существующего пользователя
   const existingUser = await db?.user_sportproducts.findUnique({
     where: { email },
   });
@@ -24,10 +23,8 @@ export async function POST(request: Request) {
     );
   }
 
-  // Хешируем пароль
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Сохраняем пользователя в базе данных
   const newUser = await db.user_sportproducts.create({
     data: {
       name,

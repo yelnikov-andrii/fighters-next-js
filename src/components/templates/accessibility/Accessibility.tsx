@@ -1,3 +1,4 @@
+import { browsers } from '@/data/accessibility';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
@@ -24,26 +25,6 @@ const Link = (props: PropsLink) => {
 
 const Accessibility = () => {
     const t = useTranslations('common');
-
-    const browsers = [
-        {
-            name: 'Mozilla FireFox',
-            url: 'https://www.mozilla.org'
-        },
-        {
-            name: 'Google Chrome',
-            url: 'https://www.google.com/chrome/'
-        },
-        {
-            name: 'Apple Safari',
-            url: 'https://www.apple.com/uk/safari/'
-        },
-        {
-            name: 'Microsoft Edge',
-            url: 'https://www.microsoft.com'
-        }
-    ]
-
     return (
         <div className='container'>
             <section className='pt-12 pb-20'>
@@ -65,6 +46,7 @@ const Accessibility = () => {
                             <Link
                                 name={browser.name}
                                 url={browser.url}
+                                key={browser.name}
                             />
                         ))}
                     </ul>

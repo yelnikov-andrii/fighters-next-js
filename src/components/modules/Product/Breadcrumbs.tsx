@@ -1,10 +1,7 @@
 'use client'
 import { fetchAllSubcategories, fetchSubsubcategories } from '@/redux/action-creator/Categories/fetchCategories';
 import { RootState } from '@/redux/store';
-import { CategoryInt, SubsubcategoryInt } from '@/types/categories';
-import { ProductInt } from '@/types/products';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

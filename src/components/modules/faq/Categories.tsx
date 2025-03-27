@@ -1,6 +1,5 @@
 import * as React from 'react';
 import ArticlesLink from './ArticlesLink';
-import { AllArticlesI } from '@/types/faq';
 
 interface Props {
     articles: AllArticlesI[];
@@ -13,6 +12,7 @@ function Categories(props: Props) {
             {articles.map(article => (
                 <ArticlesLink
                     article={article}
+                    key={article.id}
                 />
             ))}
         </div>

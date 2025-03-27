@@ -4,14 +4,301 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://db_october_user:WHLHRryIHWRzc3kmDFmeGpdR9Cs0jemw@dpg-cs61c9tumphs73b41k2g-a.oregon-postgres.render.com/db_october"
+  url      = "postgresql://march_db_user:OYXvW8MG9utK5wscUbOkRZW4Ch1yRHNO@dpg-cvf9bbhopnds73b7vbv0-a.oregon-postgres.render.com/march_db"
 }
 
-model UserSportproducts {
+model Amenities {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  img       String   @db.VarChar(255)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+}
+
+model BrandPhotos {
+  id           Int          @id @default(autoincrement())
+  imageUrl     String       @db.VarChar(255)
+  createdAt    DateTime     @db.Timestamptz(6)
+  updatedAt    DateTime     @db.Timestamptz(6)
+  BrandSportId Int?
+  BrandSports  BrandSports? @relation(fields: [BrandSportId], references: [id])
+}
+
+model BrandSports {
+  id            Int             @id @default(autoincrement())
+  name          String          @db.VarChar(255)
+  img           String?         @db.VarChar(255)
+  createdAt     DateTime        @db.Timestamptz(6)
+  updatedAt     DateTime        @db.Timestamptz(6)
+  BrandPhotos   BrandPhotos[]
+  ProductSports ProductSports[]
+}
+
+model CategorySports {
+  id                Int                 @id @default(autoincrement())
+  name_ukr          String              @db.VarChar(255)
+  name_en           String              @db.VarChar(255)
+  photo             String              @db.VarChar(255)
+  createdAt         DateTime            @db.Timestamptz(6)
+  updatedAt         DateTime            @db.Timestamptz(6)
+  SubcategorySports SubcategorySports[]
+}
+
+model Destinations {
+  city      String   @db.VarChar
+  country   String   @db.VarChar
+  rating    Int
+  reviews   Int
+  id        Int      @id(map: "destinations_pkey") @default(autoincrement())
+  img       String   @db.VarChar
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+  Stays     Stays[]
+}
+
+model Images {
+  id        Int      @id @default(autoincrement())
+  url       String   @db.VarChar(255)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+  StayId    Int?
+  Stays     Stays?   @relation(fields: [StayId], references: [id])
+}
+
+model ProductPhotoAssociations {
+  createdAt           DateTime           @db.Timestamptz(6)
+  updatedAt           DateTime           @db.Timestamptz(6)
+  ProductPhotoSportId Int
+  ProductSportId      Int
+  ProductPhotoSports  ProductPhotoSports @relation(fields: [ProductPhotoSportId], references: [id], onDelete: Cascade)
+  ProductSports       ProductSports      @relation(fields: [ProductSportId], references: [id], onDelete: Cascade)
+
+  @@id([ProductPhotoSportId, ProductSportId])
+}
+
+model ProductPhotoSports {
+  id                       Int                        @id @default(autoincrement())
+  imageUrl                 String                     @db.VarChar(255)
+  createdAt                DateTime                   @db.Timestamptz(6)
+  updatedAt                DateTime                   @db.Timestamptz(6)
+  ProductPhotoAssociations ProductPhotoAssociations[]
+}
+
+model ProductSports {
+  id                       Int                        @id @default(autoincrement())
+  name_ukr                 String                     @db.VarChar(255)
+  name_en                  String                     @db.VarChar(255)
+  description_en           String?
+  description_ukr          String?
+  price                    Float
+  color_en                 String[]                   @db.VarChar(255)
+  color_ukr                String[]                   @db.VarChar(255)
+  material_en              String?                    @db.VarChar(255)
+  material_ukr             String?                    @db.VarChar(255)
+  gender_en                String?                    @db.VarChar(255)
+  gender_ukr               String?                    @db.VarChar(255)
+  age_en                   String?                    @db.VarChar(255)
+  age_ukr                  String?                    @db.VarChar(255)
+  createdAt                DateTime                   @db.Timestamptz(6)
+  updatedAt                DateTime                   @db.Timestamptz(6)
+  SubSubcategorySportId    Int?
+  BrandSportId             Int?
+  ProductPhotoAssociations ProductPhotoAssociations[]
+  BrandSports              BrandSports?               @relation(fields: [BrandSportId], references: [id])
+  SubSubcategorySports     SubSubcategorySports?      @relation(fields: [SubSubcategorySportId], references: [id])
+  VariantSports            VariantSports[]
+}
+
+model Reviews {
+  id        Int      @id @default(autoincrement())
+  author    String   @db.VarChar(255)
+  text      String   @db.VarChar(255)
+  img       String   @db.VarChar(255)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+  StayId    Int?
+  Stays     Stays?   @relation(fields: [StayId], references: [id])
+}
+
+model Stays {
+  id            Int           @id @default(autoincrement())
+  name          String        @db.VarChar(255)
+  rating        Int
+  street        String        @db.VarChar(255)
+  propertyType  String        @db.VarChar(255)
+  about         String        @db.VarChar(510)
+  price         Int
+  accuracy      Float
+  value         Float
+  location      Float
+  cleanliness   Float
+  checkIn       Float
+  communication Float
+  amenities     Int[]
+  onMap         String        @db.VarChar(1020)
+  createdAt     DateTime      @db.Timestamptz(6)
+  updatedAt     DateTime      @db.Timestamptz(6)
+  DestinationId Int?
+  Images        Images[]
+  Reviews       Reviews[]
+  Destinations  Destinations? @relation(fields: [DestinationId], references: [id])
+}
+
+model SubSubcategorySports {
+  id                 Int                @id @default(autoincrement())
+  name_ukr           String             @db.VarChar(255)
+  name_en            String             @db.VarChar(255)
+  createdAt          DateTime           @db.Timestamptz(6)
+  updatedAt          DateTime           @db.Timestamptz(6)
+  SubcategorySportId Int?
+  ProductSports      ProductSports[]
+  SubcategorySports  SubcategorySports? @relation(fields: [SubcategorySportId], references: [id])
+}
+
+model SubcategorySports {
+  id                   Int                    @id @default(autoincrement())
+  name_ukr             String                 @db.VarChar(255)
+  name_en              String                 @db.VarChar(255)
+  createdAt            DateTime               @db.Timestamptz(6)
+  updatedAt            DateTime               @db.Timestamptz(6)
+  CategorySportId      Int?
+  SubSubcategorySports SubSubcategorySports[]
+  CategorySports       CategorySports?        @relation(fields: [CategorySportId], references: [id])
+}
+
+model VariantSports {
+  id             Int            @id @default(autoincrement())
+  name_en        String         @db.VarChar(255)
+  name_ukr       String         @db.VarChar(255)
+  quantity       Int?           @default(0)
+  createdAt      DateTime       @db.Timestamptz(6)
+  updatedAt      DateTime       @db.Timestamptz(6)
+  ProductSportId Int?
+  ProductSports  ProductSports? @relation(fields: [ProductSportId], references: [id])
+}
+
+model calls {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  number    String   @db.VarChar(255)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+}
+
+model feedbacks {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  number    String   @db.VarChar(255)
+  email     String?  @db.VarChar(255)
+  message   String?  @db.VarChar(255)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+}
+
+model orders {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  phone     String   @db.VarChar(255)
+  address   String?  @db.VarChar(255)
+  products  String   @db.VarChar(2056)
+  email     String?  @db.VarChar(255)
+  status    String?  @db.VarChar(255)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+}
+
+model products {
+  id         Int      @id @default(autoincrement())
+  img        String   @db.VarChar(255)
+  weight     Int?
+  count      Int?
+  name       String   @db.VarChar(255)
+  components String?  @db.VarChar(1000)
+  price      Int?
+  prices     Int[]
+  sizes      Int[]
+  souses     String[] @db.VarChar(255)
+  dough      String[] @db.VarChar(255)
+  categories String[] @db.VarChar(255)
+  typeId     Int?
+  createdAt  DateTime @db.Timestamptz(6)
+  updatedAt  DateTime @db.Timestamptz(6)
+  types      types?   @relation(fields: [typeId], references: [id], onDelete: Cascade)
+}
+
+model todo_trackers {
+  id            Int            @id @default(autoincrement())
+  name          String         @db.VarChar(255)
+  completed     Boolean
+  start         DateTime       @db.Timestamptz(6)
+  finish        DateTime       @db.Timestamptz(6)
+  createdAt     DateTime       @db.Timestamptz(6)
+  updatedAt     DateTime       @db.Timestamptz(6)
+  userTrackerId Int?
+  user_trackers user_trackers? @relation(fields: [userTrackerId], references: [id])
+}
+
+model todo_without_time_trackers {
+  id            Int            @id @default(autoincrement())
+  name          String         @db.VarChar(255)
+  completed     Boolean
+  createdAt     DateTime       @db.Timestamptz(6)
+  updatedAt     DateTime       @db.Timestamptz(6)
+  userTrackerId Int?
+  user_trackers user_trackers? @relation(fields: [userTrackerId], references: [id])
+}
+
+model token_sportproducts {
+  id           Int      @id @default(autoincrement())
+  refreshToken String   @db.VarChar(255)
+  userId       Int?
+  createdAt    DateTime @db.Timestamptz(6)
+  updatedAt    DateTime @db.Timestamptz(6)
+}
+
+model tokens {
+  id           Int      @id @default(autoincrement())
+  refreshToken String   @db.VarChar(255)
+  userId       Int?
+  createdAt    DateTime @db.Timestamptz(6)
+  updatedAt    DateTime @db.Timestamptz(6)
+}
+
+model types {
+  id        Int        @id @default(autoincrement())
+  name      String     @db.VarChar(255)
+  createdAt DateTime   @db.Timestamptz(6)
+  updatedAt DateTime   @db.Timestamptz(6)
+  products  products[]
+}
+
+model user_sportproducts {
   id        Int      @id @default(autoincrement())
   email     String   @unique @db.VarChar(255)
   name      String   @db.VarChar(255)
   lastName  String   @db.VarChar(255)
   password  String   @db.VarChar(255)
   role      String?  @default("user") @db.VarChar(255)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+}
+
+model user_trackers {
+  id                         Int                          @id @default(autoincrement())
+  email                      String                       @db.VarChar(255)
+  password                   String                       @db.VarChar(255)
+  createdAt                  DateTime                     @db.Timestamptz(6)
+  updatedAt                  DateTime                     @db.Timestamptz(6)
+  todo_trackers              todo_trackers[]
+  todo_without_time_trackers todo_without_time_trackers[]
+}
+
+model users {
+  id              Int      @id @default(autoincrement())
+  email           String   @unique @db.VarChar(255)
+  password        String   @db.VarChar(255)
+  role            String?  @default("user") @db.VarChar(255)
+  activationToken String?  @db.VarChar(255)
+  createdAt       DateTime @db.Timestamptz(6)
+  updatedAt       DateTime @db.Timestamptz(6)
 }

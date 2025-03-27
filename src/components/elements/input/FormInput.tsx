@@ -5,7 +5,7 @@ import * as React from 'react';
 interface Props {
     label: string;
     value: string;
-    change: (obj: { value: string, name: string }) => void;
+    change: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
     name: string;
     type: string;
@@ -16,8 +16,8 @@ function FormInput(props: Props) {
     const { label, value, change, placeholder, name, type, reset } = props;
     const t = useTranslations('common');
 
-    function handleChange(value: string, name: string) {
-        change({ value: value, name: name });
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+        change(e);
     }
     return (
         <div className='flex flex-col gap-2'>
@@ -31,7 +31,7 @@ function FormInput(props: Props) {
                         placeholder={placeholder}
                         name={name}
                         value={value}
-                        onChange={(e) => handleChange(e.target.value, e.target.name)}
+                        onChange={handleChange}
                         type={type}
                     />
                     <Link className='absolute right-[10px] top-[50%] translate-y-[-50%] hover:text-silver hover:underline transition-all' href="/account/forgot-password">
@@ -44,7 +44,7 @@ function FormInput(props: Props) {
                     placeholder={placeholder}
                     name={name}
                     value={value}
-                    onChange={(e) => handleChange(e.target.value, e.target.name)}
+                    onChange={handleChange}
                     type={type}
                 />
             )}

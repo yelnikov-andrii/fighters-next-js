@@ -12,25 +12,66 @@ function ContactUs() {
         email: '',
         message: ''
     });
+    const [errors, setErrors] = useState<{ fullname?: string; email?: string; message?: string }>({});
+    const [alert, setAlert] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    function onchangeHandler(obj: { name: string, value: string }) {
-        switch (obj.name) {
-            case 'email':
-                setData(prev => ({ ...prev, email: obj.value }));
-                break;
-            case 'fullname':
-                setData(prev => ({ ...prev, fullname: obj.value }));
-                break;
-            case 'message':
-                setData(prev => ({ ...prev, message: obj.value }));
-                break;
-            default:
-                return null;
+    function onchangeHandler(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        setErrors({});
+        const { name, value } = event.target;
+        setData(data => ({ ...data, [name]: value }))
+    }
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        if (!validateForm()) return;
+        setLoading(true);
+        setAlert('');
+        if (validateForm()) {
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        fullName: data.fullname,
+                        message: data.message,
+                        email: data.email
+                    }),
+                });
+
+                if (response.ok) {
+                    setData({ fullname: '', email: '', message: '' });
+                    setAlert(t('we_will_contact'));
+
+                    setTimeout(() => {
+                        setAlert('');
+                    }, 3000);
+                } else {
+                    console.error('Failed to submit contact form:', await response.text());
+                }
+            } catch (error) {
+                console.error('Error submitting contact form:', error);
+            }
+
+            finally {
+                setLoading(false);
+            }
         }
     }
 
-    function handleSubmit() {
-        console.log('submit contact us')
+    function validateForm() {
+        let newErrors: typeof errors = {};
+
+        if (!data.fullname.trim()) newErrors.fullname = t('required');
+        if (!data.email.trim()) {
+            newErrors.email = t('required');
+        } else if (!/\S+@\S+\.\S+/.test(data.email)) {
+            newErrors.email = t('invalid_email');
+        }
+        if (!data.message.trim()) newErrors.message = t('required');
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     }
 
     return (
@@ -54,28 +95,34 @@ function ContactUs() {
                         name='fullname'
                         type='text'
                     />
+                    {errors.fullname && <span className="text-red">{errors.fullname}</span>}
                     <FormInput
                         label='Email'
                         placeholder='Email'
                         value={data.email}
                         change={onchangeHandler}
                         name='email'
-                        type='text'
+                        type='email'
                     />
+                    {errors.email && <span className="text-red">{errors.email}</span>}
                     <textarea
                         value={data.message}
-                        onChange={(e) => {
-                            onchangeHandler({ value: e.target.value, name: 'message' })
-                        }}
+                        onChange={onchangeHandler}
                         name='message'
                         placeholder={t('write_message')}
                         className='border border-input-border py-2 px-4 rounded-sm transition-all w-full'
                         rows={5}
                     >
                     </textarea>
+                    {errors.message && <span className="text-red">{errors.message}</span>}
                     <FormButton type='submit'>
-                        {t('send')}
+                        {t('send')} {loading && (<span className='dots'></span>)}
                     </FormButton>
+                    {alert && (
+                        <div className={`max-w-[400px] mx-auto p-4 rounded-md text-white text-center bg-green`}>
+                            {alert}
+                        </div>
+                    )}
                 </form>
             </div>
         </section>

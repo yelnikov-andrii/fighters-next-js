@@ -1,4 +1,3 @@
-import { BrandI } from '@/types/main';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import * as React from 'react';

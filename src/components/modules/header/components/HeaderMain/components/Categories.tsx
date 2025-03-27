@@ -3,8 +3,6 @@ import { Dispatch, FunctionComponent, MutableRefObject, SetStateAction, useEffec
 import { fetchCategories } from "@/redux/action-creator/Categories/fetchCategories";
 import { RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
-//types
-import { CategoryInt } from "@/types/categories";
 //next
 import Link from "next/link";
 //components
@@ -140,12 +138,11 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
                                             if (isMobile) setSubcategoriesAreOpen(true);
 
                                         }}
+                                        key={category.id}
                                     >
                                         {language === 'EN' ? category.name_en : category.name_ukr}
                                         <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
                                     </div>
-
-
                                 ))}
                             </>
                         ) : (
@@ -159,7 +156,7 @@ const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesA
                                 >
                                     {language === 'EN' ? 'All products' : 'Усі продукти'}
                                 </MemoizedLink>
-                                {categories.map(category => (
+                                {categories.map((category: CategoryInt) => (
                                     <div
                                         key={category.id}
                                         className="mb-1 justify-between md:justify-start py-2 px-4 md:py-0 w-full md:w-auto flex gap-2 items-center"

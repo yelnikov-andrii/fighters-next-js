@@ -2,8 +2,6 @@
 import * as React from 'react';
 import BreadCrumbs from './BreadCrumbs';
 import { useTranslations } from 'next-intl';
-import { AllArticlesI } from '@/types/faq';
-import Categories from './Categories';
 import Subcategories from './Subcategories';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';

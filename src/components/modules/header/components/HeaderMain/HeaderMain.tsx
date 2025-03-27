@@ -8,11 +8,7 @@ import clsx from "clsx";
 import { fetchCurrencies } from "@/redux/action-creator/Currencies/fetchCurrencies";
 import { useDispatch } from "react-redux";
 
-interface HeaderMainProps {
-
-}
-
-const HeaderMain: FunctionComponent<HeaderMainProps> = () => {
+const HeaderMain = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [categoriesAreOpen, setCategoriesAreOpen] = useState(true);
 
@@ -22,14 +18,14 @@ const HeaderMain: FunctionComponent<HeaderMainProps> = () => {
 
     useEffect(() => {
         let lastScrollPosition = window.pageYOffset;
-        let isScrollingUp = false; // Флаг для направления прокрутки
-        const scrollThreshold = 50; // Минимальное расстояние для срабатывания скролла
+        let isScrollingUp = false;
+        const scrollThreshold = 100;
     
         const handleScroll = () => {
             let currentScrollPosition = window.pageYOffset;
-            let scrollDifference = Math.abs(currentScrollPosition - lastScrollPosition); // Разница между текущей и последней позицией
+            let scrollDifference = Math.abs(currentScrollPosition - lastScrollPosition);
     
-            if (scrollDifference > scrollThreshold) {
+            if (scrollDifference >= scrollThreshold) {
                 if (currentScrollPosition > lastScrollPosition) {
                     // Скроллим вниз
                     if (isScrollingUp || categoriesAreOpen) {
@@ -43,7 +39,7 @@ const HeaderMain: FunctionComponent<HeaderMainProps> = () => {
                         isScrollingUp = true;
                     }
                 }
-                lastScrollPosition = currentScrollPosition; // Обновляем позицию только после значительного скролла
+                lastScrollPosition = currentScrollPosition;
             }
         };
     

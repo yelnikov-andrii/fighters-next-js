@@ -1,7 +1,6 @@
 import React from 'react';
 import { fetchProducts } from '../redux/action-creator/Products/fetchProducts';
 import { AppDispatch } from '@/redux/store';
-import { AllFiltersInt, Option } from '@/types/filter';
 
 export const useFetchProducts = (category: string | null, subcategory: string | null, subsubcategory: string | null, page: number, dispatch: AppDispatch, allFilters: AllFiltersInt, isLoaded: boolean) => {
   const sizes = allFilters.sizeFilters.reduce((init: string, size: Option) => init + size.name_en + ',', '');

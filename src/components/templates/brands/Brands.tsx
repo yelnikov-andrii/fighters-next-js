@@ -1,5 +1,4 @@
 import { baseUrl } from '@/data/url';
-import { BrandI } from '@/types/main';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import * as React from 'react';
@@ -8,7 +7,6 @@ import LinkButton from '@/components/elements/link-button/LinkButton';
 
 function Brands({ brands }: { brands: BrandI[] }) {
     const t = useTranslations('common');
-
     return (
         <section className='py-8'>
             <div className='container'>
@@ -17,7 +15,7 @@ function Brands({ brands }: { brands: BrandI[] }) {
                 </h1>
                 <div className='flex gap-4 gap-y-10 flex-wrap justify-between'>
                     {brands.sort((brandA: BrandI, brandB: BrandI) => brandA.name.localeCompare(brandB.name)).map(brand => (
-                        <div className='w-[30%]'>
+                        <div className='w-[30%]' key={brand.id}>
                             <Image
                                 src={`${baseUrl}/${brand.img}`}
                                 alt={brand.name}

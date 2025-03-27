@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { BrandI } from "@/types/main";
 import Image from 'next/image';
 import { baseUrl } from '@/data/url';
 import LinkButton from '@/components/elements/link-button/LinkButton';
@@ -12,7 +11,7 @@ function Brands({ brands }: { brands: BrandI[] }) {
     return (
         <div className='flex flex-col sm:flex-row container gap-16 md:gap-8 flex-wrap justify-center items-center sm:items-center md:items-stetch sm:justify-center md:justify-between xl:justify-between'>
             {brands.slice(0, 4).map(brand => (
-                <div className='w-[100%] md:w-[45%] lg:w-[25%] xl:w-[20%] flex flex-col justify-between min-w-[230px] max-w-[320px]'>
+                <div className='w-[100%] md:w-[45%] lg:w-[25%] xl:w-[20%] flex flex-col justify-between min-w-[230px] max-w-[320px]' key={brand.id}>
                         <Image
                             src={`${baseUrl}/${brand.img}`}
                             alt={brand.name}

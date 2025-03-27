@@ -15,14 +15,16 @@ function Login() {
         password: ''
     });
     const [alert, setAlert] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    function onchangeHandler(obj: { name: string, value: string }) {
-        switch (obj.name) {
+    function onchangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+        const { name, value } = e.target;
+        switch (name) {
             case 'email':
-                setData(prev => ({ ...prev, email: obj.value }));
+                setData(prev => ({ ...prev, email: value }));
                 break;
             case 'password':
-                setData(prev => ({ ...prev, password: obj.value }));
+                setData(prev => ({ ...prev, password: value }));
                 break;
             default:
                 return null;
@@ -39,18 +41,24 @@ function Login() {
                 },
                 body: JSON.stringify({ email: data?.email, password: data?.password }),
             });
-    
+
             const result = await response.json();
+
             if (!response.ok) {
                 setAlert(result?.message || t('error_login'));
                 return;
             }
-            router.push('/');
-            
-        } catch(e: any) {
+
+            router.push('/account');
+
+        } catch (e: any) {
             const error = e.message;
             setAlert(error || t('error_login'));
         }
+    }
+
+    function clearAlert() {
+        setAlert('');
     }
 
     return (
@@ -83,13 +91,18 @@ function Login() {
                 </form>
                 <div className='text-center mt-8 flex gap-2 justify-center'>
                     <span>{t('new_customer')}</span>
-                    <Link href="/account/register" className='hover:text-silver transition-all'>
-                        {t('register')}
+                    <Link href="/register" className='hover:text-silver transition-all'>
+                        {t('register')} { loading && <span className='dots'></span>}
                     </Link>
                 </div>
                 {alert && (
-                    <div className='py-4 px-2 text-red font-bold border-2 border-red rounded-lg flex justify-center items-center mt-2 max-w-[400px] mx-auto'>
-                        {alert}
+                    <div className='py-4 px-2 text-red font-bold border-2 border-red rounded-lg flex justify-center gap-2 items-center mt-2 max-w-[400px] mx-auto'>
+                        <span>
+                            {alert}
+                        </span>
+                        <button className='rounded-lg border border-red p-2' onClick={clearAlert}>
+                            ok
+                        </button>
                     </div>
                 )}
             </div>

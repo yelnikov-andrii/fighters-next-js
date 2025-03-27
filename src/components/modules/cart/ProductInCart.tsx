@@ -2,8 +2,6 @@
 import { CounterBlock } from '@/components/elements/counter-block/CounterBlock';
 import { baseUrl } from '@/data/url';
 import { RootState } from '@/redux/store';
-import { BrandI } from '@/types/main';
-import { ProductAdded, ProductPhotoInt } from '@/types/products';
 import axios from 'axios';
 import Image from 'next/image';
 import * as React from 'react';

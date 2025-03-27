@@ -1,5 +1,4 @@
 import { baseUrl } from '@/data/url';
-import { BrandI } from '@/types/main';
 import axios from 'axios';
 import * as React from 'react';
 

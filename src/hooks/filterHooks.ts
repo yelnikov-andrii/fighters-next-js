@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React from 'react';
 import { getUniqueColors, getUniqueFilterOptions } from '@/helpers/filter';
-import { FilterOptionInt } from '@/types/filter';
-import { BrandInt, ProductInt } from '@/types/products';
 import { baseUrl } from '@/data/url';
 import { setAllProductsLoaded } from '@/redux/slices/productSlice';
 import { useDispatch } from 'react-redux';

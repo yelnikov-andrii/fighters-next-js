@@ -1,6 +1,5 @@
 
 import * as React from 'react';
-import { ArticleI } from '@/types/faq';
 import ArticleLink from './ArticleLink';
 
 interface Props {
@@ -16,6 +15,7 @@ function Subcategories(props: Props) {
                 <ArticleLink
                     article={article}
                     name={article_name}
+                    key={article.id}
                 />
             ))}
         </div>

@@ -1,5 +1,4 @@
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import * as React from 'react';
 
 const StrongBlock = ({ children }: { children: React.ReactNode }) => {

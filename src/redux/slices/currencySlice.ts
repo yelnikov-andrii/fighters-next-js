@@ -1,4 +1,3 @@
-import { CurrencyFromServerInt } from '@/types/products';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 

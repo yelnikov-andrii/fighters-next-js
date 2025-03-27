@@ -154,6 +154,11 @@
         "alphAsc": "Alphabetically ascending",
         "alphDesc": "Alphabetically descending",
         "priceAsc": "Price (Low to High)",
-        "priceDesc": "Price (High to Low)"
+        "priceDesc": "Price (High to Low)",
+        "account": "Account",
+        "logout": "Logout",
+        "required": "Field cannot be empty",
+        "invalid_email": "Invalid email",
+        "we_will_contact": "Thanks, we will contact you soon"
     }
 }

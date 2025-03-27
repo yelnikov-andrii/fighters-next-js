@@ -98,12 +98,12 @@ function Toolbar() {
                 <button onClick={() => {
                     handleChangeListView('column');
                 }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><g transform="translate(3 5.727)"><path stroke={currentColor.column} stroke-width="1.5" d="M4.364 1.091h13.091"></path><circle fill={currentColor.column} cx="1.091" cy="1.091" r="1.091"></circle></g><g transform="translate(3 10.91)"><path stroke={currentColor.column} stroke-width="1.5" d="M4.364 1.091h13.091"></path><circle fill={currentColor.column} cx="1.091" cy="1.091" r="1.091"></circle></g><g transform="translate(3 16.09)"><path stroke={currentColor.column} stroke-width="1.5" d="M4.364 1.091h13.091"></path><circle fill={currentColor.column} cx="1.091" cy="1.091" r="1.091"></circle></g></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><g transform="translate(3 5.727)"><path stroke={currentColor.column} strokeWidth="1.5" d="M4.364 1.091h13.091"></path><circle fill={currentColor.column} cx="1.091" cy="1.091" r="1.091"></circle></g><g transform="translate(3 10.91)"><path stroke={currentColor.column} strokeWidth="1.5" d="M4.364 1.091h13.091"></path><circle fill={currentColor.column} cx="1.091" cy="1.091" r="1.091"></circle></g><g transform="translate(3 16.09)"><path stroke={currentColor.column} strokeWidth="1.5" d="M4.364 1.091h13.091"></path><circle fill={currentColor.column} cx="1.091" cy="1.091" r="1.091"></circle></g></svg>
                 </button>
                 <button onClick={() => {
                     handleChangeListView('row');
                 }}>
-                    <svg width="24" height="24" fill='none' viewBox="0 0 24 24" stroke={currentColor.row} stroke-width="1.5" aria-hidden="true" focusable="false" role="presentation"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"></path></svg>
+                    <svg width="24" height="24" fill='none' viewBox="0 0 24 24" stroke={currentColor.row} strokeWidth="1.5" aria-hidden="true" focusable="false" role="presentation"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"></path></svg>
                 </button>
             </div>
         </div>

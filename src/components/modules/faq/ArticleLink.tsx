@@ -1,7 +1,6 @@
 'use client'
 import * as React from 'react';
 import Link from 'next/link';
-import { AllArticlesI, ArticleI } from '@/types/faq';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 

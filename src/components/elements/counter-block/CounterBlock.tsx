@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { decreaseProduct, increaseProduct } from '@/redux/slices/cartSlice';
-import { ProductAdded } from '@/types/products';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 

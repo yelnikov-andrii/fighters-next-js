@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Option } from '@/types/filter';
 
 interface FilterStateInt {
   colorFilters: string[];

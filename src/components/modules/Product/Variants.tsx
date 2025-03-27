@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { VariantInt } from '@/types/products';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import clsx from 'clsx';

@@ -1,5 +1,3 @@
-import { ProductInt } from '@/types/products';
-
 export function getUniqueColors(products: ProductInt[]) {
   const allColors = products.flatMap(product => product.color_en);
   const uniqueColors = Array.from(new Set(allColors));

@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { baseUrl } from "@/data/url";
 import { RootState } from "@/redux/store";
-import { ProductInt, ProductPhotoInt } from "@/types/products";
 import { Skeleton } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
@@ -57,8 +56,9 @@ function ProductCard({ product, style }: { product: ProductInt, style?: any }) {
             style={style}
         >
             {!images.loading && images.arr.length > 0 ? (
-                <Link href={`products/${product.id}`} className={clsx("relative w-full pb-[100%]", {
+                <Link href={`products/${product.id}`} className={clsx("relative w-full", {
                     "max-w-[360px] pb-0": listView === 'column',
+                    "pb-[100%]": listView === 'row',
                 })}>
                     <Image
                         src={`${baseUrl}/${images?.arr[0]?.imageUrl}`}

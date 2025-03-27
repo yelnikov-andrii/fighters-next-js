@@ -3,7 +3,6 @@ import { RootState } from '@/redux/store';
 import { useRouter, useSearchParams } from 'next/navigation';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Option } from '@/types/filter';
 
 interface Props {
     array: Option[];

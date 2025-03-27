@@ -3,13 +3,10 @@ import { Dispatch, FunctionComponent, SetStateAction, useEffect } from "react";
 // components and data
 import { baseUrl } from "@/data/url";
 import SubSubCategory from "./Subsubcategory";
-import SubCategoriesLoading from "./SubcategoriesLoading";
 // redux
 import { fetchSubCategories } from "@/redux/action-creator/Categories/fetchCategories";
 import { RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
-// types
-import { CategoryInt } from "@/types/categories";
 // clsx
 import clsx from "clsx";
 // next
@@ -65,7 +62,7 @@ const Subcategories: FunctionComponent<SubcategoriesProps> = ({ category, setIsO
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" role="presentation"><path d="m6.797 11.625 8.03-8.03 1.06 1.06-6.97 6.97 6.97 6.97-1.06 1.06z"></path></svg>
                             Back
                         </button>
-                        {subcategories?.map((subcategory) => (
+                        {subcategories?.map((subcategory: SubcategoryInt) => (
                             <SubSubCategory
                                 subcategory={subcategory}
                                 menuState={menuState}
@@ -101,7 +98,7 @@ const Subcategories: FunctionComponent<SubcategoriesProps> = ({ category, setIsO
                 }}
             >
                 <div className="flex flex-wrap justify-between gap-8 md:gap-2">
-                    {subcategories?.map((subcategory) => (
+                    {subcategories?.map((subcategory: SubcategoryInt) => (
                         <SubSubCategory
                             subcategory={subcategory}
                             menuState={menuState}

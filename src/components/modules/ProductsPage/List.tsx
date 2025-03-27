@@ -1,7 +1,6 @@
 'use client'
 import ProductCard from '@/components/elements/product-card/ProductCard';
 import { RootState } from '@/redux/store';
-import { ProductInt } from '@/types/products';
 import * as React from 'react';
 import Pagination from './Pagination';
 import clsx from 'clsx';

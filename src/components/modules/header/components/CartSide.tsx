@@ -3,7 +3,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import arrow from '@/images/left-arrow.png';
 import { RootState } from '@/redux/store';
-import { ProductAdded } from '@/types/products';
 import { closeCart } from '@/redux/slices/cartSlice';
 import { ProductInCart } from './ProductInCart';
 import Image from 'next/image';
