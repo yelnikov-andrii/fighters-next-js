@@ -1,4 +1,12 @@
-import { Dispatch, FunctionComponent, MutableRefObject, SetStateAction, useEffect, useRef, useState } from "react";
+import {
+  Dispatch,
+  FunctionComponent,
+  MutableRefObject,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 // redux
 import { fetchCategories } from "@/redux/action-creator/Categories/fetchCategories";
 import { RootState } from "@/redux/store";
@@ -14,204 +22,259 @@ import { useDelayMouseenter } from "@/hooks/useDelayMouseEnter";
 import clsx from "clsx";
 import MemoizedLink from "@/components/elements/memoizedLink/MemoizedLink";
 
-
 interface CategoriesProps {
-    menuState: { isMenuOpen: boolean, setIsMenuOpen: Dispatch<SetStateAction<boolean>> };
-    categoriesAreOpen: boolean;
-    headerRef: any;
+  menuState: {
+    isMenuOpen: boolean;
+    setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+  };
+  categoriesAreOpen: boolean;
+  headerRef: any;
 }
 
-const Categories: FunctionComponent<CategoriesProps> = ({ menuState, categoriesAreOpen, headerRef }) => {
-    const { categories, categoriesLoading, categoriesError } = useSelector((state: RootState) => state.categories);
-    const { language } = useSelector((state: RootState) => state.language);
+const Categories: FunctionComponent<CategoriesProps> = ({
+  menuState,
+  categoriesAreOpen,
+  headerRef,
+}) => {
+  const { categories, categoriesLoading, categoriesError } = useSelector(
+    (state: RootState) => state.categories,
+  );
+  const { language } = useSelector((state: RootState) => state.language);
 
-    const [isOpenState, setIsOpenState] = useState({ isOpen: false, isHovered: false });
-    const [selectedCategory, setSelectedCategory] = useState<null | CategoryInt>(null);
-    const [isMobile, setIsMobile] = useState(false);
-    const [subcategoriesAreOpen, setSubcategoriesAreOpen] = useState(false);
-    const [style, setStyle] = useState({});
+  const [isOpenState, setIsOpenState] = useState({
+    isOpen: false,
+    isHovered: false,
+  });
+  const [selectedCategory, setSelectedCategory] = useState<null | CategoryInt>(
+    null,
+  );
+  const [isMobile, setIsMobile] = useState(false);
+  const [subcategoriesAreOpen, setSubcategoriesAreOpen] = useState(false);
+  const [style, setStyle] = useState({});
 
-    const leaveTimer: any = useRef();
-    const hoverTimer: any = useRef();
+  const leaveTimer: any = useRef();
+  const hoverTimer: any = useRef();
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useDelayMouseenter(isOpenState, setIsOpenState);
+  useDelayMouseenter(isOpenState, setIsOpenState);
 
-    function changeCategory(category: CategoryInt | null) {
-        setSelectedCategory(category);
+  function changeCategory(category: CategoryInt | null) {
+    setSelectedCategory(category);
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    dispatch(fetchCategories());
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (headerRef.current && !isMobile) {
+      const height = headerRef?.current?.offsetHeight;
+      setStyle({ top: height });
     }
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-
-        handleResize();
-        window.addEventListener('resize', handleResize);
-
-        dispatch(fetchCategories());
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (headerRef.current && !isMobile) {
-            const height = headerRef?.current?.offsetHeight;
-            setStyle({ top: height });
-        }
-
-        if (isMobile) {
-            setStyle({ top: 0 })
-        }
-    }, [headerRef?.current?.offsetHeight]);
-
-    useEffect(() => {
-        if (!menuState.isMenuOpen) {
-            setSubcategoriesAreOpen(false);
-        }
-    }, [menuState.isMenuOpen]);
-
-    function svgClick(category: CategoryInt) {
-        const isNotDesktop = !window.matchMedia("(hover: hover)").matches;
-
-        if (isNotDesktop) {
-            changeCategory(category);
-            setIsOpenState(prev => ({ ...prev, isHovered: true }));
-        }
+    if (isMobile) {
+      setStyle({ top: 0 });
     }
+  }, [headerRef?.current?.offsetHeight]);
 
-    if (categoriesLoading && menuState.isMenuOpen) {
-        return (
-            <div
-                className={clsx(
-                    'p-4 relative border-b-2 border-gray transition-visibility',
-                )}
-            >
-                <div className="container relative z-10 md:static">
-                    <div className="flex gap-4 flex-col md:flex-row items-center flex-wrap xl:justify-between">
-                        <Loading />
-                    </div>
-                </div>
-            </div>
-        )
+  useEffect(() => {
+    if (!menuState.isMenuOpen) {
+      setSubcategoriesAreOpen(false);
     }
+  }, [menuState.isMenuOpen]);
 
+  function svgClick(category: CategoryInt) {
+    const isNotDesktop = !window.matchMedia("(hover: hover)").matches;
+
+    if (isNotDesktop) {
+      changeCategory(category);
+      setIsOpenState((prev) => ({ ...prev, isHovered: true }));
+    }
+  }
+
+  if (categoriesLoading && menuState.isMenuOpen) {
     return (
-        <div className={clsx('overflow-hidden categories-transition', {
-            'max-h-[0px]': !categoriesAreOpen && !isMobile,
-            'max-h-[70px]': categoriesAreOpen && !isMobile,
-        })}>
-            <div
-                className={clsx(
-                    'p-2 lg:p-4 border-b-2 border-gray transition-visibility transition-max-height categories categories-transition transition-maxheight',
-                    {
-                        'visible relative': menuState.isMenuOpen && isMobile,
-                        'hidden relative': !menuState.isMenuOpen && isMobile,
-                        'translate-y-[-200%]': !categoriesAreOpen && !isMobile,
-                    }
-                )}
-            >
-                <div className="container relative z-10 md:static">
-                    <div className="flex gap-1 md:gap-0 flex-col md:flex-row items-center flex-wrap 3xl:justify-between">
-                        {isMobile ? (
-                            <>
-                                <MemoizedLink
-                                    href='/products'
-                                    className="font-bold uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
-                                    onMouseEnter={() => {
-                                        if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
-                                    }}
-                                    onClick={() => {
-                                        menuState.setIsMenuOpen(false)
-                                    }}
-                                >
-                                    {language === 'EN' ? 'All products' : 'Усі продукти'}
-                                </MemoizedLink>
-                                {categories.map((category: CategoryInt) => (
-                                    <div
-                                        className="font-bold justify-between hover:cursor-pointer md:justify-start uppercase py-1 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-1 items-center"
-                                        onClick={() => {
-                                            if (isMobile) changeCategory(category);
-                                            if (isMobile) setSubcategoriesAreOpen(true);
-
-                                        }}
-                                        key={category.id}
-                                    >
-                                        {language === 'EN' ? category.name_en : category.name_ukr}
-                                        <svg className="-rotate-90 md:rotate-0" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
-                                    </div>
-                                ))}
-                            </>
-                        ) : (
-                            <>
-                                <MemoizedLink
-                                    href='/products'
-                                    className="font-bold mb-1 uppercase py-2 px-4 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
-                                    onMouseEnter={() => {
-                                        if (!isMobile) setIsOpenState(prev => ({ ...prev, isHovered: false }));
-                                    }}
-                                >
-                                    {language === 'EN' ? 'All products' : 'Усі продукти'}
-                                </MemoizedLink>
-                                {categories.map((category: CategoryInt) => (
-                                    <div
-                                        key={category.id}
-                                        className="mb-1 justify-between md:justify-start py-2 px-4 md:py-0 w-full md:w-auto flex gap-2 items-center"
-                                        onMouseEnter={() => {
-                                            if (!isMobile) {
-                                                if (leaveTimer.current) {
-                                                    clearTimeout(leaveTimer.current);
-                                                    leaveTimer.current = null;
-                                                }
-
-                                                hoverTimer.current = setTimeout(() => {
-                                                    changeCategory(category);
-                                                    setIsOpenState(prev => ({ ...prev, isHovered: true }));
-                                                }, 300);
-                                            }
-                                        }}
-                                        onMouseLeave={() => {
-                                            if (!isMobile) {
-                                                clearTimeout(hoverTimer.current);
-                                                hoverTimer.current = null;
-                                                leaveTimer.current = setTimeout(() => {
-                                                    setIsOpenState(prev => ({ ...prev, isHovered: false }));
-                                                }, 300);
-                                            }
-                                        }}
-                                    >
-                                        <MemoizedLink
-                                            href={`/products?category=${category.name_en.replaceAll(' ', '-').replaceAll('&', 'and')}`}
-                                            className="font-bold uppercase text-black font-osvald hover:underline"
-                                        >
-                                            {language === 'EN' ? category.name_en : category.name_ukr}
-                                        </MemoizedLink>
-                                        <svg
-                                            className="-rotate-90 md:rotate-0"
-                                            onClick={() => {
-                                                svgClick(category)
-                                            }} width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><path d="M20 8.5 12.5 16 5 8.5" stroke="currentColor" strokeWidth="1.5" fill="none"></path></svg>
-                                    </div>
-                                ))}
-                            </>
-                        )}
-                    </div>
-                    <Subcategories
-                        category={selectedCategory}
-                        setIsOpenState={setIsOpenState}
-                        isOpenState={isOpenState}
-                        style={style}
-                        menuState={menuState}
-                        subcategoriesState={{ isMobile, subcategoriesAreOpen, setSubcategoriesAreOpen }}
-                        timerRef={leaveTimer}
-                    />
-                </div>
-            </div>
+      <div
+        className={clsx(
+          "p-4 relative border-b-2 border-gray transition-visibility",
+        )}
+      >
+        <div className="container relative z-10 md:static">
+          <div className="flex gap-4 flex-col md:flex-row items-center flex-wrap xl:justify-between">
+            <Loading />
+          </div>
         </div>
+      </div>
     );
-}
+  }
+
+  return (
+    <div
+      className={clsx("overflow-scroll categories-transition", {
+        "max-h-[0px]": !categoriesAreOpen && !isMobile,
+        "max-h-[70px]": categoriesAreOpen && !isMobile,
+      })}
+    >
+      <div
+        className={clsx(
+          "p-2 lg:p-4 border-b-2 border-gray transition-visibility transition-max-height categories categories-transition transition-maxheight",
+          {
+            "visible relative": menuState.isMenuOpen && isMobile,
+            "hidden relative": !menuState.isMenuOpen && isMobile,
+            "translate-y-[-200%]": !categoriesAreOpen && !isMobile,
+          },
+        )}
+      >
+        <div className="container relative z-10 md:static">
+          <div className="flex gap-1 md:gap-0 flex-col md:flex-row items-center flex-wrap 3xl:justify-between">
+            {isMobile ? (
+              <>
+                <MemoizedLink
+                  href="/products"
+                  className="font-bold uppercase py-2 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
+                  onMouseEnter={() => {
+                    if (!isMobile)
+                      setIsOpenState((prev) => ({ ...prev, isHovered: false }));
+                  }}
+                  onClick={() => {
+                    menuState.setIsMenuOpen(false);
+                  }}
+                >
+                  {language === "EN" ? "All products" : "Усі продукти"}
+                </MemoizedLink>
+                {categories.map((category: CategoryInt) => (
+                  <div
+                    className="font-bold justify-between hover:cursor-pointer md:justify-start uppercase py-1 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-1 items-center"
+                    onClick={() => {
+                      if (isMobile) changeCategory(category);
+                      if (isMobile) setSubcategoriesAreOpen(true);
+                    }}
+                    key={category.id}
+                  >
+                    {language === "EN" ? category.name_en : category.name_ukr}
+                    <svg
+                      className="-rotate-90 md:rotate-0"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                      role="presentation"
+                    >
+                      <path
+                        d="M20 8.5 12.5 16 5 8.5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        fill="none"
+                      ></path>
+                    </svg>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <>
+                <MemoizedLink
+                  href="/products"
+                  className="font-bold mb-1 uppercase py-2 px-4 md:py-0 w-full md:w-auto text-black font-osvald hover:underline flex gap-2 items-center"
+                  onMouseEnter={() => {
+                    if (!isMobile)
+                      setIsOpenState((prev) => ({ ...prev, isHovered: false }));
+                  }}
+                >
+                  {language === "EN" ? "All products" : "Усі продукти"}
+                </MemoizedLink>
+                {categories.map((category: CategoryInt) => (
+                  <div
+                    key={category.id}
+                    className="mb-1 justify-between md:justify-start py-2 px-4 md:py-0 w-full md:w-auto flex gap-2 items-center"
+                    onMouseEnter={() => {
+                      if (!isMobile) {
+                        if (leaveTimer.current) {
+                          clearTimeout(leaveTimer.current);
+                          leaveTimer.current = null;
+                        }
+
+                        hoverTimer.current = setTimeout(() => {
+                          changeCategory(category);
+                          setIsOpenState((prev) => ({
+                            ...prev,
+                            isHovered: true,
+                          }));
+                        }, 300);
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      if (!isMobile) {
+                        clearTimeout(hoverTimer.current);
+                        hoverTimer.current = null;
+                        leaveTimer.current = setTimeout(() => {
+                          setIsOpenState((prev) => ({
+                            ...prev,
+                            isHovered: false,
+                          }));
+                        }, 300);
+                      }
+                    }}
+                  >
+                    <MemoizedLink
+                      href={`/products?category=${category.name_en.replaceAll(" ", "-").replaceAll("&", "and")}`}
+                      className="font-bold uppercase text-black font-osvald hover:underline"
+                    >
+                      {language === "EN" ? category.name_en : category.name_ukr}
+                    </MemoizedLink>
+                    <svg
+                      className="-rotate-90 md:rotate-0"
+                      onClick={() => {
+                        svgClick(category);
+                      }}
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                      role="presentation"
+                    >
+                      <path
+                        d="M20 8.5 12.5 16 5 8.5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        fill="none"
+                      ></path>
+                    </svg>
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
+          <Subcategories
+            category={selectedCategory}
+            setIsOpenState={setIsOpenState}
+            isOpenState={isOpenState}
+            style={style}
+            menuState={menuState}
+            subcategoriesState={{
+              isMobile,
+              subcategoriesAreOpen,
+              setSubcategoriesAreOpen,
+            }}
+            timerRef={leaveTimer}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Categories;
