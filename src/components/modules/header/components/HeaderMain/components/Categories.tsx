@@ -122,7 +122,7 @@ const Categories: FunctionComponent<CategoriesProps> = ({
 
   return (
     <div
-      className={clsx("overflow-scroll categories-transition", {
+      className={clsx("overflow-auto categories-transition", {
         "max-h-[0px]": !categoriesAreOpen && !isMobile,
         "max-h-[70px]": categoriesAreOpen && !isMobile,
       })}

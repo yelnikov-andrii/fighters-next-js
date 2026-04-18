@@ -1,24 +1,23 @@
-import type { Metadata } from 'next'
-import { Oswald, Open_Sans } from 'next/font/google';
-import './globals.css'
-import { ReduxWrapper } from '@/app/Wrapper';
-import MainLayout from '@/components/layouts/Layout';
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
-import { Analytics } from "@vercel/analytics/react"
+import type { Metadata } from "next";
+import { Oswald, Open_Sans } from "next/font/google";
+import "./globals.css";
+import { ReduxWrapper } from "@/app/Wrapper";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
+import { Analytics } from "@vercel/analytics/react";
 
-const opensans = Open_Sans({ subsets: ['latin'], variable: '--font-sans' });
-export const osvald = Oswald({ subsets: ['latin'], variable: '--font-osvald' });
+const opensans = Open_Sans({ subsets: ["latin"], variable: "--font-sans" });
+export const osvald = Oswald({ subsets: ["latin"], variable: "--font-osvald" });
 
 export const metadata: Metadata = {
-  title: 'Fighters Shop',
-  description: 'Made for fighters',
-}
+  title: "Fighters Shop",
+  description: "Made for fighters",
+};
 
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   const locale = await getLocale();
   const messages = await getMessages();
@@ -28,11 +27,11 @@ export default async function RootLayout({
       <body className={opensans.className}>
         <ReduxWrapper>
           <NextIntlClientProvider messages={messages}>
-              {children}
+            {children}
           </NextIntlClientProvider>
         </ReduxWrapper>
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
