@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://march_db_user:OYXvW8MG9utK5wscUbOkRZW4Ch1yRHNO@dpg-cvf9bbhopnds73b7vbv0-a.oregon-postgres.render.com/march_db"
+  url      = "postgresql://db_april_2026_user:0wqmsM8AmR5PfLOHcW9XURzXWBKNoRQ0@dpg-d7ea4lkvikkc73ekj6n0-a.oregon-postgres.render.com/db_april_2026?sslmode=require"
 }
 
 model Amenities {
@@ -27,9 +27,9 @@ model BrandPhotos {
 model BrandSports {
   id            Int             @id @default(autoincrement())
   name          String          @db.VarChar(255)
-  img           String?         @db.VarChar(255)
   createdAt     DateTime        @db.Timestamptz(6)
   updatedAt     DateTime        @db.Timestamptz(6)
+  img           String?         @db.VarChar
   BrandPhotos   BrandPhotos[]
   ProductSports ProductSports[]
 }
@@ -106,7 +106,6 @@ model ProductSports {
   ProductPhotoAssociations ProductPhotoAssociations[]
   BrandSports              BrandSports?               @relation(fields: [BrandSportId], references: [id])
   SubSubcategorySports     SubSubcategorySports?      @relation(fields: [SubSubcategorySportId], references: [id])
-  VariantSports            VariantSports[]
 }
 
 model Reviews {
@@ -167,14 +166,13 @@ model SubcategorySports {
 }
 
 model VariantSports {
-  id             Int            @id @default(autoincrement())
-  name_en        String         @db.VarChar(255)
-  name_ukr       String         @db.VarChar(255)
-  quantity       Int?           @default(0)
-  createdAt      DateTime       @db.Timestamptz(6)
-  updatedAt      DateTime       @db.Timestamptz(6)
+  id             Int      @id @default(autoincrement())
+  name_en        String   @db.VarChar(255)
+  name_ukr       String   @db.VarChar(255)
+  quantity       Int?     @default(0)
+  createdAt      DateTime @db.Timestamptz(6)
+  updatedAt      DateTime @db.Timestamptz(6)
   ProductSportId Int?
-  ProductSports  ProductSports? @relation(fields: [ProductSportId], references: [id])
 }
 
 model calls {
@@ -226,36 +224,6 @@ model products {
   types      types?   @relation(fields: [typeId], references: [id], onDelete: Cascade)
 }
 
-model todo_trackers {
-  id            Int            @id @default(autoincrement())
-  name          String         @db.VarChar(255)
-  completed     Boolean
-  start         DateTime       @db.Timestamptz(6)
-  finish        DateTime       @db.Timestamptz(6)
-  createdAt     DateTime       @db.Timestamptz(6)
-  updatedAt     DateTime       @db.Timestamptz(6)
-  userTrackerId Int?
-  user_trackers user_trackers? @relation(fields: [userTrackerId], references: [id])
-}
-
-model todo_without_time_trackers {
-  id            Int            @id @default(autoincrement())
-  name          String         @db.VarChar(255)
-  completed     Boolean
-  createdAt     DateTime       @db.Timestamptz(6)
-  updatedAt     DateTime       @db.Timestamptz(6)
-  userTrackerId Int?
-  user_trackers user_trackers? @relation(fields: [userTrackerId], references: [id])
-}
-
-model token_sportproducts {
-  id           Int      @id @default(autoincrement())
-  refreshToken String   @db.VarChar(255)
-  userId       Int?
-  createdAt    DateTime @db.Timestamptz(6)
-  updatedAt    DateTime @db.Timestamptz(6)
-}
-
 model tokens {
   id           Int      @id @default(autoincrement())
   refreshToken String   @db.VarChar(255)
@@ -272,6 +240,201 @@ model types {
   products  products[]
 }
 
+model users {
+  id              Int      @id @default(autoincrement())
+  email           String   @unique @db.VarChar(255)
+  password        String   @db.VarChar(255)
+  role            String?  @default("user") @db.VarChar(255)
+  activationToken String?  @db.VarChar(255)
+  createdAt       DateTime @db.Timestamptz(6)
+  updatedAt       DateTime @db.Timestamptz(6)
+}
+
+model ContactSports {
+  id        Int      @id @default(autoincrement())
+  fullName  String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  message   String   @db.VarChar(255)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+}
+
+model Insta_Users {
+  id                                                       Int                   @id @default(autoincrement())
+  fullname                                                 String                @db.VarChar(255)
+  nickname                                                 String                @unique @db.VarChar(255)
+  login                                                    String                @unique @db.VarChar(255)
+  password                                                 String                @db.VarChar(255)
+  activationToken                                          String?               @db.VarChar(255)
+  createdAt                                                DateTime              @db.Timestamptz(6)
+  updatedAt                                                DateTime              @db.Timestamptz(6)
+  Insta_tokens                                             Insta_tokens[]
+  comment_insts                                            comment_insts[]
+  inst_chats_inst_chats_recipientIdToInsta_Users           inst_chats[]          @relation("inst_chats_recipientIdToInsta_Users")
+  inst_chats_inst_chats_senderIdToInsta_Users              inst_chats[]          @relation("inst_chats_senderIdToInsta_Users")
+  inst_messages_inst_messages_recipientIdToInsta_Users     inst_messages[]       @relation("inst_messages_recipientIdToInsta_Users")
+  inst_messages_inst_messages_senderIdToInsta_Users        inst_messages[]       @relation("inst_messages_senderIdToInsta_Users")
+  inst_stories                                             inst_stories[]
+  inst_story_visitors                                      inst_story_visitors[]
+  insta_followers_insta_followers_followerIdToInsta_Users  insta_followers[]     @relation("insta_followers_followerIdToInsta_Users")
+  insta_followers_insta_followers_followingIdToInsta_Users insta_followers[]     @relation("insta_followers_followingIdToInsta_Users")
+  insta_likes                                              insta_likes[]
+  insta_posts                                              insta_posts[]
+  insta_saveds                                             insta_saveds[]
+  insta_user_infos                                         insta_user_infos[]
+}
+
+model Insta_tokens {
+  id           Int          @id @default(autoincrement())
+  refreshToken String?
+  createdAt    DateTime     @db.Timestamptz(6)
+  updatedAt    DateTime     @db.Timestamptz(6)
+  InstaUserId  Int?
+  Insta_Users  Insta_Users? @relation(fields: [InstaUserId], references: [id])
+}
+
+model comment_insts {
+  id          Int          @id @default(autoincrement())
+  text        String
+  createdAt   DateTime     @db.Timestamptz(6)
+  updatedAt   DateTime     @db.Timestamptz(6)
+  postId      Int?
+  userId      Int?
+  insta_posts insta_posts? @relation(fields: [postId], references: [id])
+  Insta_Users Insta_Users? @relation(fields: [userId], references: [id])
+}
+
+model comments {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  email     String   @unique @db.VarChar(255)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+}
+
+model inst_chats {
+  id                                              Int             @id @default(autoincrement())
+  senderId                                        Int
+  recipientId                                     Int
+  createdAt                                       DateTime        @db.Timestamptz(6)
+  updatedAt                                       DateTime        @db.Timestamptz(6)
+  Insta_Users_inst_chats_recipientIdToInsta_Users Insta_Users     @relation("inst_chats_recipientIdToInsta_Users", fields: [recipientId], references: [id], onDelete: NoAction)
+  Insta_Users_inst_chats_senderIdToInsta_Users    Insta_Users     @relation("inst_chats_senderIdToInsta_Users", fields: [senderId], references: [id], onDelete: NoAction)
+  inst_messages                                   inst_messages[]
+}
+
+model inst_messages {
+  id                                                 Int         @id @default(autoincrement())
+  senderId                                           Int
+  recipientId                                        Int
+  chatId                                             Int
+  text                                               String
+  createdAt                                          DateTime    @db.Timestamptz(6)
+  updatedAt                                          DateTime    @db.Timestamptz(6)
+  inst_chats                                         inst_chats  @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  Insta_Users_inst_messages_recipientIdToInsta_Users Insta_Users @relation("inst_messages_recipientIdToInsta_Users", fields: [recipientId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Insta_Users_inst_messages_senderIdToInsta_Users    Insta_Users @relation("inst_messages_senderIdToInsta_Users", fields: [senderId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model inst_stories {
+  id                  Int                   @id @default(autoincrement())
+  createdAt           DateTime              @db.Timestamptz(6)
+  updatedAt           DateTime              @db.Timestamptz(6)
+  userId              Int?
+  Insta_Users         Insta_Users?          @relation(fields: [userId], references: [id])
+  inst_story_media    inst_story_media[]
+  inst_story_visitors inst_story_visitors[]
+}
+
+model inst_story_media {
+  id           Int           @id @default(autoincrement())
+  filename     String        @db.VarChar(255)
+  type         String        @db.VarChar(255)
+  createdAt    DateTime      @db.Timestamptz(6)
+  updatedAt    DateTime      @db.Timestamptz(6)
+  storyId      Int?
+  inst_stories inst_stories? @relation(fields: [storyId], references: [id])
+}
+
+model inst_story_visitors {
+  id           Int           @id @default(autoincrement())
+  viewedAt     DateTime?     @db.Timestamptz(6)
+  createdAt    DateTime      @db.Timestamptz(6)
+  updatedAt    DateTime      @db.Timestamptz(6)
+  storyId      Int?
+  userId       Int?
+  inst_stories inst_stories? @relation(fields: [storyId], references: [id])
+  Insta_Users  Insta_Users?  @relation(fields: [userId], references: [id])
+}
+
+model insta_followers {
+  id                                                   Int         @id @default(autoincrement())
+  followingId                                          Int
+  followerId                                           Int
+  createdAt                                            DateTime    @db.Timestamptz(6)
+  updatedAt                                            DateTime    @db.Timestamptz(6)
+  Insta_Users_insta_followers_followerIdToInsta_Users  Insta_Users @relation("insta_followers_followerIdToInsta_Users", fields: [followerId], references: [id], onDelete: Cascade)
+  Insta_Users_insta_followers_followingIdToInsta_Users Insta_Users @relation("insta_followers_followingIdToInsta_Users", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followingId, followerId])
+}
+
+model insta_likes {
+  id          Int          @id @default(autoincrement())
+  createdAt   DateTime     @db.Timestamptz(6)
+  updatedAt   DateTime     @db.Timestamptz(6)
+  postId      Int?
+  userId      Int?
+  insta_posts insta_posts? @relation(fields: [postId], references: [id])
+  Insta_Users Insta_Users? @relation(fields: [userId], references: [id])
+}
+
+model insta_posts {
+  id            Int             @id @default(autoincrement())
+  description   String?
+  createdAt     DateTime        @db.Timestamptz(6)
+  updatedAt     DateTime        @db.Timestamptz(6)
+  userId        Int?
+  comment_insts comment_insts[]
+  insta_likes   insta_likes[]
+  Insta_Users   Insta_Users?    @relation(fields: [userId], references: [id])
+  insta_saveds  insta_saveds[]
+  post_media    post_media[]
+}
+
+model insta_saveds {
+  id          Int          @id @default(autoincrement())
+  createdAt   DateTime     @db.Timestamptz(6)
+  updatedAt   DateTime     @db.Timestamptz(6)
+  postId      Int?
+  userId      Int?
+  insta_posts insta_posts? @relation(fields: [postId], references: [id])
+  Insta_Users Insta_Users? @relation(fields: [userId], references: [id])
+}
+
+model insta_user_infos {
+  id                  Int          @id @default(autoincrement())
+  avatar              String?      @db.VarChar(255)
+  bio                 String?
+  gender              String?      @db.VarChar(255)
+  showRecommendations Boolean?     @default(false)
+  website             String?      @db.VarChar(255)
+  createdAt           DateTime     @db.Timestamptz(6)
+  updatedAt           DateTime     @db.Timestamptz(6)
+  userId              Int?
+  Insta_Users         Insta_Users? @relation(fields: [userId], references: [id])
+}
+
+model post_media {
+  id          Int          @id @default(autoincrement())
+  filename    String       @db.VarChar(255)
+  type        String       @db.VarChar(255)
+  createdAt   DateTime     @db.Timestamptz(6)
+  updatedAt   DateTime     @db.Timestamptz(6)
+  postId      Int?
+  insta_posts insta_posts? @relation(fields: [postId], references: [id])
+}
+
 model user_sportproducts {
   id        Int      @id @default(autoincrement())
   email     String   @unique @db.VarChar(255)
@@ -281,24 +444,4 @@ model user_sportproducts {
   role      String?  @default("user") @db.VarChar(255)
   createdAt DateTime @db.Timestamptz(6)
   updatedAt DateTime @db.Timestamptz(6)
-}
-
-model user_trackers {
-  id                         Int                          @id @default(autoincrement())
-  email                      String                       @db.VarChar(255)
-  password                   String                       @db.VarChar(255)
-  createdAt                  DateTime                     @db.Timestamptz(6)
-  updatedAt                  DateTime                     @db.Timestamptz(6)
-  todo_trackers              todo_trackers[]
-  todo_without_time_trackers todo_without_time_trackers[]
-}
-
-model users {
-  id              Int      @id @default(autoincrement())
-  email           String   @unique @db.VarChar(255)
-  password        String   @db.VarChar(255)
-  role            String?  @default("user") @db.VarChar(255)
-  activationToken String?  @db.VarChar(255)
-  createdAt       DateTime @db.Timestamptz(6)
-  updatedAt       DateTime @db.Timestamptz(6)
 }

@@ -5,11 +5,10 @@ import jwt from "jsonwebtoken";
 const protectedRoutes = ["/account"];
 
 export default async function middleware(req: NextRequest) {
-  console.log('middlewar ', req)
   const path = req.nextUrl.pathname;
   const token = (await cookies()).get("session")?.value;
 
-  if (!protectedRoutes.includes(path)) {
+  if (!path.startsWith("/account")) {
     return NextResponse.next();
   }
 
@@ -28,7 +27,6 @@ export default async function middleware(req: NextRequest) {
 
   return NextResponse.next();
 }
-
 
 export const config = {
   matcher: ["/account"],
