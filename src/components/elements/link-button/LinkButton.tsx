@@ -9,12 +9,14 @@ function LinkButton({
   style,
   isDark,
   onClick,
+  className,
 }: {
   children: React.ReactNode;
   url: string;
   style?: any;
   isDark?: boolean;
   onClick?: (e: any) => void;
+  className?: string;
 }) {
   return (
     <Link

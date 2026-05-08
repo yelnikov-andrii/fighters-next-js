@@ -6,6 +6,7 @@ import { ChangeEvent, useState } from "react";
 import FormButton from "@/components/elements/form-button/FormButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Loading from "@/components/modules/header/components/HeaderMain/components/Loading";
 
 function Register() {
   const router = useRouter();
@@ -15,8 +16,10 @@ function Register() {
     lastName: "",
     email: "",
     password: "",
+    phone: "",
   });
   const [alert, setAlert] = useState({ success: "", failed: "" });
+  const [loading, setLoading] = useState(false);
 
   function onchangeHandler(e: ChangeEvent<HTMLInputElement>) {
     switch (e.target.name) {
@@ -32,6 +35,9 @@ function Register() {
       case "password":
         setData((prev) => ({ ...prev, password: e.target.value }));
         break;
+      case "phone":
+        setData((prev) => ({ ...prev, phone: e.target.value }));
+        break;
       default:
         return null;
     }
@@ -39,33 +45,40 @@ function Register() {
 
   async function handleSubmit(e: any) {
     e.preventDefault();
-    const response = await fetch("/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: data?.firstName,
-        lastName: data?.lastName,
-        password: data?.password,
-        email: data?.email,
-      }),
-    });
+    setLoading(true);
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: data?.firstName,
+          lastName: data?.lastName,
+          password: data?.password,
+          email: data?.email,
+          phone: data?.phone,
+        }),
+      });
 
-    if (response.ok) {
-      setAlert((obj) => ({ ...obj, success: t("success_reg") }));
-      clearFields();
-      setTimeout(() => {
-        setAlert((obj) => ({ ...obj, success: "" }));
-        router.push("/login");
-      }, 2500);
-    } else {
-      const data = await response.json();
-      const error = data.message || t("failed_reg");
-      setAlert((obj) => ({ ...obj, failed: error }));
-      setTimeout(() => {
-        setAlert((obj) => ({ ...obj, failed: "" }));
-      }, 2500);
+      if (response.ok) {
+        setAlert((obj) => ({ ...obj, success: t("success_reg") }));
+        clearFields();
+        setTimeout(() => {
+          setAlert((obj) => ({ ...obj, success: "" }));
+          router.push(`/activation?email=${data.email}`);
+        }, 2500);
+      } else {
+        const data = await response.json();
+        const error = data.message || t("failed_reg");
+        setAlert((obj) => ({ ...obj, failed: error }));
+        setTimeout(() => {
+          setAlert((obj) => ({ ...obj, failed: "" }));
+        }, 2500);
+      }
+    } catch (e) {
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -76,6 +89,7 @@ function Register() {
       lastName: "",
       email: "",
       password: "",
+      phone: "",
     }));
   }
 
@@ -114,6 +128,15 @@ function Register() {
             type="email"
           />
           <FormInput
+            value={data.phone}
+            change={onchangeHandler}
+            label="Phone"
+            placeholder="+380XXXXXXXXX"
+            name="phone"
+            type="tel"
+            pattern="^\+?[0-9]{10,15}$"
+          />
+          <FormInput
             value={data.password}
             change={onchangeHandler}
             label={t("password")}
@@ -121,7 +144,9 @@ function Register() {
             name="password"
             type="password"
           />
-          <FormButton type="submit">{t("register")}</FormButton>
+          <FormButton type="submit">
+            {loading ? "Loading..." : t("register")}
+          </FormButton>
         </form>
         <div className="text-center mt-8 flex gap-2 justify-center">
           <span>{t("already_have_account")}</span>

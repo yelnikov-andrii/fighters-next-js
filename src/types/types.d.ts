@@ -1,9 +1,9 @@
 import { StaticImageData } from "next/image";
 
-export { };
+export {};
 
 declare global {
-  // select 
+  // select
   interface SelectItemI {
     value: string;
     label: string;
@@ -31,12 +31,12 @@ declare global {
   }
 
   interface CategoryStateInterface {
-    categories: CategoryInt[],
+    categories: CategoryInt[];
     categoriesLoading: boolean;
     categoriesError: string;
-    subcategories: SubcategoryInt[],
-    subCategoriesLoading: boolean,
-    subCategoriesError: string,
+    subcategories: SubcategoryInt[];
+    subCategoriesLoading: boolean;
+    subCategoriesError: string;
     allSubsubcategories: any[];
     allSubcategories: any[];
   }
@@ -79,7 +79,7 @@ declare global {
     name_ukr: string;
     description_en: string;
     description_ukr: string;
-    articles: ArticleI[]
+    articles: ArticleI[];
   }
 
   // filter
@@ -106,7 +106,7 @@ declare global {
     genderFilters: Option[];
   }
 
-  // main 
+  // main
 
   interface ElementInt {
     translation_key: string;
@@ -176,5 +176,12 @@ declare global {
     name: string;
     id: number;
   }
-}
 
+  interface UserI {
+    id: number;
+    name: string;
+    lastName: string;
+    email: string;
+    phone: string;
+  }
+}
