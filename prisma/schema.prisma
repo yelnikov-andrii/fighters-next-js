@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://may_db_2026_user:iRnNIPqseTod6SwJhESkfixCZOl5zGm5@dpg-d85j7lfaqgkc73behq80-a.oregon-postgres.render.com/may_db_2026?sslmode=require"
+  url      = "postgresql://june_2026_user:gBYk6zEHSTbUw0nhpAYjoqQYvCct0qMz@dpg-d8rp6dnlk1mc73c6e5bg-a.oregon-postgres.render.com/june_2026?sslmode=require"
 }
 
 model Amenities {
