@@ -59,6 +59,9 @@ function Account() {
             <p>Phone: {user?.phone}</p>
           </div>
         </h2>
+        <div>
+          <LinkButton url="/account/orders">Your orders</LinkButton>
+        </div>
       </div>
     </section>
   );
